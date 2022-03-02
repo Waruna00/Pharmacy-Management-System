@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.LoggedInController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoggedInController">
+   <children>
+      <Label fx:id="label_welcome" layoutX="230.0" layoutY="43.0" text="Welcome">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="31.0" />
+         </font>
+      </Label>
+      <Button fx:id="button_logout" layoutX="274.0" layoutY="187.0" mnemonicParsing="false" text="Logout" />
+      <Label fx:id="label_fav_channel" layoutX="286.0" layoutY="111.0" text="Label" />
+   </children>
 </AnchorPane>
