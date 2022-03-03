@@ -39,7 +39,7 @@ public class DBUtils {
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        stage.setScene(new Scene(root,6000,400));
+        stage.setScene(new Scene(root,600,400));
         stage.show();
     }
 
@@ -124,7 +124,7 @@ public class DBUtils {
                     String retrievedPassword = resultSet.getNString("emp_password");
                     String retrievedChannel = resultSet.getNString("favChannel");
                     if(retrievedPassword.equals(password)){
-                        changeScene(event,"logged-in.fmxl","welcome",username,retrievedChannel);
+                        changeScene(event,"logged-in.fxml","Welcome",username,retrievedChannel);
                     }
                     else {
                         System.out.println("Password did not match");
