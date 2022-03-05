@@ -4,14 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F3F6BA; -fx-region-border: #16171A;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CashierLoggedIn">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E5E5E5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CashierLoggedIn">
    <children>
-      <AnchorPane layoutX="4.0" layoutY="6.0" prefHeight="388.0" prefWidth="590.0" style="-fx-border-color: #0A0B0B;">
-         <children>
-            <Label fx:id="Itemcodelbl" layoutX="51.0" layoutY="14.0" text="Item Code" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
             <Label fx:id="pricelbl" layoutX="292.0" layoutY="14.0" text="Price">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -20,7 +14,11 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-            <Button fx:id="addbtn" layoutX="512.0" layoutY="34.0" mnemonicParsing="false" style="-fx-background-color: #E5C64D;" text="Add" textFill="#c72a2a">
+            <Label fx:id="Itemcodelbl" layoutX="51.0" layoutY="14.0" text="Item Code" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Button fx:id="addbtn" layoutX="513.0" layoutY="47.0" mnemonicParsing="false" style="-fx-background-color: #E5C64D;" text="Add" textFill="#7c792b">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -29,7 +27,6 @@
                   <Font name="System Bold" size="12.0" />
                </font></Label>
             <TextField fx:id="totalpricetxt" layoutX="401.0" layoutY="336.0" style="-fx-border-color: #E79631;" />
-            <AnchorPane layoutX="23.0" layoutY="82.0" prefHeight="235.0" prefWidth="538.0" style="-fx-background-color: #D9DCE0;" />
             <TextField fx:id="itemcodetxt" layoutX="41.0" layoutY="47.0" prefHeight="26.0" prefWidth="75.0" style="-fx-border-color: #E79631;" />
             <TextField fx:id="pricetxt" layoutX="273.0" layoutY="47.0" prefHeight="26.0" prefWidth="75.0" style="-fx-border-color: #E79631;" />
             <TextField fx:id="descriptiontxt" layoutX="389.0" layoutY="46.0" prefHeight="26.0" prefWidth="75.0" style="-fx-border-color: #E79631;" />
@@ -38,7 +35,10 @@
                   <Font name="System Bold" size="12.0" />
                </font></Label>
             <TextField fx:id="quantitiytxt" layoutX="155.0" layoutY="47.0" prefHeight="26.0" prefWidth="82.0" style="-fx-border-color: #E79631;" />
-         </children>
-      </AnchorPane>
+      <ScrollPane layoutX="41.0" layoutY="98.0" prefHeight="211.0" prefWidth="512.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
