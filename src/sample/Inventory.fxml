@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Inventory">
    <children>
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="600.0">
@@ -26,5 +25,6 @@
         </menus>
       </MenuBar>
       <TextField layoutX="194.0" layoutY="126.0" />
+      <TextField layoutX="167.0" layoutY="200.0" />
    </children>
 </AnchorPane>
