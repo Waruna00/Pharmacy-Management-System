@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Inventory">
    <children>
-      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="600.0">
+      <MenuBar layoutX="-78.0" layoutY="260.0" prefHeight="26.0" prefWidth="600.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
