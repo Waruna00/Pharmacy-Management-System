@@ -114,7 +114,7 @@ public class DBUtils {
             resultSet = preparedStatement.executeQuery();
 
             if(!resultSet.isBeforeFirst()){
-                System.out.println("User not found in the databse");
+                System.out.println("User not found in the database");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Provided credentials are incorrect");
                 alert.show();
