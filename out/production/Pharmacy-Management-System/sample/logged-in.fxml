@@ -11,7 +11,7 @@
             <Font name="Arial Rounded MT Bold" size="31.0" />
          </font>
       </Label>
-      <Button fx:id="button_logout" layoutX="531.0" layoutY="30.0" mnemonicParsing="false" text="Logout" />
+      <Button fx:id="button_logout1" layoutX="531.0" layoutY="30.0" mnemonicParsing="false" text="Logout" />
       <Label fx:id="label_fav_channel" layoutX="286.0" layoutY="111.0" text="Label" />
       <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="600.0">
         <menus>
@@ -32,12 +32,11 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Profile">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <Menu mnemonicParsing="false" text="Unspecified Menu">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
+                <MenuItem mnemonicParsing="false" text="Change Password" />
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="button_logout" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF;" text="Button" />
+                     </graphic></MenuItem>
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
