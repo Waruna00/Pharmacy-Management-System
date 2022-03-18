@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Objects;
 
 public class DBUtils {
 
@@ -21,8 +22,8 @@ public class DBUtils {
             try{
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
-                LoggedInController loggedInController = loader.getController();
-                loggedInController.setUserInformation(username,favChannel);
+                welcome_controller welcome_controller = loader.getController();
+                welcome_controller.setUserInformation(username,favChannel);
             }
             catch (IOException e){
                 e.printStackTrace();
@@ -30,16 +31,17 @@ public class DBUtils {
         }
         else{
             try{
-                root=FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
+                root=FXMLLoader.load(Objects.requireNonNull(DBUtils.class.getResource(fxmlFile)));
             }
             catch(IOException e){
                 e.printStackTrace();
 
             }
         }
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        stage.setScene(new Scene(root,600,400));
+        stage.setScene(new Scene(root,1280,800));
         stage.show();
     }
 
@@ -124,7 +126,7 @@ public class DBUtils {
                     String retrievedPassword = resultSet.getNString("emp_password");
                     String retrievedChannel = resultSet.getNString("favChannel");
                     if(retrievedPassword.equals(password)){
-                        changeScene(event,"logged-in.fxml","Welcome",username,retrievedChannel);
+                        changeScene(event,"welcome.fxml","Welcome",username,retrievedChannel);
                     }
                     else {
                         System.out.println("Password did not match");
