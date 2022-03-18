@@ -1,14 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.DayEnd"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.welcome_controller">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Sales">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Retail" />
+            <MenuItem mnemonicParsing="false" text="Wholesale" />
+            <MenuItem mnemonicParsing="false" text="Day end" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Inventory">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Inward" />
+            <MenuItem mnemonicParsing="false" text="Outward" />
+            <MenuItem mnemonicParsing="false" text="Tracker" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Reports">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Sales" />
+                  <MenuItem mnemonicParsing="false" text="Inventory" />
+                  <MenuItem mnemonicParsing="false" text="Finance" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="Profile">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem fx:id="log_out" mnemonicParsing="false" text="Logout" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Contact Us" />
+                  <MenuItem mnemonicParsing="false" text="FAQ" />
+              </items>
+            </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView layoutX="61.0" layoutY="76.0" prefHeight="281.0" prefWidth="687.0">
+              <columns>
+                <TableColumn prefWidth="126.40002059936523" text="Remitance No" />
+                <TableColumn prefWidth="263.199951171875" text="Description" />
+                  <TableColumn minWidth="0.0" prefWidth="158.66668701171875" text="Account No" />
+                  <TableColumn minWidth="0.0" prefWidth="138.66665649414062" text="Ammount" />
+              </columns>
+            </TableView>
+            <TextField layoutX="1059.0" layoutY="75.0" />
+            <Label layoutX="920.0" layoutY="76.0" text="Bank To Be     :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField layoutX="291.0" layoutY="501.0" />
+            <TextField layoutX="61.0" layoutY="501.0" />
+            <TextField layoutX="520.0" layoutY="501.0" />
+            <TextField layoutX="744.0" layoutY="502.0" />
+            <TextField layoutX="1059.0" layoutY="502.0" />
+            <Label layoutX="61.0" layoutY="461.0" text="Prev. Cash in hand">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="291.0" layoutY="461.0" text="Total Sales">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="520.0" layoutY="461.0" text="Total Remitance">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="744.0" layoutY="461.0" text="Cash in hand">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="1033.0" layoutY="461.0" text="Difference">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="1093.0" layoutY="602.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="115.0" text="Proccess">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="954.0" layoutY="602.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="115.0" text="View">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="814.0" layoutY="602.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="115.0" text="Clear">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="669.0" layoutY="367.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Add">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin></AnchorPane>
+  </children>
+</VBox>
