@@ -7,8 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,7 +18,7 @@ public class welcome_controller implements Initializable {
 
 
     @FXML
-    private Button log_out;
+    private MenuItem log_out;
 
 
     @Override
@@ -26,15 +28,15 @@ public class welcome_controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 DBUtils.changeScene(event,"sample.fxml","Log In",null,null);
+                System.out.println("You Clicked");
             }
         });
     }
-   /* @FXML
+    /*@FXML
     private void logout(ActionEvent event) throws IOException {
-        System.out.println("You Clicked");
+
         DBUtils.changeScene(event,"sample.fxml","Log In",null,null);
-    }
-*/
+    }*/
 
     @FXML
     private Label label_welcome;

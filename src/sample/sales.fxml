@@ -114,6 +114,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Label>
+            <Button layoutX="1195.0" layoutY="701.0" mnemonicParsing="false" text="Save" />
 
             </children>
 
