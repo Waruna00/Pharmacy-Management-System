@@ -51,17 +51,17 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fitHeight="570.0" fitWidth="507.0" layoutX="387.0" layoutY="245.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="570.0" fitWidth="507.0" layoutX="400.0" layoutY="165.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/fgsfg.png" />
                </image>
             </ImageView>
-            <Label fx:id="label_welcome" layoutX="578.0" layoutY="178.0" text="Label">
+            <Label fx:id="label_welcome" layoutX="475.0" layoutY="98.0" text="Welcome MGR01">
                <font>
-                  <Font name="System Bold" size="50.0" />
+                  <Font name="Calibri" size="50.0" />
                </font>
             </Label>
-            <Label fx:id="label_fav_channel" layoutX="625.0" layoutY="274.0" text="Label" />
+            <Label fx:id="label_fav_channel" layoutX="625.0" layoutY="274.0" />
          </children></AnchorPane>
   </children>
 </VBox>
