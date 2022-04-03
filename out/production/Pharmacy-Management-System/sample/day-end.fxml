@@ -5,9 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -17,43 +14,6 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.day_end_controller">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="Sales">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Retail" />
-            <MenuItem mnemonicParsing="false" text="Wholesale" />
-            <MenuItem mnemonicParsing="false" text="Day end" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Inventory">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Inward" />
-            <MenuItem mnemonicParsing="false" text="Outward" />
-            <MenuItem mnemonicParsing="false" text="Tracker" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Reports">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Sales" />
-                  <MenuItem mnemonicParsing="false" text="Inventory" />
-                  <MenuItem mnemonicParsing="false" text="Finance" />
-          </items>
-        </Menu>
-            <Menu mnemonicParsing="false" text="Profile">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Settings" />
-                  <MenuItem fx:id="log_out" mnemonicParsing="false" text="Logout" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Contact Us" />
-                  <MenuItem mnemonicParsing="false" text="FAQ" />
-              </items>
-            </Menu>
-      </menus>
-    </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <TableView layoutX="61.0" layoutY="76.0" prefHeight="281.0" prefWidth="687.0">
@@ -64,17 +24,15 @@
                   <TableColumn minWidth="0.0" prefWidth="138.66665649414062" text="Ammount" />
               </columns>
             </TableView>
-            <TextField fx:id="tf_bank_to_be" layoutX="1059.0" layoutY="75.0" />
             <Label layoutX="920.0" layoutY="76.0" text="Bank To Be     :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_tot_sale" layoutX="291.0" layoutY="501.0" />
-            <TextField fx:id="tf_prev_cih" layoutX="61.0" layoutY="501.0" />
-            <TextField fx:id="tf_tot_rem" layoutX="520.0" layoutY="501.0" />
-            <TextField fx:id="tf_cih" layoutX="744.0" layoutY="502.0" />
-            <TextField fx:id="tf_dif" layoutX="1059.0" layoutY="502.0" />
+            <TextField fx:id="tf_cih" layoutX="744.0" layoutY="496.0" prefHeight="32.0" prefWidth="151.0" style="-fx-border-color: black; -fx-padding: 0;" text="00.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></TextField>
             <Label layoutX="61.0" layoutY="461.0" text="Prev. Cash in hand">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -108,7 +66,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="button_view" layoutX="954.0" layoutY="602.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="115.0" text="View">
+            <Button fx:id="button_view" layoutX="1093.0" layoutY="191.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="115.0" text="View">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -116,7 +74,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="button_clear" layoutX="814.0" layoutY="602.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="115.0" text="Clear">
+            <Button fx:id="button_clear" layoutX="943.0" layoutY="602.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="115.0" text="Clear">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -132,7 +90,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <DatePicker fx:id="date" layoutX="1059.0" layoutY="118.0" prefHeight="26.0" prefWidth="150.0" />
+            <DatePicker fx:id="date" layoutX="1058.0" layoutY="116.0" prefHeight="31.0" prefWidth="150.0" style="-fx-border-color: black;" />
             <Label layoutX="921.0" layoutY="121.0" text="Date                :">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -141,6 +99,31 @@
             <Label layoutX="61.0" layoutY="45.0" text="Remittance">
                <font>
                   <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_prev_cih" layoutX="61.0" layoutY="496.0" prefHeight="26.0" prefWidth="150.0" style="-fx-border-color: black;" text="00.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_dif" layoutX="1061.0" layoutY="496.0" prefHeight="26.0" prefWidth="150.0" style="-fx-border-color: black;" text="00.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_tot_sale" layoutX="291.0" layoutY="496.0" prefHeight="26.0" prefWidth="150.0" style="-fx-border-color: black;" text="00.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="521.0" layoutY="496.0" prefHeight="26.0" prefWidth="150.0" style="-fx-border-color: black;" text="00.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="1058.0" layoutY="71.0" prefHeight="26.0" prefWidth="150.0" style="-fx-border-color: black;" text="00.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>

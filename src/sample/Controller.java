@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,7 +36,7 @@ public class Controller implements Initializable {
         button_sign_up.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event,"sign-up.fxml","Sign-up",null,null);
+                DBUtils.changeScene(event,"sign-up.fxml","Sign-up",null,1280,800);
             }
         });
     }

@@ -14,16 +14,16 @@ import java.util.Objects;
 
 public class DBUtils {
 
-    public static void changeScene(ActionEvent event, String fxmlFile, String title, String username, String favChannel){
+    public static void changeScene(ActionEvent event, String fxmlFile, String title, String username,int v,int v1){
 
         Parent root = null;
 
-        if (username!= null && favChannel!=null){
+        if (username!= null){
             try{
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
                 welcome_controller welcome_controller = loader.getController();
-                welcome_controller.setUserInformation(username,favChannel);
+                welcome_controller.setUserInformation(username);
             }
             catch (IOException e){
                 e.printStackTrace();
@@ -41,7 +41,7 @@ public class DBUtils {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
-        stage.setScene(new Scene(root,600,400));
+        stage.setScene(new Scene(root,v,v1));
         stage.show();
     }
 
@@ -64,13 +64,12 @@ public class DBUtils {
                 alert.show();
             }
             else {
-                psInsert = connection.prepareStatement("INSERT INTO emp_user(emp_no,emp_password,favChannel) VALUES(?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO emp_user(emp_no,emp_password) VALUES(?, ?)");
                 psInsert.setString(1,username);
                 psInsert.setString(2,password);
-                psInsert.setString(3,favChannel);
                 psInsert.executeUpdate();
 
-                changeScene(event, "logged-in.fxml","Welcome",username,favChannel);
+                changeScene(event, "logged-in.fxml","Welcome",username,1280,800);
             }
         }
         catch (SQLException e){
@@ -111,7 +110,7 @@ public class DBUtils {
         ResultSet resultSet = null;
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
-            preparedStatement = connection.prepareStatement("SELECT emp_password,favChannel FROM em_user WHERE emp_no = ?");
+            preparedStatement = connection.prepareStatement("SELECT emp_password FROM em_user WHERE emp_no = ?");
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
 
@@ -124,9 +123,8 @@ public class DBUtils {
             else {
                 while (resultSet.next()){
                     String retrievedPassword = resultSet.getNString("emp_password");
-                    String retrievedChannel = resultSet.getNString("favChannel");
                     if(retrievedPassword.equals(password)){
-                        changeScene(event,"welcome.fxml","Welcome",username,retrievedChannel);
+                        changeScene(event,"welcome.fxml","Welcome",username,1280,800);
                     }
                     else {
                         System.out.println("Password did not match");
