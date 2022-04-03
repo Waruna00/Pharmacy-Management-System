@@ -14,7 +14,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="270.0" style="-fx-background-color: #e6f0ff;">
          <children>
-            <ImageView fitHeight="216.0" fitWidth="189.0" layoutX="26.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="216.0" fitWidth="217.0" layoutX="13.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/fgsfg.png" />
                </image>
@@ -23,35 +23,35 @@
       </AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="387.0">
          <children>
-            <ImageView fitHeight="149.0" fitWidth="161.0" layoutX="106.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="162.0" fitWidth="195.0" layoutX="122.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/vbbb.png" />
                </image>
             </ImageView>
-            <TextField id="user" fx:id="tf_username" layoutX="137.0" layoutY="199.0" prefHeight="26.0" prefWidth="168.0" promptText="Enter User Name Here">
+            <TextField id="user" fx:id="tf_username" layoutX="119.0" layoutY="198.0" prefHeight="26.0" prefWidth="180.0" promptText="Enter User Name Here">
                <font>
                   <Font name="Arial Bold Italic" size="12.0" />
                </font></TextField>
-            <PasswordField id="password" fx:id="tf_password" layoutX="137.0" layoutY="248.0" prefHeight="26.0" prefWidth="168.0" promptText="Enter Password Here">
+            <PasswordField id="password" fx:id="tf_password" layoutX="119.0" layoutY="247.0" prefHeight="26.0" prefWidth="180.0" promptText="Enter Password Here">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font></PasswordField>
-            <Label layoutX="55.0" layoutY="203.0" text="User Name">
+            <Label layoutX="39.0" layoutY="202.0" text="User Name">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="55.0" layoutY="251.0" text="Password">
+            <Label layoutX="39.0" layoutY="251.0" text="Password">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Button id="login_btn" fx:id="button_login" layoutX="106.0" layoutY="302.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #4d94ff; -fx-cursor: hand;" text="Login">
+            <Button id="login_btn" fx:id="button_login" layoutX="119.0" layoutY="288.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #4d94ff; -fx-cursor: hand;" text="Login">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="button_sign_up" layoutX="274.0" layoutY="360.0" mnemonicParsing="false" style="-fx-background-color: #4d94ff;" text="Sign Up">
+            <Button fx:id="button_sign_up" layoutX="119.0" layoutY="339.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #4d94ff;" text="Sign Up">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
