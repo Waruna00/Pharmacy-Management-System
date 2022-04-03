@@ -6,6 +6,7 @@
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
+
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,9 +18,14 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label fx:id="label_welcome" layoutX="578.0" layoutY="431.0" text="Label">
+            <ImageView fitHeight="570.0" fitWidth="507.0" layoutX="400.0" layoutY="165.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/fgsfg.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="label_welcome" layoutX="475.0" layoutY="98.0" text="Welcome MGR01">
                <font>
-                  <Font name="System Bold" size="50.0" />
+                  <Font name="Calibri" size="50.0" />
                </font>
             </Label>
             <Button layoutX="1156.0" layoutY="666.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
