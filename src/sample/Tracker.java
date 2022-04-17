@@ -6,14 +6,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+
 
 
 
@@ -154,31 +153,31 @@ public class Tracker implements Initializable {
             searchText.textProperty().addListener((observable, newValue, oldValue) -> {
                 filteredData.setPredicate(ProductAdd -> {
 //                    if no search value
-                    if (newValue.isBlank() || newValue.isEmpty() || newValue == null) {
+                    if (newValue.isBlank() || newValue.isEmpty()) {
                         return true;
                     }
 
                     String searchKeyWord = newValue.toLowerCase();
 
-                    if (ProductAdd.getItemcode().toLowerCase().indexOf(searchKeyWord) > -1) {
+                    if (ProductAdd.getItemcode().toLowerCase().contains(searchKeyWord)) {
                         return true; // that means we found a match in itemcode
-                    } else if (ProductAdd.getCom_No().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getCom_No().toString().contains(searchKeyWord)) {
                         return true; // that means we found a match in name
-                    } else if (ProductAdd.getCost_per_unit().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getCost_per_unit().toString().contains(searchKeyWord)) {
                         return true; // that means we found a match in price
-                    } else if (ProductAdd.getQuantity().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getQuantity().toString().contains(searchKeyWord)) {
                         return true;
-                    } else if (ProductAdd.getEXP().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getEXP().toString().contains(searchKeyWord)) {
                         return true;
-                    } else if (ProductAdd.getDate().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getDate().toString().contains(searchKeyWord)) {
                         return true; // that means we found a match in name
-                    } else if (ProductAdd.getBatch_no().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getBatch_no().toString().contains(searchKeyWord)) {
                         return true;
-                    } else if (ProductAdd.getSale_per_unit().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getSale_per_unit().toString().contains(searchKeyWord)) {
                         return true;
-                    } else if (ProductAdd.getTime().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getTime().toString().contains(searchKeyWord)) {
                         return true;
-                    } else if (ProductAdd.getMPD().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (ProductAdd.getMPD().toString().contains(searchKeyWord)) {
                         return true;
                     } else {
                         return false; //no match found
@@ -227,22 +226,18 @@ public class Tracker implements Initializable {
         java.sql.Time sqlTime = java.sql.Time.valueOf(TimeTextAsTime);
 
         String itemcode = itemcodeText.getText();
-        Integer batch_no = Integer.parseInt(batchNoText.getText());
-        Integer companyNo = Integer.parseInt(companyNoText.getText());
-        Time time = sqlTime;
-        Integer costprice = Integer.parseInt(costPriceText.getText());
-        Integer saleprice = Integer.parseInt(salePriceText.getText());
-        Integer quantity = Integer.parseInt(quantityText.getText());
-        Date mpdDate = sqlMpdDate;
-        Date expDate = sqlExpDate;
-        Date date = sqlDate;
+        int batch_no = Integer.parseInt(batchNoText.getText());
+        int companyNo = Integer.parseInt(companyNoText.getText());
+        int costprice = Integer.parseInt(costPriceText.getText());
+        int saleprice = Integer.parseInt(salePriceText.getText());
+        int quantity = Integer.parseInt(quantityText.getText());
 
         PreparedStatement ps = null;
         String query = "INSERT INTO `new_project`.`purchase` (`batch_no`, `date`, `time`, `EXP`, `MPD`, `cost_per_unit`, `sale_per_unit`, `quantity`, `Com_No`, `itemcode`) VALUES (?, ?, ?,?, ?, ?, ?, ?,?,?);";
         ps = connectDB.prepareStatement(query);
         ps.setInt(1, batch_no);
         ps.setDate(2, sqlDate);
-        ps.setTime(3, time);
+        ps.setTime(3, sqlTime);
         ps.setDate(4, sqlExpDate);
         ps.setDate(5, sqlMpdDate);
         ps.setInt(6, costprice);
@@ -290,22 +285,18 @@ public class Tracker implements Initializable {
 
 
         String itemcode = itemcodeText.getText();
-        Integer batch_no = Integer.parseInt(batchNoText.getText());
-        Integer companyNo = Integer.parseInt(companyNoText.getText());
-        Time time = sqlTime;
-        Integer costprice = Integer.parseInt(costPriceText.getText());
-        Integer saleprice = Integer.parseInt(salePriceText.getText());
-        Integer quantity = Integer.parseInt(quantityText.getText());
-        Date mpdDate = sqlMpdDate;
-        Date expDate = sqlExpDate;
-        Date date = sqlDate;
+        int batch_no = Integer.parseInt(batchNoText.getText());
+        int companyNo = Integer.parseInt(companyNoText.getText());
+        int costprice = Integer.parseInt(costPriceText.getText());
+        int saleprice = Integer.parseInt(salePriceText.getText());
+        int quantity = Integer.parseInt(quantityText.getText());
 
         PreparedStatement ps = null;
         String query = "UPDATE `new_project`.`purchase` SET `batch_no` = ?, `date` = ?, `time` = ?, `EXP` = ?, `MPD` = ?, `cost_per_unit` = ?, `sale_per_unit` = ?, `quantity` = ?, `Com_No` = ?, `itemcode` = ? WHERE (`batch_no` = ?);";
         ps = connectDB.prepareStatement(query);
         ps.setInt(1, batch_no);
         ps.setDate(2, sqlDate);
-        ps.setTime(3, time);
+        ps.setTime(3, sqlTime);
         ps.setDate(4, sqlExpDate);
         ps.setDate(5, sqlMpdDate);
         ps.setInt(6, costprice);
@@ -333,7 +324,7 @@ public class Tracker implements Initializable {
         DBConnection connectNow = new DBConnection();
         Connection connectDB = connectNow.Connect();
 
-        Integer batch_no = Integer.parseInt(batchNoText.getText());
+        int batch_no = Integer.parseInt(batchNoText.getText());
 
 
         PreparedStatement ps = null;
@@ -355,35 +346,6 @@ public class Tracker implements Initializable {
 
     }
 
-  /*  public void companyTable() {
-
-        try{
-
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("company.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage companyStage = new Stage();
-            Scene scene = new Scene(root, 809, 480);
-//            companyStage.setTitle("company");
-            companyStage.setScene(scene);
-            companyStage.show();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-
-    }
-
-
-   */
-
-   /* @FXML
-    void companyTableOnAction(ActionEvent event ){
-        companyTable();
-    }
-
-
-    */
    public void ToAddCom(ActionEvent event){
        DBUtils.changeScene(event,"company.fxml","Add Company",null,809,480);
    }
