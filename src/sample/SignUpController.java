@@ -39,10 +39,8 @@ public class SignUpController implements Initializable {
         button_sign_up.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
-
                 if(!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty()){
-                    DBUtils.signUpUser(event,tf_username.getText(),tf_password.getText(),toggleName);
+                    DBUtils.signUpUser(event,tf_username.getText(),tf_password.getText());
                 }
                 else {
                     System.out.println("Please Fill in all Information");

@@ -90,7 +90,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <DatePicker fx:id="date" layoutX="1058.0" layoutY="116.0" prefHeight="31.0" prefWidth="150.0" style="-fx-border-color: black;" />
+            <DatePicker fx:id="date" layoutX="1058.0" layoutY="116.0" onAction="#cihToZero" prefHeight="31.0" prefWidth="150.0" style="-fx-border-color: black;" />
             <Label layoutX="921.0" layoutY="121.0" text="Date                :">
                <font>
                   <Font name="System Bold" size="15.0" />

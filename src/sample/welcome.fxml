@@ -79,7 +79,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button ellipsisString="" layoutX="677.0" layoutY="258.0" mnemonicParsing="false" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Settings">
+            <Button ellipsisString="" layoutX="978.0" layoutY="261.0" mnemonicParsing="false" onAction="#ToSettings" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Settings">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -96,6 +96,14 @@
                </cursor>
             </Button>
             <Button ellipsisString="" layoutX="76.0" layoutY="261.0" mnemonicParsing="false" onAction="#ToDay" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Dayend">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button ellipsisString="" layoutX="677.0" layoutY="258.0" mnemonicParsing="false" onAction="#ToTracker" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Tracker">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

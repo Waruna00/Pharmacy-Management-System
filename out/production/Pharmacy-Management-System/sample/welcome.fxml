@@ -6,7 +6,6 @@
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
-
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,14 +17,14 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fitHeight="570.0" fitWidth="507.0" layoutX="400.0" layoutY="165.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="570.0" fitWidth="507.0" layoutX="400.0" layoutY="343.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/fgsfg.png" />
                </image>
             </ImageView>
-            <Label fx:id="label_welcome" layoutX="475.0" layoutY="98.0" text="Welcome MGR01">
+            <Label fx:id="label_welcome" layoutX="546.0" layoutY="14.0" text="Welcome MGR01">
                <font>
-                  <Font name="Calibri" size="50.0" />
+                  <Font name="Calibri" size="30.0" />
                </font>
             </Label>
             <Button layoutX="1156.0" layoutY="666.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
@@ -80,7 +79,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button ellipsisString="" layoutX="677.0" layoutY="258.0" mnemonicParsing="false" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Settings">
+            <Button ellipsisString="" layoutX="978.0" layoutY="261.0" mnemonicParsing="false" onAction="#ToSettings" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Settings">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -97,6 +96,14 @@
                </cursor>
             </Button>
             <Button ellipsisString="" layoutX="76.0" layoutY="261.0" mnemonicParsing="false" onAction="#ToDay" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Dayend">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button ellipsisString="" layoutX="677.0" layoutY="258.0" mnemonicParsing="false" onAction="#ToTracker" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Tracker">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

@@ -6,18 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Objects;
 
 public class DBUtils {
-
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String username,int v,int v1){
-
         Parent root = null;
-
         if (username!= null){
             try{
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
@@ -35,7 +31,6 @@ public class DBUtils {
             }
             catch(IOException e){
                 e.printStackTrace();
-
             }
         }
 
@@ -45,8 +40,8 @@ public class DBUtils {
         stage.show();
     }
 
-    public static void signUpUser(ActionEvent event, String username,String password,String favChannel){
-        Connection connection = null;
+    public static void signUpUser(ActionEvent event, String username,String password){
+        Connection connection;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
         ResultSet resultSet = null;
