@@ -88,8 +88,6 @@ public class sales_controller implements Initializable {
                             Total = Total-selectedItem.getAmount();
                             tf_tot.setText(String.valueOf(Total));
                             tbl.getItems().remove(selectedItem);
-
-                            System.out.println(checkoutsListObservableList);
                         }
                     });
                 }
@@ -102,6 +100,10 @@ public class sales_controller implements Initializable {
             tf_tot.clear();
             tbl.getItems().clear();
             checkoutsListObservableList.clear();
+
+        });
+
+        btn_pro.setOnAction(event -> {
 
         });
     }
