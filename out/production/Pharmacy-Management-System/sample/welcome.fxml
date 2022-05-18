@@ -1,116 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.welcome_controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.welcome_controller">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="864.0" prefWidth="1536.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fitHeight="570.0" fitWidth="507.0" layoutX="400.0" layoutY="343.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitWidth="473.0" layoutX="532.0" layoutY="196.0" opacity="0.51" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/fgsfg.png" />
                </image>
             </ImageView>
-            <Label fx:id="label_welcome" layoutX="546.0" layoutY="14.0" text="Welcome MGR01">
+            <Label fx:id="label_welcome" layoutX="661.0" layoutY="104.0" text="Welcome MGR01">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>
             </Label>
-            <Button layoutX="1156.0" layoutY="666.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
-            <ImageView accessibleRole="BUTTON" fitHeight="132.0" fitWidth="166.0" layoutX="125.0" layoutY="84.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/sales.png" />
-               </image>
-            </ImageView>
-            <Button ellipsisString="" layoutX="76.0" layoutY="84.0" mnemonicParsing="false" onAction="#ToSales" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Sales">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <Lighting>
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                        <Light.Distant>
-                           <color>
-                              <Color />
-                           </color>
-                        </Light.Distant>
-                     </light>
-                  </Lighting>
-               </effect>
-            </Button>
-            <Button ellipsisString="" layoutX="376.0" layoutY="84.0" mnemonicParsing="false" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Stock Inward">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button ellipsisString="" layoutX="677.0" layoutY="84.0" mnemonicParsing="false" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Reports">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button ellipsisString="" layoutX="978.0" layoutY="84.0" mnemonicParsing="false" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Help" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button ellipsisString="" layoutX="978.0" layoutY="261.0" mnemonicParsing="false" onAction="#ToSettings" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Settings">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button ellipsisString="" layoutX="379.0" layoutY="258.0" mnemonicParsing="false" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Stock Outward">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button ellipsisString="" layoutX="76.0" layoutY="261.0" mnemonicParsing="false" onAction="#ToDay" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Dayend">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button ellipsisString="" layoutX="677.0" layoutY="258.0" mnemonicParsing="false" onAction="#ToTracker" opacity="0.51" prefHeight="132.0" prefWidth="230.0" style="-fx-effect: innershadow( gaussian , #40504d , 5,0,0,0 ); -fx-effect: dropshadow( gaussian , #40504d , 2.5,0,0,1 ); -fx-background-color: #F1C40F;" text="Tracker">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            <Button layoutX="1420.0" layoutY="774.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+            <MenuBar prefHeight="26.0" prefWidth="1536.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Sales">
+                  <items>
+                    <MenuItem fx:id="MenuRSale" mnemonicParsing="false" text="Retail Sales " />
+                        <MenuItem fx:id="MenuWSale" mnemonicParsing="false" text="Whole Sales" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Inventory">
+                  <items>
+                    <MenuItem fx:id="MenuIn" mnemonicParsing="false" text="Inward" />
+                        <MenuItem fx:id="MenuOut" mnemonicParsing="false" text="Outward" />
+                        <MenuItem fx:id="MenuTracker" mnemonicParsing="false" text="Tracker" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Finance">
+                    <items>
+                      <MenuItem fx:id="MenuDayend" mnemonicParsing="false" text="Dayend" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Reports">
+                  <items>
+                    <MenuItem fx:id="MenuRepSale" mnemonicParsing="false" text="Sales" />
+                        <MenuItem fx:id="MenuRepInventory" mnemonicParsing="false" text="Inventory" />
+                        <MenuItem fx:id="MenuRepFinance" mnemonicParsing="false" text="Finance" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Settings">
+                    <items>
+                        <MenuItem fx:id="MenuSettings" mnemonicParsing="false" text="Change User Info" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                      <MenuItem fx:id="MenuQA" mnemonicParsing="false" text="Q&amp;A" />
+                        <MenuItem fx:id="MenuContact" mnemonicParsing="false" text="Contact Us" />
+                        <MenuItem fx:id="MenuAbout" mnemonicParsing="false" text="About Us" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
          </children></AnchorPane>
   </children>
 </VBox>

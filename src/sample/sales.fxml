@@ -7,14 +7,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.sales_controller">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
+            <Button fx:id="btn_add" alignment="CENTER" layoutX="1179.0" layoutY="46.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/down-arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
                 <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
                     <font>
                         <Font size="18.0" />
@@ -32,49 +46,103 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Label>
-                <Button fx:id="addbtn" layoutX="1195.0" layoutY="47.0" mnemonicParsing="false" style="-fx-background-color: #E5C64D;" text="Add" textFill="#7c792b">
+                <Label fx:id="totallbl" layoutX="939.0" layoutY="651.0" text="Total">
                     <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font></Button>
-                <Label fx:id="totallbl" layoutX="974.0" layoutY="656.0" text="Total">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="18.0" />
                     </font></Label>
-                <TextField fx:id="totalpricetxt" layoutX="1083.0" layoutY="646.0" prefHeight="38.0" prefWidth="151.0" style="-fx-border-color: #E79631;" />
-                <TextField fx:id="itemcodetxt" layoutX="45.0" layoutY="47.0" prefHeight="27.0" prefWidth="151.0" style="-fx-border-color: #E79631;" />
-                <TextField fx:id="pricetxt" layoutX="510.0" layoutY="47.0" prefHeight="27.0" prefWidth="139.0" style="-fx-border-color: #E79631;">
+                <TextField fx:id="tf_tot" alignment="CENTER_RIGHT" layoutX="1018.0" layoutY="646.0" prefHeight="38.0" prefWidth="216.0" style="-fx-border-color: #E79631;">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></TextField>
+                <TextField fx:id="tf_code" layoutX="45.0" layoutY="47.0" prefHeight="27.0" prefWidth="151.0" style="-fx-border-color: #E79631;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></TextField>
+                <TextField fx:id="tf_price" layoutX="510.0" layoutY="47.0" prefHeight="27.0" prefWidth="139.0" style="-fx-border-color: #E79631;">
                     <padding>
                         <Insets left="10.0" right="10.0" />
-                    </padding></TextField>
-                <TextField fx:id="descriptiontxt" layoutX="688.0" layoutY="46.0" prefHeight="27.0" prefWidth="358.0" style="-fx-border-color: #E79631;" />
+                    </padding>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+                <TextField fx:id="tf_des" layoutX="688.0" layoutY="46.0" prefHeight="27.0" prefWidth="358.0" style="-fx-border-color: #E79631;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
                 <Label fx:id="quantitylbl" layoutX="1083.0" layoutY="21.0" prefHeight="18.0" prefWidth="53.0" text="Quantiity">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Label>
-                <TextField fx:id="quantitiytxt" layoutX="1083.0" layoutY="46.0" prefHeight="27.0" prefWidth="65.0" style="-fx-border-color: #E79631;" />
+                <TextField fx:id="tf_qty" layoutX="1083.0" layoutY="46.0" prefHeight="27.0" prefWidth="65.0" style="-fx-border-color: #E79631;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
                 <ScrollPane layoutX="45.0" layoutY="98.0" prefHeight="506.0" prefWidth="1190.0">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1179.0">
                             <children>
-                                <TableView prefHeight="506.0" prefWidth="1176.0">
+                                <TableView fx:id="tbl" layoutX="1.0" prefHeight="506.0" prefWidth="1176.0">
                                     <columns>
-                                        <TableColumn prefWidth="169.59999924898148" text="Item Code" />
-                                        <TableColumn minWidth="0.0" prefWidth="275.2000427246094" text="Item Name" />
-                                        <TableColumn prefWidth="173.59991455078125" text="Price" />
-                                        <TableColumn prefWidth="400.800048828125" text="Description" />
-                                        <TableColumn prefWidth="154.39996337890625" text="Qty" />
+                              <TableColumn fx:id="tbl_no" prefWidth="43.99999690055847" text="No" />
+                                        <TableColumn fx:id="tbl_code" prefWidth="144.79995346069336" text="Item Code" />
+                                        <TableColumn fx:id="tbl_name" minWidth="0.0" prefWidth="271.2000427246094" text="Item Name" />
+                                        <TableColumn fx:id="tbl_price" prefWidth="128.0" text="Price" />
+                                        <TableColumn fx:id="tbl_des" prefWidth="351.20001220703125" text="Description" />
+                                        <TableColumn fx:id="tbl_qty" prefWidth="79.20001220703125" text="Qty" />
+                              <TableColumn fx:id="tbl_amount" minWidth="0.0" prefWidth="159.19976806640625" text="Amount" />
                                     </columns>
                                 </TableView>
                             </children></AnchorPane>
                     </content>
                 </ScrollPane>
-                <TextField fx:id="descriptiontxt1" layoutX="242.0" layoutY="47.0" prefHeight="27.0" prefWidth="236.0" style="-fx-border-color: #E79631;" />
-                <Label fx:id="quantitylbl1" layoutX="242.0" layoutY="14.0" text="Item Name">
+                <TextField fx:id="tf_name" layoutX="270.0" layoutY="46.0" prefHeight="27.0" prefWidth="216.0" style="-fx-border-color: #E79631;" />
+                <Label fx:id="quantitylbl1" layoutX="270.0" layoutY="14.0" text="Item Name">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Label>
-            <Button layoutX="1195.0" layoutY="701.0" mnemonicParsing="false" text="Save" />
+            <Button fx:id="btn_done" alignment="CENTER" layoutX="204.0" layoutY="46.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/left-arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="btn_pro" alignment="CENTER_RIGHT" graphicTextGap="11.0" layoutX="1137.0" layoutY="698.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0" text="Process">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Process.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_clear" alignment="CENTER" graphicTextGap="11.0" layoutX="1017.0" layoutY="699.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0" text="Clear">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Clear.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
 
             </children>
 

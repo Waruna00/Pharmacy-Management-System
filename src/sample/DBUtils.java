@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.Objects;
 
 public class DBUtils {
-    public static void changeScene(ActionEvent event, String fxmlFile, String title, String username,int v,int v1){
+    public static void changeScene(ActionEvent event, String fxmlFile, String title, String username, int v, int v1){
         Parent root = null;
         if (username!= null){
             try{
@@ -37,6 +37,11 @@ public class DBUtils {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
         stage.setScene(new Scene(root,v,v1));
+        if (!(title.equals("Login"))){
+            stage.setMaximized(true);
+        }
+        stage.setResizable(false);
+        stage.centerOnScreen();
         stage.show();
     }
 
@@ -119,6 +124,9 @@ public class DBUtils {
                 while (resultSet.next()){
                     String retrievedPassword = resultSet.getNString("emp_password");
                     if(retrievedPassword.equals(password)){
+                        User details = new User();
+                        details.setUserName(username);
+                        details.setPassword(password);
                         changeScene(event,"welcome.fxml","Welcome",username,1280,800);
                     }
                     else {

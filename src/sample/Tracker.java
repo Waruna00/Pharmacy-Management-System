@@ -160,7 +160,7 @@ public class Tracker implements Initializable {
                     String searchKeyWord = newValue.toLowerCase();
 
                     if (ProductAdd.getItemcode().toLowerCase().contains(searchKeyWord)) {
-                        return true; // that means we found a match in itemcode
+                        return true; // that means we found a match in itemCode
                     } else if (ProductAdd.getCom_No().toString().contains(searchKeyWord)) {
                         return true; // that means we found a match in name
                     } else if (ProductAdd.getCost_per_unit().toString().contains(searchKeyWord)) {

@@ -104,5 +104,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="controlsfx-8.40.11" level="project" />
+    <orderEntry type="library" exported="" name="controlsfx-11.1.0" level="project" />
   </component>
 </module>

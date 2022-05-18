@@ -30,6 +30,8 @@ public class ProductAdd {
         this.itemcode = itemcode;
     }
 
+
+
     public Integer getCom_No() {
         return Com_No;
     }
