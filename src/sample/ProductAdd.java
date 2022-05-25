@@ -32,9 +32,7 @@ public class ProductAdd {
 
 
 
-    public Integer getCom_No() {
-        return Com_No;
-    }
+    public Integer getCom_No() {return Com_No;}
 
     public void setCom_No(Integer com_No) {
         Com_No = com_No;

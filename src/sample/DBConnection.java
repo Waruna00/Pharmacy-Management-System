@@ -11,7 +11,7 @@ public class DBConnection {
     {
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
-            databaseLink = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
+            databaseLink = DriverManager.getConnection("jdbc:mysql://localhost/pmsdb","root","mamatharindu");
             System.out.println("Success");
         }
         catch (SQLException ex)

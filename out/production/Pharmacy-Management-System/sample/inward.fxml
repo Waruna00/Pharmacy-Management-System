@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1261.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.inward">
     <children>
-        <TableView fx:id="InventoryTableView" accessibleRole="COMBO_BOX" layoutX="25.0" layoutY="237.0" prefHeight="440.0" prefWidth="1220.0">
+        <TableView fx:id="InventoryTableView" accessibleRole="COMBO_BOX" layoutX="25.0" layoutY="237.0" prefHeight="327.0" prefWidth="1220.0">
             <columns>
                 <TableColumn fx:id="batch_Table" prefWidth="81.60003662109375" text="Batch no" />
                 <TableColumn fx:id="itemcode_Table" prefWidth="107.20001220703125" text="Item code" />
@@ -27,7 +27,7 @@
         </TableView>
         <TextField fx:id="searchText" layoutX="152.0" layoutY="192.0" prefHeight="25.0" prefWidth="402.0" promptText="enter a keword" />
         <Label layoutX="40.0" layoutY="196.0" prefHeight="17.0" prefWidth="81.0" text="Search Item" />
-        <AnchorPane layoutY="5.0" prefHeight="178.0" prefWidth="1241.0" style="-fx-background-color: #28252e;">
+        <AnchorPane prefHeight="178.0" prefWidth="1241.0" style="-fx-background-color: #28252e;">
             <children>
                 <TextField fx:id="itemcodeText" layoutX="31.0" layoutY="80.0" promptText="Item code" />
                 <Label layoutX="31.0" layoutY="63.0" text="Item code" textFill="#fcf9f9" />
@@ -36,6 +36,12 @@
                 <Button layoutX="281.0" layoutY="126.0" mnemonicParsing="false" onAction="#DeleteButtonOnAction" prefHeight="26.0" prefWidth="102.0" text="Delete" />
                 <TextField fx:id="batchNoText" layoutX="31.0" layoutY="31.0" promptText="Batch no" />
                 <Label layoutX="34.0" layoutY="14.0" text="Batch no" textFill="#fcf9f9" />
+              <Button layoutX="1138.0" layoutY="11.0" mnemonicParsing="false" onAction="#ToAddDrug" text="Add Drug" />
+              <Button layoutX="1052.0" layoutY="10.0" mnemonicParsing="false" onAction="#ToAddCom" text="company" />
+                <Label layoutX="241.0" layoutY="17.0" text="Company NO" textFill="#faf6f6" />
+                <TextField fx:id="companyNoText" layoutX="238.0" layoutY="31.0" promptText="Name" />
+                <Label layoutX="243.0" layoutY="63.0" text="Cost per unit" textFill="#f4f2f2" />
+                <TextField fx:id="costPriceText" layoutX="237.0" layoutY="80.0" promptText="Price" />
             </children>
         </AnchorPane>
         <Label fx:id="successLabel" layoutX="262.0" layoutY="314.0" prefHeight="25.0" prefWidth="280.0" textFill="#262525">
@@ -43,12 +49,6 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <Button layoutX="993.0" layoutY="15.0" mnemonicParsing="false" onAction="#ToAddCom" text="company" />
-        <Button layoutX="1096.0" layoutY="15.0" mnemonicParsing="false" onAction="#ToAddDrug" text="Add Drug" />
-          <TextField fx:id="companyNoText" layoutX="250.0" layoutY="43.0" promptText="Name" />
-          <Label layoutX="250.0" layoutY="26.0" text="Company NO" textFill="#faf6f6" />
-          <TextField fx:id="costPriceText" layoutX="250.0" layoutY="92.0" promptText="Price" />
-          <Label layoutX="250.0" layoutY="75.0" text="Cost per unit" textFill="#f4f2f2" />
           <TextField fx:id="quantityText" layoutX="460.0" layoutY="89.0" promptText="Quantity" />
           <Label layoutX="460.0" layoutY="71.0" text="Quantity" textFill="#f4f1f1" />
           <TextField fx:id="salePriceText" layoutX="460.0" layoutY="38.0" promptText="Price" />

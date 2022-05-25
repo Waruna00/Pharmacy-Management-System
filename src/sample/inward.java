@@ -12,8 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
-
-
+import org.controlsfx.control.textfield.TextFields;
 
 
 import java.net.URL;
@@ -21,6 +20,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -83,13 +83,24 @@ public class inward implements Initializable {
 
     //    button
     @FXML
-    private Button addButton;
+    private Button btn_add,btn_com;
 
     ObservableList<ProductAdd> productAddObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
         SearchTable();
+        TextFields.bindAutoCompletion(itemcodeText,suggesting("d_code"));
+        TextFields.bindAutoCompletion(itemcodeText,suggesting("d_code"));
+
+        btn_add.setOnAction(actionEvent -> {
+
+        });
+
+        btn_com.setOnAction(actionEvent -> {
+
+        });
+
     }
 
     private void clearFields() {
@@ -145,51 +156,8 @@ public class inward implements Initializable {
             itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
             companyNO_Table.setCellValueFactory(new PropertyValueFactory<>("Com_No"));
 
-
             InventoryTableView.setItems(productAddObservableList);
 
-//          Initial filtered list
-            FilteredList<ProductAdd> filteredData = new FilteredList<>(productAddObservableList, b -> true);
-            searchText.textProperty().addListener((observable, newValue, oldValue) -> {
-                filteredData.setPredicate(ProductAdd -> {
-//                    if no search value
-                    if (newValue.isBlank() || newValue.isEmpty()) {
-                        return true;
-                    }
-
-                    String searchKeyWord = newValue.toLowerCase();
-
-                    if (ProductAdd.getItemcode().toLowerCase().contains(searchKeyWord)) {
-                        return true; // that means we found a match in itemCode
-                    } else if (ProductAdd.getCom_No().toString().contains(searchKeyWord)) {
-                        return true; // that means we found a match in name
-                    } else if (ProductAdd.getCost_per_unit().toString().contains(searchKeyWord)) {
-                        return true; // that means we found a match in price
-                    } else if (ProductAdd.getQuantity().toString().contains(searchKeyWord)) {
-                        return true;
-                    } else if (ProductAdd.getEXP().toString().contains(searchKeyWord)) {
-                        return true;
-                    } else if (ProductAdd.getDate().toString().contains(searchKeyWord)) {
-                        return true; // that means we found a match in name
-                    } else if (ProductAdd.getBatch_no().toString().contains(searchKeyWord)) {
-                        return true;
-                    } else if (ProductAdd.getSale_per_unit().toString().contains(searchKeyWord)) {
-                        return true;
-                    } else if (ProductAdd.getTime().toString().contains(searchKeyWord)) {
-                        return true;
-                    } else if (ProductAdd.getMPD().toString().contains(searchKeyWord)) {
-                        return true;
-                    } else {
-                        return false; //no match found
-                    }
-                });
-            });
-
-            SortedList<ProductAdd> sortedData = new SortedList<>(filteredData);
-//          bind sorted result with table view
-            sortedData.comparatorProperty().bind(InventoryTableView.comparatorProperty());
-//          Apply sorted and filtered data with table
-            InventoryTableView.setItems(sortedData);
 
 
         } catch (SQLException e) {
@@ -200,159 +168,46 @@ public class inward implements Initializable {
     }
 
 
-    @FXML
-    void AddButtonONAction(ActionEvent event) throws SQLException {
-        DBConnection connectNow = new DBConnection();
-        Connection connectDB = connectNow.Connect();
 
-        String text = mpdDateText.getText();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate mdpDateTextAsDate = LocalDate.parse(text, formatter);
-        java.sql.Date sqlMpdDate = java.sql.Date.valueOf(mdpDateTextAsDate);
 
-        String text2 = expDateText.getText();
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate expDateTextAsDate = LocalDate.parse(text2, formatter2);
-        java.sql.Date sqlExpDate = java.sql.Date.valueOf(expDateTextAsDate);
 
-        String text1 = dateText.getText();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate DateTextAsDate = LocalDate.parse(text1, formatter1);
-        java.sql.Date sqlDate = java.sql.Date.valueOf(DateTextAsDate);
-
-        String text3 = timeText.getText();
-        DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime TimeTextAsTime = LocalTime.parse(text3, formatter3);
-        java.sql.Time sqlTime = java.sql.Time.valueOf(TimeTextAsTime);
-
-        String itemcode = itemcodeText.getText();
-        int batch_no = Integer.parseInt(batchNoText.getText());
-        int companyNo = Integer.parseInt(companyNoText.getText());
-        int costprice = Integer.parseInt(costPriceText.getText());
-        int saleprice = Integer.parseInt(salePriceText.getText());
-        int quantity = Integer.parseInt(quantityText.getText());
-
-        PreparedStatement ps = null;
-        String query = "INSERT INTO `new_project`.`purchase` (`batch_no`, `date`, `time`, `EXP`, `MPD`, `cost_per_unit`, `sale_per_unit`, `quantity`, `Com_No`, `itemcode`) VALUES (?, ?, ?,?, ?, ?, ?, ?,?,?);";
-        ps = connectDB.prepareStatement(query);
-        ps.setInt(1, batch_no);
-        ps.setDate(2, sqlDate);
-        ps.setTime(3, sqlTime);
-        ps.setDate(4, sqlExpDate);
-        ps.setDate(5, sqlMpdDate);
-        ps.setInt(6, costprice);
-        ps.setInt(7, saleprice);
-        ps.setInt(8, quantity);
-        ps.setInt(9, companyNo);
-        ps.setString(10, itemcode);
-
+    public ArrayList<String> suggesting(String x){
+        ArrayList<String> d_codeArray = new ArrayList<>();
+        ArrayList<String> d_nameArray = new ArrayList<>();
+        Connection connection;
+        ResultSet resultSet;
         try {
-            ps.executeUpdate();
-            successLabel.setTextFill(Color.GREEN);
-            successLabel.setText("Successfully added");
-            clearFields();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
+            PreparedStatement statement = connection.prepareStatement("SELECT d_code,d_name,d_type,description FROM drug");
+            resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                String d_code = resultSet.getNString("d_code");
+                String d_name=resultSet.getNString("d_name");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+                d_codeArray.add(d_code);
+                d_nameArray.add(d_name);
+            }
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
-    }
-
-    @FXML
-    void EditButtonOnAction(ActionEvent event) throws SQLException {
-        DBConnection connectNow = new DBConnection();
-        Connection connectDB = connectNow.Connect();
-
-        String text = mpdDateText.getText();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate mdpDateTextAsDate = LocalDate.parse(text, formatter);
-        java.sql.Date sqlMpdDate = java.sql.Date.valueOf(mdpDateTextAsDate);
-
-        String text2 = expDateText.getText();
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate expDateTextAsDate = LocalDate.parse(text2, formatter2);
-        java.sql.Date sqlExpDate = java.sql.Date.valueOf(expDateTextAsDate);
-
-        String text1 = dateText.getText();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate DateTextAsDate = LocalDate.parse(text1, formatter1);
-        java.sql.Date sqlDate = java.sql.Date.valueOf(DateTextAsDate);
-
-        String text3 = timeText.getText();
-        DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime TimeTextAsTime = LocalTime.parse(text3, formatter3);
-        java.sql.Time sqlTime = java.sql.Time.valueOf(TimeTextAsTime);
-
-
-        String itemcode = itemcodeText.getText();
-        int batch_no = Integer.parseInt(batchNoText.getText());
-        int companyNo = Integer.parseInt(companyNoText.getText());
-        int costprice = Integer.parseInt(costPriceText.getText());
-        int saleprice = Integer.parseInt(salePriceText.getText());
-        int quantity = Integer.parseInt(quantityText.getText());
-
-        PreparedStatement ps = null;
-        String query = "UPDATE `new_project`.`purchase` SET `batch_no` = ?, `date` = ?, `time` = ?, `EXP` = ?, `MPD` = ?, `cost_per_unit` = ?, `sale_per_unit` = ?, `quantity` = ?, `Com_No` = ?, `itemcode` = ? WHERE (`batch_no` = ?);";
-        ps = connectDB.prepareStatement(query);
-        ps.setInt(1, batch_no);
-        ps.setDate(2, sqlDate);
-        ps.setTime(3, sqlTime);
-        ps.setDate(4, sqlExpDate);
-        ps.setDate(5, sqlMpdDate);
-        ps.setInt(6, costprice);
-        ps.setInt(7, saleprice);
-        ps.setInt(8, quantity);
-        ps.setInt(9, companyNo);
-        ps.setString(10, itemcode);
-        ps.setInt(11, batch_no);
-
-        try {
-            ps.executeUpdate();
-            successLabel.setTextFill(Color.GREEN);
-            successLabel.setText("Successfully Edited");
-            clearFields();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-
+        if (x.equals("d_code")){
+            return d_codeArray;
         }
-    }
-
-    @FXML
-    void DeleteButtonOnAction(ActionEvent event) throws SQLException {
-        DBConnection connectNow = new DBConnection();
-        Connection connectDB = connectNow.Connect();
-
-        int batch_no = Integer.parseInt(batchNoText.getText());
-
-
-        PreparedStatement ps = null;
-        String query = "DELETE FROM `new_project`.`purchase` WHERE (`batch_no` = ?);";
-        ps = connectDB.prepareStatement(query);
-        ps.setInt(1, batch_no);
-
-        try {
-
-            ps.executeUpdate();
-            successLabel.setTextFill(Color.GREEN);
-            successLabel.setText("Successfully Deleted");
-            clearFields();
-
-        }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
+        else {
+            return d_nameArray;
         }
 
-    }
-
-   public void ToAddCom(ActionEvent event){
-       DBUtils.changeScene(event,"company.fxml","Add Company",null,809,480);
-   }
-    public void ToAddDrug(ActionEvent event){
-        DBUtils.changeScene(event,"Drug.fxml","Add Drug",null,853,510);
-    }
 
 
-}
+
+
+//   public void ToAddCom(ActionEvent event){
+//       DBUtils.changeScene(event,"company.fxml","Add Company",null,809,480);
+//   }
+//    public void ToAddDrug(ActionEvent event){
+//        DBUtils.changeScene(event,"Drug.fxml","Add Drug",null,853,510);
+//    }
+
+
+}}
 
