@@ -20,7 +20,7 @@ public class Settings implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_edit.setOnAction(actionEvent -> {
             tf_name.setEditable(true);
-            tf_name.setCursor(Cursor.cursor(do));
+           // tf_name.setCursor(Cursor.cursor(do));
         });
     }
 }
