@@ -10,7 +10,7 @@ public class DBConnection {
     public Connection Connect()
     {
         try {
-            //Class.forName("com.mysql.cj.jdbc.Driver");
+//            Class.forName("com.mysql.cj.jdbc.Driver");
             databaseLink = DriverManager.getConnection("jdbc:mysql://localhost/pmsdb","root","mamatharindu");
             System.out.println("Success");
         }
