@@ -63,7 +63,7 @@ public class DBUtils {
         ResultSet resultSet = null;
 
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/pmsdb","root","mamatharindu");
             psCheckUserExists = connection.prepareStatement("SELECT*FROM em_user WHERE = ? ?");
             psCheckUserExists.setString(1,username);
             resultSet = psCheckUserExists.executeQuery();
@@ -120,7 +120,7 @@ public class DBUtils {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/pmsdb","root","mamatharindu");
             preparedStatement = connection.prepareStatement("SELECT emp_password FROM em_user WHERE emp_no = ?");
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
