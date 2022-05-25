@@ -143,6 +143,26 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label layoutX="45.0" layoutY="656.0" text="Bill No           :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_bill_no" layoutX="155.0" layoutY="656.0" text="Label">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <TextField layoutX="154.0" layoutY="677.0" style="-fx-border-color: #E79631;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Label layoutX="45.0" layoutY="682.0" text="Customer      :">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
 
             </children>
 

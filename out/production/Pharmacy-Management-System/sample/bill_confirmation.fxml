@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Bill_confirmation">
+   <children>
+      <TabPane layoutX="10.0" layoutY="-30.0" prefWidth="426.0">
+         <tabs>
+            <Tab id="tab_1" text="First">
+               <content>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="426.0">
+                     <children>
+                        <TextField fx:id="tf_cash" alignment="CENTER" layoutX="137.0" layoutY="245.0" prefHeight="51.0" prefWidth="150.0" style="-fx-border-color: black;" text="00.0">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Label fx:id="label_tot" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="130.0" prefHeight="62.0" prefWidth="223.0" style="-fx-border-color: black; -fx-background-color: white;" text="00.0">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="166.0" layoutY="103.0" text="Total Amount">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button id="btn_confirm" fx:id="btn_con" layoutX="161.0" layoutY="376.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Confirm">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="197.0" layoutY="217.0" text="Cash">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab id="tab_2" text="Second">
+               <content>
+                  <AnchorPane fx:id="lbl_cash" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="141.0" layoutY="50.0" text="Successful..!!">
+                           <font>
+                              <Font name="System Bold Italic" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="65.0" layoutY="158.0" text="Total Amount">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="65.0" layoutY="292.0" text="Change">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="65.0" layoutY="223.0" text="Cash">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="233.0" layoutY="158.0" text=":">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="230.0" layoutY="223.0" text=":">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="233.0" layoutY="292.0" text=":">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="326.0" layoutY="158.0" text="00.0">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="326.0" layoutY="223.0" text="00.0">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_change" layoutX="326.0" layoutY="292.0" text="00.0">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_done" layoutX="179.0" layoutY="367.0" mnemonicParsing="false" text="Done">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

@@ -20,7 +20,7 @@
                   <Image url="@../img/fgsfg.png" />
                </image>
             </ImageView>
-            <Label fx:id="label_welcome" layoutX="661.0" layoutY="104.0" text="Welcome MGR01">
+            <Label fx:id="label_welcome" layoutX="661.0" layoutY="104.0" text="Welcome MGR">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>

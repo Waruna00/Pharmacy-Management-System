@@ -87,8 +87,9 @@ public class day_end_controller implements Initializable {
                             preparedStatement4.setString(1,String.valueOf(cih));
                             preparedStatement4.setString(2,String.valueOf(tot_sale));
                             preparedStatement4.setString(3,String.valueOf(tot_rem));
-                            preparedStatement4.setString(4,strDate);
-                            preparedStatement4.setString(5,String.valueOf(dif));
+                            preparedStatement4.setString(4,String.valueOf(dif));
+                            preparedStatement4.setString(5,strDate);
+
                             preparedStatement4.executeUpdate();
                         }
                         else {
