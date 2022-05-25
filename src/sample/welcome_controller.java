@@ -85,7 +85,7 @@ public class welcome_controller implements Initializable {
 
 
         MenuTracker.setOnAction(event -> {
-            NewWindow("tracker.fxml","Tracker");
+            NewWindow("search.fxml","Tracker");
         });
 
         MenuDayend.setOnAction(event -> {
@@ -130,7 +130,7 @@ public class welcome_controller implements Initializable {
 
     public void setUserInformation(String username){
         this.username=username;
-        label_welcome.setText("Welcome"+username);
+        label_welcome.setText("Welcome "+username);
     }
 
 }

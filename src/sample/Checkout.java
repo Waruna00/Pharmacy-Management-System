@@ -1,7 +1,5 @@
 package sample;
 
-import javax.swing.text.html.ImageView;
-
 public class Checkout {
     String d_code,d_name,d_des;
     String d_price;
