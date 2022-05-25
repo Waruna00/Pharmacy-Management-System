@@ -135,7 +135,7 @@ public class Company implements Initializable {
 
 
         } catch (SQLException e) {
-            Logger.getLogger(Tracker.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(inward.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
         }
 

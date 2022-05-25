@@ -76,7 +76,7 @@ public class welcome_controller implements Initializable {
         });
 
         MenuIn.setOnAction(event -> {
-            NewWindow("tracker.fxml","Inward");
+            NewWindow("inward.fxml","Inward");
         });
 
         MenuOut.setOnAction(event -> {

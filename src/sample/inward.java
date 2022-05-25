@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Tracker implements Initializable {
+public class inward implements Initializable {
 
     //    Labels
     @FXML
@@ -193,7 +193,7 @@ public class Tracker implements Initializable {
 
 
         } catch (SQLException e) {
-            Logger.getLogger(Tracker.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(inward.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
         }
 
