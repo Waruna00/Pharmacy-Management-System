@@ -4,7 +4,6 @@ import java.sql.*;
 
 
 public class DBConnection {
-
     public Connection databaseLink;
 
     public Connection Connect()

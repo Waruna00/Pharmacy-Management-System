@@ -12,6 +12,17 @@ import java.sql.*;
 import java.util.Objects;
 
 public class DBUtils {
+    public Connection connection() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "Whoiam@123");
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(String.valueOf(e));
+            alert.show();
+        }
+        return connection;
+    }
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String username, int v, int v1){
         Parent root = null;
         if (username!= null){

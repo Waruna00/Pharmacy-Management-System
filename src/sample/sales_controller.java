@@ -9,18 +9,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.textfield.TextFields;
 import java.net.URL;
 import java.sql.*;
-import java.sql.Date;
 import java.util.*;
 
 public class sales_controller implements Initializable {
-
     private double price,amount;
     private int bill_item_no=0;
+    private int bill_no = 0;
     private String qty = null;
     private double Total;
     private String cust_no=null;
     private ArrayList<String> av_qtyList=new ArrayList<>();
-
 
     @FXML
     public Label lbl_bill_no;
@@ -36,10 +34,8 @@ public class sales_controller implements Initializable {
     private TextField tf_qty;
     @FXML
     public TextField tf_tot;
-
     @FXML
     private Button btn_done,btn_add,btn_pro,btn_clear;
-
     @FXML
     private TableView<Checkout>tbl;
     @FXML
@@ -48,13 +44,28 @@ public class sales_controller implements Initializable {
     TableColumn<Checkout,String> tbl_code,tbl_name,tbl_price,tbl_des;
     @FXML
     TableColumn<Checkout,Double> tbl_amount;
-
     ObservableList<Checkout> checkoutsListObservableList = FXCollections.observableArrayList();
-
-
+    private final Alert alert = new Alert(Alert.AlertType.NONE);
+    private final DBUtils connect = new DBUtils();
+    private Connection connection=null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            connection = connect.connection();
+            PreparedStatement statement5 = connection.prepareStatement("SELECT MAX(bill_no) AS bill_no FROM bill;");
+            ResultSet R_bill_no=statement5.executeQuery();
+
+            while (R_bill_no.next()){
+                bill_no=R_bill_no.getInt("bill_no");
+            }
+            bill_no=bill_no+1;
+        }catch (SQLException e){
+            alert.setAlertType(Alert.AlertType.ERROR);
+            alert.setContentText(String.valueOf(e));
+        }
+
+        lbl_bill_no.setText(String.valueOf(bill_no));
         TextFields.bindAutoCompletion(tf_code,suggesting("d_code"));
         TextFields.bindAutoCompletion(tf_name,suggesting("d_name"));
 
@@ -72,7 +83,6 @@ public class sales_controller implements Initializable {
             String d_code = tf_code.getText();
             try{
                 if (!(av_qtyList.contains(d_code))){
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
                     PreparedStatement statement =connection.prepareStatement ("SELECT qty FROM drug WHERE d_code=?");
                     statement.setString(1,tf_code.getText());
                     ResultSet resultSet = statement.executeQuery();
@@ -134,46 +144,49 @@ public class sales_controller implements Initializable {
             tf_tot.clear();
             tbl.getItems().clear();
             checkoutsListObservableList.clear();
-
+            Total=0;
         });
 
         btn_pro.setOnAction(event -> {
-            SentData();
-        });
+            ButtonType yes = new ButtonType("Yes");
+            ButtonType no = new ButtonType("No");
+            Alert a = new Alert(Alert.AlertType.NONE,"Are sure..?",yes,no);
+            a.setAlertType(Alert.AlertType.CONFIRMATION);
+            a.setResizable(false);
+            a.showAndWait().ifPresent(response -> {
+                if (response == yes) {
+                    SentData();
+                    clear_tf();
+                    tbl.getItems().clear();
+                    checkoutsListObservableList.clear();
+                    tbl.getItems().clear();
+                    Total=0;
 
+                }
+            });
+
+        });
     }
 
     public void SentData(){
 
         try{
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
             PreparedStatement statement1 = connection.prepareStatement("INSERT INTO sale(qty,b_date,amount,b_time,barcode,cust_no,bill_no) VALUES(?,?,?,?,?,?,?);");
             PreparedStatement statement2 = connection.prepareStatement("SELECT barcode,qty FROM drug WHERE d_code=?;");
             PreparedStatement statement3 = connection.prepareStatement("UPDATE drug SET qty = ? WHERE (d_code = ?);");
             PreparedStatement statement4 = connection.prepareStatement("INSERT INTO bill(tot_ammount,cust_no,date) VALUES(?,?,?);");
-            PreparedStatement statement5 = connection.prepareStatement("SELECT MAX(bill_no) AS bill_no FROM bill;");
             PreparedStatement statement6 = connection.prepareStatement("SELECT COUNT(*) AS count FROM dayend WHERE (date=?);");
             PreparedStatement statement7 = connection.prepareStatement("INSERT INTO dayend(date) VALUES(?)");
-
-            ResultSet R_bill_no=statement5.executeQuery();
-            int bill_no = 0;
-            while (R_bill_no.next()){
-                bill_no=R_bill_no.getInt("bill_no");
-            }
-            bill_no=bill_no+1;
-            lbl_bill_no.setText(String.valueOf(bill_no));
 
             statement6.setString(1,String.valueOf(java.time.LocalDate.now()));
             int c=0;
             ResultSet R_dayend = statement6.executeQuery();
             while (R_dayend.next()){
                 c=R_dayend.getInt("count");
-                System.out.println("Date checked :"+c);
             }
             if (c!=1){
                 statement7.setString(1,String.valueOf(java.time.LocalDate.now()));
                 statement7.execute();
-                System.out.println("done here anehh");
             }
 
             statement4.setDouble(1,Total);
@@ -206,6 +219,7 @@ public class sales_controller implements Initializable {
                 statement1.setString(6, Objects.requireNonNullElse(cust_no, "001")); //cust_no
                 statement1.setInt(7,bill_no); //bill_no
                 statement1.executeUpdate();
+
 
 
             }
@@ -336,6 +350,7 @@ public class sales_controller implements Initializable {
     public void setQty(){
           this.qty=tf_qty.getText();
     }
+
     public String getQty(){
         return qty;
     }
