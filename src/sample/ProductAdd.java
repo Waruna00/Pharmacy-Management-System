@@ -1,73 +1,73 @@
 package sample;
 
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ProductAdd {
     String itemcode;
-    Date EXP;
-    Date MPD;
-    Date date;
+    String itemname;
+    String description;
+    LocalDate EXP;
+    LocalDate MPD;
     Integer cost_per_unit;
     Integer sale_per_unit;
     Integer quantity;
-    Integer batch_no;
+    String batch_no;
     Integer Com_No;
-    Time time;
 
 
-    public ProductAdd(Integer batch_no, Date date, Time time, Date EXP, Date MPD, Integer cost_per_unit,
-                      Integer sale_per_unit, Integer quantity, Integer Com_No, String itemcode ) {
-        this.batch_no = batch_no;
-        this.date = date;
-        this.time = time;
+    public ProductAdd(String itemcode, String itemname, String description, LocalDate EXP, LocalDate MPD, Integer cost_per_unit, Integer sale_per_unit, Integer quantity, String batch_no, Integer com_No) {
+        this.itemcode = itemcode;
+        this.itemname = itemname;
+        this.description = description;
         this.EXP = EXP;
         this.MPD = MPD;
         this.cost_per_unit = cost_per_unit;
         this.sale_per_unit = sale_per_unit;
         this.quantity = quantity;
-        this.Com_No = Com_No;
+        this.batch_no = batch_no;
+        this.Com_No = com_No;
+
+    }
+    public void setItemcode(String itemcode) {
         this.itemcode = itemcode;
     }
 
+    public String getItemname() {
+        return itemname;
+    }
 
+    public void setItemname(String itemname) {
+        this.itemname = itemname;
+    }
 
-    public Integer getCom_No() {return Com_No;}
+    public String getDescription() {
+        return description;
+    }
 
-    public void setCom_No(Integer com_No) {
-        Com_No = com_No;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getEXP() {
+        return EXP;
+    }
+
+    public void setEXP(LocalDate EXP) {
+        this.EXP = EXP;
+    }
+
+    public LocalDate getMPD() {
+        return MPD;
     }
 
     public String getItemcode() {
         return itemcode;
     }
 
-    public void setItemcode(String itemcode) {
-        this.itemcode = itemcode;
-    }
-
-    public Date getEXP() {
-        return EXP;
-    }
-
-    public void setEXP(Date EXP) {
-        this.EXP = EXP;
-    }
-
-    public Date getMPD() {
-        return MPD;
-    }
-
-    public void setMPD(Date MPD) {
+    public void setMPD(LocalDate MPD) {
         this.MPD = MPD;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Integer getCost_per_unit() {
@@ -94,20 +94,24 @@ public class ProductAdd {
         this.quantity = quantity;
     }
 
-    public Integer getBatch_no() {
+    public String getBatch_no() {
         return batch_no;
     }
 
-    public void setBatch_no(Integer batch_no) {
+    public void setBatch_no(String batch_no) {
         this.batch_no = batch_no;
     }
 
-
-    public Time getTime() {
-        return time;
+    public Integer getCom_No() {
+        return Com_No;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setCom_No(Integer com_No) {
+        Com_No = com_No;
     }
+
+
+
+
+
 }

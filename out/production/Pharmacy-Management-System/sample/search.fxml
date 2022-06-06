@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Search">
-   <children>
-      <ScrollPane layoutX="43.0" layoutY="100.0" prefHeight="303.0" prefWidth="814.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="812.0">
-               <children>
-                  <TableView fx:id="tbl" layoutX="3.0" layoutY="4.0" prefHeight="293.0" prefWidth="806.0">
-                     <columns>
-                        <TableColumn fx:id="tbl_code" prefWidth="131.99998927116394" text="Item Code" />
-                        <TableColumn fx:id="tbl_name" minWidth="0.0" prefWidth="230.3999786376953" text="Item Name" />
-                        <TableColumn fx:id="tbl_type" prefWidth="110.40005493164062" text="Type" />
-                        <TableColumn fx:id="tbl_des" prefWidth="334.4000244140625" text="Description" />
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-      <TextField fx:id="search_txt" layoutX="126.0" layoutY="41.0" prefHeight="26.0" prefWidth="315.0" />
-      <Label layoutX="45.0" layoutY="46.0" text="Keyword">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Search">
+    <children>
+        <TableView fx:id="SearchTableView" accessibleRole="COMBO_BOX" layoutX="31.0" layoutY="153.0" prefHeight="418.0" prefWidth="1219.0">
+            <columns>
+                <TableColumn fx:id="batch_Table" prefWidth="81.60003662109375" text="Batch no" />
+                <TableColumn fx:id="itemcode_Table" prefWidth="107.20001220703125" text="Item code" />
+                <TableColumn fx:id="companyNO_Table" prefWidth="113.06668090820312" text="Company NO" />
+                <TableColumn fx:id="expDate_Table" prefWidth="102.666748046875" text="EXP" />
+                <TableColumn fx:id="mpdDate_Table" prefWidth="217.5999755859375" text="MPD" />
+                <TableColumn fx:id="cost_Table" prefWidth="205.5999755859375" text="Cost per unit" />
+                <TableColumn fx:id="sale_Table" prefWidth="172.7999267578125" text="sale price per unit" />
+                <TableColumn fx:id="quantity_Table" prefWidth="210.39990234375" text="Quantity" />
+            </columns>
+        </TableView>
+        <AnchorPane fx:id="SearchText" layoutY="-1.0" prefHeight="116.0" prefWidth="1280.0" style="-fx-background-color: #28252e;">
+            <children>
+                <TextField fx:id="searchText" layoutX="25.0" layoutY="54.0" promptText="keyword" />
+                <Label layoutX="25.0" layoutY="37.0" text="Search" textFill="#fcf9f9" />
+            </children>
+        </AnchorPane>
+    </children>
+</Pane>

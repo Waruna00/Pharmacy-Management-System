@@ -2,9 +2,7 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
+import java.sql.*;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
@@ -27,11 +25,24 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static javax.swing.event.TableModelEvent.INSERT;
+
 public class inward implements Initializable {
 
     //    Labels
     @FXML
     private Label successLabel;
+
+//    buttons
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button btnProcess,btn_clear;
+    @FXML
+    private Button fillButton;
+
+
+
     //    columns
     @FXML
     private TableView<ProductAdd> InventoryTableView;
@@ -52,9 +63,10 @@ public class inward implements Initializable {
     @FXML
     private TableColumn<ProductAdd, Date> expDate_Table;
     @FXML
-    private TableColumn<ProductAdd, Date> date_Table;
+    private TableColumn<ProductAdd, String> itemname_Table;
     @FXML
-    private TableColumn<ProductAdd, Date> time_Table;
+    private TableColumn<ProductAdd, String> description_Table;
+
 
 //    text inputs
 
@@ -71,15 +83,14 @@ public class inward implements Initializable {
     @FXML
     private TextField quantityText;
     @FXML
-    private TextField expDateText;
+    private TextField itemNameText;
     @FXML
-    private TextField dateText;
+    private TextField descriptionText;
     @FXML
-    private TextField searchText;
+    private DatePicker mdpPicker;
     @FXML
-    private TextField mpdDateText;
-    @FXML
-    private TextField timeText;
+    private DatePicker expPicker;
+
 
     //    button
     @FXML
@@ -89,78 +100,126 @@ public class inward implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
-        SearchTable();
-        TextFields.bindAutoCompletion(itemcodeText,suggesting("d_code"));
-        TextFields.bindAutoCompletion(itemcodeText,suggesting("d_code"));
+
+        addButton.setOnAction(actionEvent -> {
+            AddItems();
+            clearFields();
+        });
+        fillButton.setOnAction(actionEvent -> {
+            getValues();
+        });
 
         btn_add.setOnAction(actionEvent -> {
-
+            welcome_controller window = new welcome_controller();
+            window.NewWindow("drug.fxml","DURGS" );
         });
 
         btn_com.setOnAction(actionEvent -> {
+            welcome_controller window = new welcome_controller();
+            window.NewWindow("company.fxml","COMPANY" );
+        });
+
+
+
+
+        InventoryTableView.setRowFactory(checkoutTableView -> {
+            TableRow<ProductAdd> row = new TableRow<>();
+            row.setOnMouseClicked(mouseEvent -> {
+                if (mouseEvent.getClickCount() == 2){
+                    int index = checkoutTableView.getSelectionModel().getFocusedIndex();
+                    ButtonType yes = new ButtonType("Yes");
+                    ButtonType no = new ButtonType("No");
+                    Alert a = new Alert(Alert.AlertType.NONE,"Do you want to remove this..?",yes,no);
+                    System.out.println(InventoryTableView.getItems().get(index).getBatch_no());
+                    a.setAlertType(Alert.AlertType.CONFIRMATION);
+                    a.setResizable(false);
+                    a.showAndWait().ifPresent(response -> {
+                        if (response == yes) {
+                            ProductAdd selectedItem = InventoryTableView.getSelectionModel().getSelectedItem();
+                            productAddObservableList.remove(selectedItem);
+                            InventoryTableView.getItems().remove(selectedItem);
+                        }
+                    });
+                }
+            });
+            return row;
+        });
+
+        btnProcess.setOnAction(event -> {
+            ButtonType yes = new ButtonType("Yes");
+            ButtonType no = new ButtonType("No");
+            Alert a = new Alert(Alert.AlertType.NONE,"Are sure..?",yes,no);
+            a.setAlertType(Alert.AlertType.CONFIRMATION);
+            a.setResizable(false);
+            a.showAndWait().ifPresent(response -> {
+                if (response == yes) {
+                    UpdateBD();
+                    clearFields();
+                    InventoryTableView.getItems().clear();
+                    productAddObservableList.clear();
+                    InventoryTableView.getItems().clear();
+
+                }
+            });
 
         });
+
+        btn_clear.setOnAction(event -> {
+            clearFields();
+            InventoryTableView.getItems().clear();
+            productAddObservableList.clear();
+        });
+
+//        TextFields.bindAutoCompletion(itemcodeText,suggesting("d_code"));
 
     }
 
     private void clearFields() {
         batchNoText.clear();
         itemcodeText.clear();
+        itemNameText.clear();
         companyNoText.clear();
         salePriceText.clear();
         costPriceText.clear();
-        mpdDateText.clear();
-        searchText.clear();
         quantityText.clear();
-        expDateText.clear();
-        timeText.clear();
-        dateText.clear();
+        descriptionText.clear();
+
     }
 
-    public void SearchTable() {
-        DBConnection connectNow = new DBConnection();
-        Connection connectDB = connectNow.Connect();
-//        SQL Query to view
-        String InventoryViewQuery = "SELECT * FROM purchase";
+    public void AddItems() {
 
         try {
-            Statement statement = connectDB.createStatement();
-            ResultSet QueryOutPut = statement.executeQuery(InventoryViewQuery);
-
-            while (QueryOutPut.next()) {
-
-                Integer queryBatch_no = QueryOutPut.getInt("batch_no");
-                Date queryDate = QueryOutPut.getDate("date");
-                Time queryTime = QueryOutPut.getTime("time");
-                Date queryEXPDate = QueryOutPut.getDate("EXP");
-                Date queryMDPDate = QueryOutPut.getDate("MPD");
-                Integer queryCostPrice = QueryOutPut.getInt("cost_per_unit");
-                Integer querySalePrice = QueryOutPut.getInt("sale_per_unit");
-                Integer queryQuantity = QueryOutPut.getInt("quantity");
-                Integer queryCompanyNo = QueryOutPut.getInt("Com_No");
-                String queryItemcode = QueryOutPut.getString("itemcode");
+                String queryBatch_no = batchNoText.getText();
+                LocalDate queryEXPDate = expPicker.getValue();
+                LocalDate queryMDPDate = mdpPicker.getValue();
+                String queryCostPrice = costPriceText.getText();
+                String querySalePrice = salePriceText.getText();
+                String queryQuantity = quantityText.getText();
+                String queryCompanyNo = companyNoText.getText();
+                String queryItemcode = itemcodeText.getText();
+                String queryItemname = itemNameText.getText();
+                String queryDescription = descriptionText.getText();
 
 
-                productAddObservableList.add(new ProductAdd(queryBatch_no, queryDate, queryTime, queryEXPDate, queryMDPDate, queryCostPrice, querySalePrice, queryQuantity, queryCompanyNo, queryItemcode));
+                productAddObservableList.add(new ProductAdd(queryItemcode,queryItemname,queryDescription,queryEXPDate,queryMDPDate,Integer.parseInt(queryCostPrice),Integer.parseInt(querySalePrice),Integer.parseInt(queryQuantity),queryBatch_no,Integer.parseInt(queryCompanyNo)));
 
-            }
 
-            batch_Table.setCellValueFactory(new PropertyValueFactory<>("batch_no"));
-            date_Table.setCellValueFactory(new PropertyValueFactory<>("date"));
-            time_Table.setCellValueFactory(new PropertyValueFactory<>("time"));
+            itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
+            itemname_Table.setCellValueFactory(new PropertyValueFactory<>("itemname"));
+            description_Table.setCellValueFactory(new PropertyValueFactory<>("description"));
             expDate_Table.setCellValueFactory(new PropertyValueFactory<>("EXP"));
             mpdDate_Table.setCellValueFactory(new PropertyValueFactory<>("MPD"));
             cost_Table.setCellValueFactory(new PropertyValueFactory<>("cost_per_unit"));
             sale_Table.setCellValueFactory(new PropertyValueFactory<>("sale_per_unit"));
             quantity_Table.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-            itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
+            batch_Table.setCellValueFactory(new PropertyValueFactory<>("batch_no"));
             companyNO_Table.setCellValueFactory(new PropertyValueFactory<>("Com_No"));
 
             InventoryTableView.setItems(productAddObservableList);
 
 
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             Logger.getLogger(inward.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
         }
@@ -173,41 +232,100 @@ public class inward implements Initializable {
 
     public ArrayList<String> suggesting(String x){
         ArrayList<String> d_codeArray = new ArrayList<>();
-        ArrayList<String> d_nameArray = new ArrayList<>();
         Connection connection;
         ResultSet resultSet;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","mamatharindu");
             PreparedStatement statement = connection.prepareStatement("SELECT d_code,d_name,d_type,description FROM drug");
             resultSet = statement.executeQuery();
             while (resultSet.next()){
                 String d_code = resultSet.getNString("d_code");
-                String d_name=resultSet.getNString("d_name");
-
                 d_codeArray.add(d_code);
-                d_nameArray.add(d_name);
+
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        if (x.equals("d_code")){
-            return d_codeArray;
+        return d_codeArray;
+    }
+
+    public void getValues(){
+        DBConnection connectNow = new DBConnection();
+        Connection connectDB = connectNow.Connect();
+        try{
+            PreparedStatement ps = null;
+            String query = "SELECT d_name,description FROM drug WHERE d_code=?";
+            ps = connectDB.prepareStatement(query);
+            String Itemcode = itemcodeText.getText();
+            ps.setString(1,Itemcode);
+            ResultSet resultSet1 = ps.executeQuery();
+
+            String d_name = null;
+            String d_des = null;
+            while (resultSet1.next()){
+                d_des = resultSet1.getNString("description");
+                d_name = resultSet1.getNString("d_name");
+            }
+            itemNameText.setText(d_name);
+            descriptionText.setText(d_des);
+
         }
-        else {
-            return d_nameArray;
+
+        catch (Exception e) {
+            e.printStackTrace();
         }
 
 
+    }
 
 
+    public void UpdateBD(){
 
-//   public void ToAddCom(ActionEvent event){
-//       DBUtils.changeScene(event,"company.fxml","Add Company",null,809,480);
-//   }
-//    public void ToAddDrug(ActionEvent event){
-//        DBUtils.changeScene(event,"Drug.fxml","Add Drug",null,853,510);
-//    }
+            DBConnection connectNow = new DBConnection();
+            Connection connectDB = connectNow.Connect();
+        try {
+            PreparedStatement ps = null;
+            String query = "INSERT INTO `pmsdb`.`purchase` (`batch_no`, `barcode`, `c_no`, `emp_no`, `qty`, `p_time`, `p_date`, `exp`, `mpd`, `selling_price`, `buying_price`, `availability`) VALUES (?,?, ?,?, ?,?,?, ?,?,?,?, 'y')";
+            ps = connectDB.prepareStatement(query);
+
+            for (ProductAdd i : productAddObservableList) {
+
+                String batchNO = i.getBatch_no();
+                String barcode = i.getItemcode();
+                Integer Cno = i.getCom_No();
+                Integer empno = 1;
+                Integer qty = i.getQuantity();
+                LocalTime time = LocalTime.now();
+                LocalDate date = LocalDate.now();
+                LocalDate EXP = i.getEXP();
+                LocalDate MPD = i.getMPD();
+                Integer Sprice = i.getSale_per_unit();
+                Integer Bprice =i.getCost_per_unit();
 
 
-}}
+                ps.setString(1, String.valueOf(batchNO));
+                ps.setString(2, String.valueOf(barcode));
+                ps.setString(3, String.valueOf(Cno));
+                ps.setInt(4, empno);
+                ps.setInt(5, qty);
+                ps.setTime(6, Time.valueOf(time));
+                ps.setDate(7, java.sql.Date.valueOf(date));
+                ps.setDate(8, java.sql.Date.valueOf(EXP));
+                ps.setDate(9, java.sql.Date.valueOf(MPD));
+                ps.setInt(10,Sprice);
+                ps.setInt(11,Bprice);
+
+
+                ps.executeUpdate();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+}
 

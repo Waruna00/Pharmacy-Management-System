@@ -83,8 +83,8 @@ public class Company implements Initializable {
 
             while (QueryOutPut.next()) {
 
-                Integer queryCompanyNo = QueryOutPut.getInt("Com_No");
-                String queryName = QueryOutPut.getString("name");
+                Integer queryCompanyNo = QueryOutPut.getInt("c_no");
+                String queryName = QueryOutPut.getString("c_name");
                 String queryAddress = QueryOutPut.getString("address");
                 Integer queryPhone = QueryOutPut.getInt("phone");
 
@@ -93,7 +93,7 @@ public class Company implements Initializable {
 
             }
 
-            company_Table.setCellValueFactory(new PropertyValueFactory<>("Com_No"));
+            company_Table.setCellValueFactory(new PropertyValueFactory<>("com_no"));
             name_Table.setCellValueFactory(new PropertyValueFactory<>("name"));
             address_Table.setCellValueFactory(new PropertyValueFactory<>("address"));
             phoneNo_Table.setCellValueFactory(new PropertyValueFactory<>("phone"));
@@ -154,7 +154,7 @@ public class Company implements Initializable {
 
 
         PreparedStatement ps = null;
-        String query = "INSERT INTO `new_project`.`company` (`Com_No`, `name`, `address`, `phone`) VALUES (?,?,?,?);";
+        String query = "INSERT INTO company (`c_no`, `c_name`, `address`, `phone`) VALUES (?,?,?,?);";
         ps = connectDB.prepareStatement(query);
         ps.setInt(1, companyNo);
         ps.setString(2, name);
@@ -164,7 +164,7 @@ public class Company implements Initializable {
 
         try {
             ps.executeUpdate();
-//            successLabelC.setText("Successfully added");
+//           successLabelC.setText("Successfully added");
             clearCompanyFields();
 
 
@@ -187,10 +187,8 @@ public class Company implements Initializable {
         Integer companyNo = Integer.parseInt(companyNoText.getText());
 
 
-
-
         PreparedStatement ps = null;
-        String query = "UPDATE `new_project`.`company` SET `Com_No` = ?, `name` = ?, `address` = ?, `phone` = ? WHERE (`Com_No` = ?);";
+        String query = "UPDATE company SET `c_no` = ?, `c_name` = ?, `address` = ?, `phone` = ? WHERE (`c_no` = ?);";
         ps = connectDB.prepareStatement(query);
         ps.setInt(1, companyNo);
         ps.setString(2, name);
@@ -221,14 +219,14 @@ public class Company implements Initializable {
 
 
         PreparedStatement ps = null;
-        String query = "DELETE FROM `new_project`.`company` WHERE (`Com_No` = ?);";
+        String query = "DELETE FROM company WHERE (`c_no` = ?);";
         ps = connectDB.prepareStatement(query);
         ps.setInt(1, companyNo);
 
         try {
 
             ps.executeUpdate();
-//            successLabelC.setText("Successfully Deleted");
+//          successLabelC.setText("Successfully Deleted");
             clearCompanyFields();
 
         } catch (Exception e) {

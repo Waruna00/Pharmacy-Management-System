@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,39 +10,47 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1261.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.inward">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.inward">
     <children>
-        <TableView fx:id="InventoryTableView" accessibleRole="COMBO_BOX" layoutX="25.0" layoutY="237.0" prefHeight="327.0" prefWidth="1220.0">
+        <TableView fx:id="InventoryTableView" accessibleRole="COMBO_BOX" layoutX="31.0" layoutY="237.0" prefHeight="418.0" prefWidth="1219.0">
             <columns>
+            <TableColumn fx:id="no_Table" prefWidth="61.5999755859375" text="NO" />
                 <TableColumn fx:id="batch_Table" prefWidth="81.60003662109375" text="Batch no" />
                 <TableColumn fx:id="itemcode_Table" prefWidth="107.20001220703125" text="Item code" />
-                <TableColumn fx:id="companyNO_Table" prefWidth="99.19998168945312" text="Company NO" />
-                <TableColumn fx:id="expDate_Table" prefWidth="101.60003662109375" text="EXP" />
-                <TableColumn fx:id="mpdDate_Table" prefWidth="112.79998779296875" text="MPD" />
-                <TableColumn fx:id="cost_Table" prefWidth="93.5999755859375" text="Cost per unit" />
-                <TableColumn fx:id="sale_Table" prefWidth="119.20001220703125" text="sale price per unit" />
-                <TableColumn fx:id="date_Table" prefWidth="99.20001220703125" text="Date" />
-                <TableColumn fx:id="time_Table" prefWidth="192.7999267578125" text="Time" />
-                <TableColumn fx:id="quantity_Table" prefWidth="209.60003662109375" text="Quantity" />
+            <TableColumn fx:id="itemname_Table" prefWidth="104.0" text="Item name" />
+            <TableColumn fx:id="description_Table" prefWidth="104.0" text="Description" />
+                <TableColumn fx:id="companyNO_Table" prefWidth="113.06668090820312" text="Company NO" />
+                <TableColumn fx:id="expDate_Table" prefWidth="102.666748046875" text="EXP" />
+                <TableColumn fx:id="mpdDate_Table" prefWidth="98.93328857421875" text="MPD" />
+                <TableColumn fx:id="cost_Table" prefWidth="124.00006103515625" text="Cost per unit" />
+                <TableColumn fx:id="sale_Table" prefWidth="176.0" text="sale price per unit" />
+                <TableColumn fx:id="quantity_Table" prefWidth="141.86669921875" text="Quantity" />
             </columns>
         </TableView>
-        <TextField fx:id="searchText" layoutX="152.0" layoutY="192.0" prefHeight="25.0" prefWidth="402.0" promptText="enter a keword" />
-        <Label layoutX="40.0" layoutY="196.0" prefHeight="17.0" prefWidth="81.0" text="Search Item" />
-        <AnchorPane prefHeight="178.0" prefWidth="1241.0" style="-fx-background-color: #28252e;">
+        <AnchorPane layoutY="-1.0" prefHeight="197.0" prefWidth="1280.0" style="-fx-background-color: #28252e;">
             <children>
-                <TextField fx:id="itemcodeText" layoutX="31.0" layoutY="80.0" promptText="Item code" />
-                <Label layoutX="31.0" layoutY="63.0" text="Item code" textFill="#fcf9f9" />
-                <Button fx:id="addButton" layoutX="34.0" layoutY="127.0" mnemonicParsing="false" onAction="#AddButtonONAction" prefHeight="18.0" prefWidth="101.0" text="Add" />
-                <Button layoutX="162.0" layoutY="126.0" mnemonicParsing="false" onAction="#EditButtonOnAction" prefHeight="26.0" prefWidth="102.0" text="Edit" />
-                <Button layoutX="281.0" layoutY="126.0" mnemonicParsing="false" onAction="#DeleteButtonOnAction" prefHeight="26.0" prefWidth="102.0" text="Delete" />
-                <TextField fx:id="batchNoText" layoutX="31.0" layoutY="31.0" promptText="Batch no" />
-                <Label layoutX="34.0" layoutY="14.0" text="Batch no" textFill="#fcf9f9" />
-              <Button layoutX="1138.0" layoutY="11.0" mnemonicParsing="false" onAction="#ToAddDrug" text="Add Drug" />
-              <Button layoutX="1052.0" layoutY="10.0" mnemonicParsing="false" onAction="#ToAddCom" text="company" />
-                <Label layoutX="241.0" layoutY="17.0" text="Company NO" textFill="#faf6f6" />
-                <TextField fx:id="companyNoText" layoutX="238.0" layoutY="31.0" promptText="Name" />
-                <Label layoutX="243.0" layoutY="63.0" text="Cost per unit" textFill="#f4f2f2" />
-                <TextField fx:id="costPriceText" layoutX="237.0" layoutY="80.0" promptText="Price" />
+                <TextField fx:id="itemcodeText" layoutX="27.0" layoutY="25.0" promptText="Item code" />
+                <Label layoutX="27.0" layoutY="8.0" text="Item code" textFill="#fcf9f9" />
+                <Button fx:id="addButton" layoutX="1060.0" layoutY="104.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="137.0" text="Add" />
+                <TextField fx:id="batchNoText" layoutX="27.0" layoutY="85.0" promptText="Batch no" />
+                <Label layoutX="290.0" layoutY="68.0" text="Company NO" textFill="#faf6f6" />
+                <TextField fx:id="companyNoText" layoutX="290.0" layoutY="89.0" promptText="Name" />
+                <Label layoutX="1052.0" layoutY="7.0" prefHeight="18.0" prefWidth="82.0" text="Cost per unit" textFill="#f4f2f2" />
+                <TextField fx:id="costPriceText" layoutX="1052.0" layoutY="24.0" promptText="Price" />
+            <Label layoutX="27.0" layoutY="68.0" text="Batch no" textFill="#fcf9f9" />
+            <Label layoutX="290.0" layoutY="8.0" prefHeight="18.0" prefWidth="72.0" text="Description" textFill="WHITE" />
+                <TextField fx:id="descriptionText" layoutX="290.0" layoutY="26.0" prefHeight="18.0" prefWidth="150.0" promptText="description" />
+            <Button fx:id="fillButton" layoutX="191.0" layoutY="25.0" mnemonicParsing="false" text="fill" />
+                <Label layoutX="669.0" layoutY="67.0" text="EXP" textFill="WHITE" />
+                <Label layoutX="666.0" layoutY="8.0" text="MDP" textFill="WHITE" />
+                <Label layoutX="874.0" layoutY="10.0" text="sale price per unit" textFill="#f4f2f2" />
+                <TextField fx:id="salePriceText" layoutX="872.0" layoutY="26.0" promptText="Price" />
+            <DatePicker fx:id="mdpPicker" layoutX="666.0" layoutY="25.0" />
+            <DatePicker fx:id="expPicker" layoutX="666.0" layoutY="89.0" />
+            <Label layoutX="480.0" layoutY="10.0" prefHeight="18.0" prefWidth="72.0" text="Item name" textFill="WHITE" />
+            <TextField fx:id="itemNameText" layoutX="480.0" layoutY="28.0" prefHeight="18.0" prefWidth="150.0" promptText="item name" />
+                <Label layoutX="480.0" layoutY="67.0" text="Quantity" textFill="#f4f1f1" />
+                <TextField fx:id="quantityText" layoutX="480.0" layoutY="89.0" promptText="Quantity" />
             </children>
         </AnchorPane>
         <Label fx:id="successLabel" layoutX="262.0" layoutY="314.0" prefHeight="25.0" prefWidth="280.0" textFill="#262525">
@@ -49,17 +58,9 @@
                 <Font size="14.0" />
             </font>
         </Label>
-          <TextField fx:id="quantityText" layoutX="460.0" layoutY="89.0" promptText="Quantity" />
-          <Label layoutX="460.0" layoutY="71.0" text="Quantity" textFill="#f4f1f1" />
-          <TextField fx:id="salePriceText" layoutX="460.0" layoutY="38.0" promptText="Price" />
-          <Label layoutX="460.0" layoutY="21.0" text="sale price per unit" textFill="#f4f2f2" />
-          <TextField fx:id="expDateText" layoutX="666.0" layoutY="88.0" promptText="YYYY/MM/DD" />
-          <Label layoutX="668.0" layoutY="70.0" text="EXP" textFill="WHITE" />
-          <TextField fx:id="mpdDateText" layoutX="667.0" layoutY="37.0" promptText="YYYY/MM/DD" />
-          <Label layoutX="669.0" layoutY="19.0" text="MDP" textFill="WHITE" />
-          <TextField fx:id="dateText" layoutX="850.0" layoutY="40.0" promptText="YYYY/MM/DD" />
-          <Label layoutX="850.0" layoutY="22.0" text="Date" textFill="#faf7f7" />
-          <TextField fx:id="timeText" layoutX="850.0" layoutY="90.0" promptText="Time" />
-          <Label layoutX="850.0" layoutY="73.0" text="Time" textFill="#fcf9f9" />
+      <Button fx:id="btnProcess" layoutX="1059.0" layoutY="700.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="182.0" text="process" />
+        <Button fx:id="btn_add" layoutX="62.0" layoutY="707.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="102.0" text="Add New Drug" />
+        <Button fx:id="btn_com" layoutX="186.0" layoutY="707.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="123.0" text="Add Company New " />
+      <Button fx:id="btn_clear" layoutX="873.0" layoutY="700.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="159.0" text="Clear" />
     </children>
 </Pane>

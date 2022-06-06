@@ -7,31 +7,47 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Search implements Initializable {
 
     @FXML
-    private TableView<searchList> tbl;
+    private TableView<searchList> SearchTableView;
 
     @FXML
-    private TableColumn<searchList, String> tbl_code;
-    @FXML
-    private TableColumn<searchList, String> tbl_name;
-    @FXML
-    private TableColumn<searchList, String> tbl_type;
-    @FXML
-    private TableColumn<searchList, String> tbl_des;
+    private TableColumn<searchList, String> batch_Table;
 
     @FXML
-    private TextField search_txt;
+    private TableColumn<searchList, String> companyNO_Table;
+
+    @FXML
+    private TableColumn<searchList, String> cost_Table;
+
+    @FXML
+    private TableColumn<searchList, String> expDate_Table;
+
+    @FXML
+    private TextField searchText;
+
+    @FXML
+    private TableColumn<searchList, String> itemcode_Table;
+
+    @FXML
+    private TableColumn<searchList, String> mpdDate_Table;
+
+    @FXML
+    private TableColumn<searchList, String> quantity_Table;
+
+    @FXML
+    private TableColumn<searchList, String> sale_Table;
 
     ObservableList<searchList> searchListObservableList = FXCollections.observableArrayList();
 
@@ -41,73 +57,102 @@ public class Search implements Initializable {
     }
 
     public void SearchTable() {
-        Connection connection;
-        ResultSet resultSet;
+        DBConnection connectNow = new DBConnection();
+        Connection connectDB = connectNow.Connect();
+//        SQL Query to view
+        String InventoryViewQuery = "SELECT batch_no,exp,mpd,buying_price,selling_price,qty,c_no,barcode FROM purchase";
+
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
-            PreparedStatement statement = connection.prepareStatement("SELECT d_code,d_name,d_type,description FROM drug");
-            resultSet = statement.executeQuery();
-            while (resultSet.next()){
-                String d_code = resultSet.getNString("d_code");
-                String d_name=resultSet.getNString("d_name");
-                String d_type=resultSet.getNString("d_type");
-                String des = resultSet.getNString("description");
+            Statement statement = connectDB.createStatement();
+            ResultSet QueryOutPut = statement.executeQuery(InventoryViewQuery);
 
-                searchListObservableList.add(new searchList(d_code, d_name, d_type, des));
+            while (QueryOutPut.next()) {
+                String queryBatch_no = QueryOutPut.getString("batch_no");
+                java.sql.Date queryEXPDate = QueryOutPut.getDate("exp");
+                Date queryMDPDate = QueryOutPut.getDate("mpd");
+                Integer queryCostPrice = QueryOutPut.getInt("buying_price");
+                Integer querySalePrice = QueryOutPut.getInt("selling_price");
+                Integer queryQuantity = QueryOutPut.getInt("qty");
+                Integer queryCompanyNo = QueryOutPut.getInt("c_no");
+                String queryItemcode = QueryOutPut.getString("barcode");
 
-                tbl_code.setCellValueFactory(new PropertyValueFactory<>("d_code"));
-                tbl_name.setCellValueFactory(new PropertyValueFactory<>("d_name"));
-                tbl_type.setCellValueFactory(new PropertyValueFactory<>("d_type"));
-                tbl_des.setCellValueFactory(new PropertyValueFactory<>("des"));
 
-                tbl.setItems(searchListObservableList);
+                searchListObservableList.add(new searchList(queryItemcode, queryEXPDate, queryMDPDate, queryCostPrice, querySalePrice,queryQuantity, queryBatch_no, queryCompanyNo));
+            }
 
-                FilteredList<searchList> filteredData = new FilteredList<>(searchListObservableList, b -> true);
-                search_txt.textProperty().addListener((observable, newValue, oldValue) -> filteredData.setPredicate(searchList -> {
-                    if (newValue.isBlank() || newValue.isEmpty()) {
+                itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
+                expDate_Table.setCellValueFactory(new PropertyValueFactory<>("EXP"));
+                mpdDate_Table.setCellValueFactory(new PropertyValueFactory<>("MPD"));
+                cost_Table.setCellValueFactory(new PropertyValueFactory<>("cost_per_unit"));
+                sale_Table.setCellValueFactory(new PropertyValueFactory<>("sale_per_unit"));
+                quantity_Table.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+                batch_Table.setCellValueFactory(new PropertyValueFactory<>("batch_no"));
+                companyNO_Table.setCellValueFactory(new PropertyValueFactory<>("Com_No"));
+
+
+
+
+
+            SearchTableView.setItems(searchListObservableList);
+
+//          Initial filtered list
+            FilteredList<searchList> filteredData = new FilteredList<>(searchListObservableList, b -> true);
+            searchText.textProperty().addListener((observable, newValue, oldValue) -> {
+                filteredData.setPredicate(searchList -> {
+//                    if no search value
+                    if (newValue.isBlank() || newValue.isEmpty() || newValue == null) {
                         return true;
                     }
-                    String searchKeyWord = oldValue.toLowerCase();
 
-                    if (searchList.getD_code().toLowerCase().contains(searchKeyWord)) {
-                        return true; // that means we found a match in itemCode
-                    } else if (searchList.getD_name().toLowerCase().contains(searchKeyWord)) {
+                    String searchKeyWord = newValue.toLowerCase();
+
+                    if (searchList.getItemcode().toString().indexOf(searchKeyWord) > -1) {
+                        return true; // that means we found a match in itemcode
+                    } else if (searchList.getBatch_no().toString().indexOf(searchKeyWord) > -1) {
                         return true; // that means we found a match in name
-                    } else if (searchList.getD_type().toLowerCase().contains(searchKeyWord)) {
-                        return true; // that means we found a match in type
-                    } else if (searchList.getDes().toLowerCase().contains(searchKeyWord)) {
-                        return true; // that means we found a match in description
-                    }else {
-                        return false;
+                    } else if (searchList.getCom_No().toString().indexOf(searchKeyWord) > -1) {
+                        return true; // that means we found a match in price
+                    } else if (searchList.getCom_No().toString().indexOf(searchKeyWord) > -1) {
+                        return true;
+                    }  else {
+                        return false; //no match found
                     }
-                }));
+                });
+            });
 
-                SortedList<searchList> sortedList = new SortedList<>(filteredData);
-                sortedList.comparatorProperty().bind(tbl.comparatorProperty());
-                tbl.setItems(sortedList);
+            SortedList<searchList> sortedData = new SortedList<>(filteredData);
+//          bind sorted result with table view
+            sortedData.comparatorProperty().bind(SearchTableView.comparatorProperty());
+//          Apply sorted and filtered data with table
+            SearchTableView.setItems(sortedData);
 
 
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            Logger.getLogger(inward.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
         }
 
 
-        tbl.setRowFactory( searchListTableView -> {
-            TableRow<searchList> row = new TableRow<>();
-            row.setOnMouseClicked(mouseEvent -> {
-                if(mouseEvent.getClickCount() == 2){
-                    int index = searchListTableView.getSelectionModel().getFocusedIndex();
-                    System.out.println(tbl.getItems().get(index).getD_code());
-                    sales_controller s = new sales_controller();
-                    //search_txt.setText(tbl.getItems().get(index).getD_code());
-                    //s.SettingValues(tbl.getItems().get(index).getD_code(),tbl.getItems().get(index).getD_name(),tbl.getItems().get(index).getDes());
 
-                    Stage stage = (Stage) tbl.getScene().getWindow();
-                    //stage.close();
-                }
-            });
-            return row;
-        });
+
+        }
+
+
+//        tbl.setRowFactory( searchListTableView -> {
+//            TableRow<searchList> row = new TableRow<>();
+//            row.setOnMouseClicked(mouseEvent -> {
+//                if(mouseEvent.getClickCount() == 2){
+//                    int index = searchListTableView.getSelectionModel().getFocusedIndex();
+//                    System.out.println(tbl.getItems().get(index).getD_code());
+//                    sales_controller s = new sales_controller();
+//                    //search_txt.setText(tbl.getItems().get(index).getD_code());
+//                    //s.SettingValues(tbl.getItems().get(index).getD_code(),tbl.getItems().get(index).getD_name(),tbl.getItems().get(index).getDes());
+//
+//                    Stage stage = (Stage) tbl.getScene().getWindow();
+//                    //stage.close();
+//                }
+//            });
+//            return row;
+//        });
     }
-}
+

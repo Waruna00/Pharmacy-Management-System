@@ -9,22 +9,22 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Company">
     <children>
-        <AnchorPane layoutX="-5.0" prefHeight="480.0" prefWidth="211.0" style="-fx-background-color: #28252e;">
+        <AnchorPane layoutX="-1.0" prefHeight="148.0" prefWidth="820.0" style="-fx-background-color: #28252e;">
             <children>
                 <Label layoutX="29.0" layoutY="43.0" prefHeight="18.0" prefWidth="79.0" text="Company NO" textFill="#faf9f9" />
                 <TextField fx:id="companyNoText" layoutX="29.0" layoutY="61.0" promptText="Company NO" />
-                <Label layoutX="29.0" layoutY="87.0" prefHeight="18.0" prefWidth="55.0" text="Name" textFill="#faf9f9" />
-                <TextField fx:id="nameText" layoutX="29.0" layoutY="105.0" />
-                <Label layoutX="29.0" layoutY="138.0" prefHeight="18.0" prefWidth="55.0" text="Phone NO" textFill="#faf9f9" />
-                <TextField fx:id="phoneNoText" layoutX="29.0" layoutY="156.0" />
-                <Label layoutX="29.0" layoutY="188.0" prefHeight="18.0" prefWidth="55.0" text="Address" textFill="#faf9f9" />
-                <TextField fx:id="addressText" layoutX="29.0" layoutY="206.0" />
-                <Button layoutX="31.0" layoutY="256.0" mnemonicParsing="false" text="Add" />
-                <Button layoutX="31.0" layoutY="298.0" mnemonicParsing="false" text="Edit" />
-                <Button layoutX="31.0" layoutY="337.0" mnemonicParsing="false" text="Delete" />
+                <Label layoutX="366.0" layoutY="38.0" prefHeight="18.0" prefWidth="55.0" text="Name" textFill="#faf9f9" />
+                <TextField fx:id="nameText" layoutX="366.0" layoutY="56.0" />
+                <Label layoutX="203.0" layoutY="40.0" prefHeight="18.0" prefWidth="55.0" text="Phone NO" textFill="#faf9f9" />
+                <TextField fx:id="phoneNoText" layoutX="203.0" layoutY="58.0" />
+                <Label layoutX="538.0" layoutY="36.0" prefHeight="18.0" prefWidth="55.0" text="Address" textFill="#faf9f9" />
+                <TextField fx:id="addressText" layoutX="538.0" layoutY="54.0" />
+                <Button layoutX="743.0" layoutY="34.0" mnemonicParsing="false" onAction="#AddButtonONAction" text="Add" />
+                <Button layoutX="743.0" layoutY="76.0" mnemonicParsing="false" onAction="#EditButtonONAction" text="Edit" />
+                <Button layoutX="743.0" layoutY="115.0" mnemonicParsing="false" onAction="#DeleteButtonOnAction" text="Delete" />
             </children>
         </AnchorPane>
-        <TableView fx:id="companyTableView" layoutX="219.0" layoutY="123.0" prefHeight="333.0" prefWidth="575.0">
+        <TableView fx:id="companyTableView" layoutX="16.0" layoutY="194.0" prefHeight="263.0" prefWidth="778.0">
             <columns>
                 <TableColumn fx:id="company_Table" prefWidth="85.60003662109375" text="Company NO" />
                 <TableColumn fx:id="name_Table" prefWidth="150.39996337890625" text="Name" />
@@ -32,8 +32,7 @@
                 <TableColumn fx:id="address_Table" prefWidth="203.20001220703125" text="Address" />
             </columns>
         </TableView>
-        <TextField fx:id="comSearchText" layoutX="286.0" layoutY="79.0" />
-        <Label fx:id="" layoutX="219.0" layoutY="42.0" prefHeight="18.0" prefWidth="88.0" />
-        <Label layoutX="219.0" layoutY="83.0" prefHeight="18.0" prefWidth="55.0" text="Search " />
+        <TextField fx:id="comSearchText" layoutX="69.0" layoutY="153.0" />
+        <Label layoutX="14.0" layoutY="157.0" prefHeight="18.0" prefWidth="55.0" text="Search " />
     </children>
 </AnchorPane>

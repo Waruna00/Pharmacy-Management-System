@@ -9,31 +9,35 @@
 
 <AnchorPane prefHeight="570.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Drug">
     <children>
-        <AnchorPane layoutX="-1.0" layoutY="4.0" prefHeight="137.0" prefWidth="834.0" style="-fx-background-color: #28252e;">
+        <AnchorPane layoutX="-1.0" layoutY="-4.0" prefHeight="170.0" prefWidth="834.0" style="-fx-background-color: #28252e;">
          <children>
                 <Label layoutX="188.0" layoutY="15.0" text="Item code" textFill="#fcfafa" />
-              <TextField fx:id="SearchText" layoutX="105.0" layoutY="70.0" prefHeight="26.0" prefWidth="273.0" />
-              <Label layoutX="29.0" layoutY="74.0" prefHeight="18.0" prefWidth="38.0" text="Search" textFill="#fcfafa" />
-              <Label layoutX="743.0" layoutY="129.0" prefHeight="18.0" prefWidth="54.0" text="success" textFill="#f4f3f3" />
+              <TextField fx:id="searchText" layoutX="97.0" layoutY="133.0" prefHeight="26.0" prefWidth="273.0" />
+              <Label layoutX="29.0" layoutY="137.0" prefHeight="18.0" prefWidth="38.0" text="Search" textFill="#fcfafa" />
+              <Label fx:id="successLabelC" layoutX="551.0" layoutY="128.0" prefHeight="18.0" prefWidth="150.0" text="success" textFill="#f4f3f3" />
                 <Label layoutX="37.0" layoutY="15.0" text="Name" textFill="#fcfafa" />
                 <TextField fx:id="nameText" layoutX="29.0" layoutY="33.0" />
-                <TextField fx:id="itemcodeText" layoutX="188.0" layoutY="33.0" />
+                <TextField fx:id="itemcodeText" layoutX="188.0" layoutY="33.0" prefHeight="26.0" prefWidth="135.0" />
                 <TextField fx:id="typeText" layoutX="342.0" layoutY="33.0" />
                 <Label layoutX="345.0" layoutY="14.0" text="Type" textFill="#fcfafa" />
                 <Label layoutX="502.0" layoutY="14.0" text="Quantity" textFill="#fcfafa" />
                 <TextField fx:id="quantityText" layoutX="502.0" layoutY="31.0" />
+            <Label layoutX="29.0" layoutY="59.0" text="description" textFill="#fcfafa" />
+            <TextField fx:id="descriptionText" layoutX="29.0" layoutY="76.0" prefHeight="26.0" prefWidth="313.0" />
          </children>
         </AnchorPane>
-        <TableView layoutX="47.0" layoutY="161.0" prefHeight="386.0" prefWidth="756.0">
+        <TableView fx:id="drugTableView" layoutX="47.0" layoutY="191.0" prefHeight="356.0" prefWidth="756.0">
             <columns>
-                <TableColumn fx:id="itemcodeTable" prefWidth="144.79998779296875" text="Item code" />
-                <TableColumn fx:id="nameTable" prefWidth="132.79998779296875" text="Name" />
-                <TableColumn fx:id="typeTable" prefWidth="148.80001831054688" text="Type" />
-                <TableColumn fx:id="quantityTable" prefWidth="322.3999328613281" text="Quantity" />
+                <TableColumn fx:id="itemcodeTable" prefWidth="110.39997100830078" text="Item code" />
+            <TableColumn fx:id="barcodeTable" prefWidth="92.00003051757812" text="Barcode" />
+                <TableColumn fx:id="nameTable" prefWidth="131.19998168945312" text="Name" />
+                <TableColumn fx:id="typeTable" prefWidth="131.20001220703125" text="Type" />
+                <TableColumn fx:id="quantityTable" prefWidth="92.00003051757812" text="Quantity" />
+            <TableColumn fx:id="descriptionTable" prefWidth="169.5999755859375" text="Description" />
             </columns>
         </TableView>
-          <Button layoutX="739.0" layoutY="13.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Add" />
-          <Button layoutX="739.0" layoutY="50.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Edit" />
-          <Button layoutX="739.0" layoutY="87.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Delete" />
+          <Button layoutX="739.0" layoutY="13.0" mnemonicParsing="false" onAction="#AddButtonONAction" prefHeight="26.0" prefWidth="82.0" text="Add" />
+          <Button layoutX="739.0" layoutY="50.0" mnemonicParsing="false" onAction="#EditButtonONAction" prefHeight="26.0" prefWidth="82.0" text="Edit" />
+          <Button layoutX="739.0" layoutY="87.0" mnemonicParsing="false" onAction="#DeleteButtonOnAction" prefHeight="26.0" prefWidth="82.0" text="Delete" />
     </children>
 </AnchorPane>
