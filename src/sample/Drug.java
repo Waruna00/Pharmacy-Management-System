@@ -50,15 +50,16 @@ public class Drug implements Initializable {
 
     @FXML
     private TableColumn<DrugAdd,String> descriptionTable;
+
     @FXML
     private TableColumn<DrugAdd,String> barcodeTable;
-
-
+    
     @FXML
     private TableColumn<DrugAdd,String> typeTable;
 
     @FXML
     private TextField typeText;
+
     @FXML
     private Label successLabelC;
 
@@ -204,11 +205,8 @@ public class Drug implements Initializable {
         String description = descriptionText.getText();
 
 
-
-
-
         PreparedStatement ps = null;
-        String query = "UPDATE `psmdb`.`drug` SET `d_code` = ?, `d_name` = ?, `d_type` = ?,`barcode` = ?, `qty` = ? ,'description'=? WHERE (`d_code` = ?);";
+        String query = "UPDATE `pmsdb`.`drug` SET `d_code` = ?, `d_name` = ?, `d_type` = ?, `barcode` = ?, `qty` = ?, `description` = ? WHERE (`d_code` = ?);";
         ps = connectDB.prepareStatement(query);
         ps.setString(1, itemcode);
         ps.setString(2, name);

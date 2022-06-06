@@ -3,15 +3,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class outward implements Initializable {
@@ -82,12 +83,6 @@ public class outward implements Initializable {
     private TableColumn<outward, String> quantity_Table;
 
     @FXML
-    private TextField salePriceText;
-
-    @FXML
-    private TableColumn<outward, String> sale_Table;
-
-    @FXML
     private Label successLabel;
 
     @FXML
@@ -97,12 +92,82 @@ public class outward implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
+
+        addButton.setOnAction(actionEvent -> {
+            AddItems();
+            clearFields();
+        });
+
         fillButton.setOnAction(actionEvent -> {
             getValues();
         });
 
+        InventoryTableView.setRowFactory(InventoryTableView -> {
+            TableRow<outwardList> row = new TableRow<>();
+            row.setOnMouseClicked(mouseEvent -> {
+                if (mouseEvent.getClickCount() == 2){
+                    int index = InventoryTableView.getSelectionModel().getFocusedIndex();
+                    ButtonType yes = new ButtonType("Yes");
+                    ButtonType no = new ButtonType("No");
+                    Alert a = new Alert(Alert.AlertType.NONE,"Do you want to remove this..?",yes,no);
+                    System.out.println(InventoryTableView.getItems().get(index).getBatch_no());
+                    a.setAlertType(Alert.AlertType.CONFIRMATION);
+                    a.setResizable(false);
+                    a.showAndWait().ifPresent(response -> {
+                        if (response == yes) {
+                            outwardList selectedItem = InventoryTableView.getSelectionModel().getSelectedItem();
+                            outwardListObservableList.remove(selectedItem);
+                            InventoryTableView.getItems().remove(selectedItem);
+                            clearFields();
+                        }
+                    });
+                }
+            });
+            return row;
+        });
+
+        ClearButton.setOnAction(event -> {
+            clearFields();
+            InventoryTableView.getItems().clear();
+            outwardListObservableList.clear();
+        });
+
+        ProcessButton.setOnAction(event -> {
+            ButtonType yes = new ButtonType("Yes");
+            ButtonType no = new ButtonType("No");
+            Alert a = new Alert(Alert.AlertType.NONE,"Are sure..?",yes,no);
+            a.setAlertType(Alert.AlertType.CONFIRMATION);
+            a.setResizable(false);
+            a.showAndWait().ifPresent(response -> {
+                if (response == yes) {
+                    UpdateBD();
+                    clearFields();
+                    InventoryTableView.getItems().clear();
+                    outwardListObservableList.clear();
+                    InventoryTableView.getItems().clear();
+
+                }
+            });
+
+        });
+
+
+
     }
 
+
+    private void clearFields() {
+        PNoText.clear();
+        batchNoText.clear();
+        itemcodeText.clear();
+        companyNoText.clear();
+        dateText.clear();
+        expDateText.clear();
+        mpdDateText.clear();
+        quantityText.clear();
+        timeText.clear();
+
+    }
 
 
         public void getValues(){
@@ -156,5 +221,73 @@ public class outward implements Initializable {
         }
 
     }
+
+    public void AddItems() {
+
+        try {
+            Integer querypno = Integer.valueOf(PNoText.getText());
+            String queryBatch_no = batchNoText.getText();
+            LocalDate queryexp = LocalDate.parse(expDateText.getText());
+            LocalDate querymdp = LocalDate.parse(mpdDateText.getText());
+            Integer queryQuantity = Integer.valueOf(quantityText.getText());
+            String queryCompanyNo = companyNoText.getText();
+            String queryItemcode = itemcodeText.getText();
+
+
+            outwardListObservableList.add(new outwardList(querypno,queryItemcode,queryexp,querymdp,queryQuantity,queryBatch_no,queryCompanyNo));
+
+
+            itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
+            expDate_Table.setCellValueFactory(new PropertyValueFactory<>("EXP"));
+            mpdDate_Table.setCellValueFactory(new PropertyValueFactory<>("MPD"));
+            NoTable.setCellValueFactory(new PropertyValueFactory<>("p_no"));
+            quantity_Table.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+            batch_Table.setCellValueFactory(new PropertyValueFactory<>("batch_no"));
+            companyNO_Table.setCellValueFactory(new PropertyValueFactory<>("Com_No"));
+
+            InventoryTableView.setItems(outwardListObservableList);
+
+
+
+        } catch (Exception e) {
+            Logger.getLogger(inward.class.getName()).log(Level.SEVERE, null, e);
+            e.printStackTrace();
+        }
+
+    }
+
+    public void UpdateBD(){
+
+        DBConnection connectNow = new DBConnection();
+        Connection connectDB = connectNow.Connect();
+        try {
+            PreparedStatement ps = null;
+            String query = "DELETE FROM `pmsdb`.`purchase` WHERE (`p_no` = ?)";
+            ps = connectDB.prepareStatement(query);
+
+            for (outwardList i : outwardListObservableList) {
+
+                Integer PNO = i.getP_no();
+
+                ps.setInt(1, PNO);
+
+                ps.executeUpdate();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 }

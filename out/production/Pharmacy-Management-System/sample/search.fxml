@@ -11,14 +11,15 @@
     <children>
         <TableView fx:id="SearchTableView" accessibleRole="COMBO_BOX" layoutX="31.0" layoutY="153.0" prefHeight="418.0" prefWidth="1219.0">
             <columns>
+            <TableColumn fx:id="NOTable" prefWidth="104.800048828125" text="NO" />
                 <TableColumn fx:id="batch_Table" prefWidth="81.60003662109375" text="Batch no" />
                 <TableColumn fx:id="itemcode_Table" prefWidth="107.20001220703125" text="Item code" />
                 <TableColumn fx:id="companyNO_Table" prefWidth="113.06668090820312" text="Company NO" />
                 <TableColumn fx:id="expDate_Table" prefWidth="102.666748046875" text="EXP" />
                 <TableColumn fx:id="mpdDate_Table" prefWidth="217.5999755859375" text="MPD" />
                 <TableColumn fx:id="cost_Table" prefWidth="205.5999755859375" text="Cost per unit" />
-                <TableColumn fx:id="sale_Table" prefWidth="172.7999267578125" text="sale price per unit" />
-                <TableColumn fx:id="quantity_Table" prefWidth="210.39990234375" text="Quantity" />
+                <TableColumn fx:id="sale_Table" prefWidth="112.79998779296875" text="sale price per unit" />
+                <TableColumn fx:id="quantity_Table" prefWidth="115.199951171875" text="Quantity" />
             </columns>
         </TableView>
         <AnchorPane fx:id="SearchText" layoutY="-1.0" prefHeight="116.0" prefWidth="1280.0" style="-fx-background-color: #28252e;">

@@ -40,6 +40,7 @@ public class Settings implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_edit_name.setOnAction(actionEvent -> {
             tf_name.setEditable(true);
+//<<<<<<< Updated upstream
             tf_name.requestFocus();
             btn_update.setVisible(true);
         });
@@ -69,6 +70,9 @@ public class Settings implements Initializable {
 
         btn_change_password.setOnAction(actionEvent -> {
             tab.getSelectionModel().select(tab_reset_password);
+//=======
+//            tf_name.setCursor(Cursor.cursor(do));
+//>>>>>>> Stashed changes
         });
         btn_reset_password.setOnAction(actionEvent -> {
             resetPassword();

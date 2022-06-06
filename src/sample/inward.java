@@ -120,13 +120,11 @@ public class inward implements Initializable {
         });
 
 
-
-
-        InventoryTableView.setRowFactory(checkoutTableView -> {
+        InventoryTableView.setRowFactory(InventoryTableView -> {
             TableRow<ProductAdd> row = new TableRow<>();
             row.setOnMouseClicked(mouseEvent -> {
                 if (mouseEvent.getClickCount() == 2){
-                    int index = checkoutTableView.getSelectionModel().getFocusedIndex();
+                    int index = InventoryTableView.getSelectionModel().getFocusedIndex();
                     ButtonType yes = new ButtonType("Yes");
                     ButtonType no = new ButtonType("No");
                     Alert a = new Alert(Alert.AlertType.NONE,"Do you want to remove this..?",yes,no);

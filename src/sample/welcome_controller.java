@@ -99,7 +99,7 @@ public class welcome_controller implements Initializable {
         });
 
         MenuOut.setOnAction(event -> {
-            NewWindow("tracker.fxml","Outward");
+            NewWindow("outward.fxml","Outward");
         });
 
 
