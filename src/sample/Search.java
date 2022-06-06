@@ -49,6 +49,9 @@ public class Search implements Initializable {
     @FXML
     private TableColumn<searchList, String> sale_Table;
 
+    @FXML
+    private TableColumn<searchList, String> NOTable;
+
     ObservableList<searchList> searchListObservableList = FXCollections.observableArrayList();
 
     @Override
@@ -60,13 +63,14 @@ public class Search implements Initializable {
         DBConnection connectNow = new DBConnection();
         Connection connectDB = connectNow.Connect();
 //        SQL Query to view
-        String InventoryViewQuery = "SELECT batch_no,exp,mpd,buying_price,selling_price,qty,c_no,barcode FROM purchase";
+        String InventoryViewQuery = "SELECT p_no,batch_no,exp,mpd,buying_price,selling_price,qty,c_no,barcode FROM purchase";
 
         try {
             Statement statement = connectDB.createStatement();
             ResultSet QueryOutPut = statement.executeQuery(InventoryViewQuery);
 
             while (QueryOutPut.next()) {
+                Integer queryPno = QueryOutPut.getInt("p_no");
                 String queryBatch_no = QueryOutPut.getString("batch_no");
                 java.sql.Date queryEXPDate = QueryOutPut.getDate("exp");
                 Date queryMDPDate = QueryOutPut.getDate("mpd");
@@ -77,9 +81,10 @@ public class Search implements Initializable {
                 String queryItemcode = QueryOutPut.getString("barcode");
 
 
-                searchListObservableList.add(new searchList(queryItemcode, queryEXPDate, queryMDPDate, queryCostPrice, querySalePrice,queryQuantity, queryBatch_no, queryCompanyNo));
+                searchListObservableList.add(new searchList(queryPno,queryItemcode, queryEXPDate, queryMDPDate, queryCostPrice, querySalePrice,queryQuantity, queryBatch_no, queryCompanyNo));
             }
 
+                NOTable.setCellValueFactory(new PropertyValueFactory<>("pno"));
                 itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
                 expDate_Table.setCellValueFactory(new PropertyValueFactory<>("EXP"));
                 mpdDate_Table.setCellValueFactory(new PropertyValueFactory<>("MPD"));
@@ -88,8 +93,6 @@ public class Search implements Initializable {
                 quantity_Table.setCellValueFactory(new PropertyValueFactory<>("quantity"));
                 batch_Table.setCellValueFactory(new PropertyValueFactory<>("batch_no"));
                 companyNO_Table.setCellValueFactory(new PropertyValueFactory<>("Com_No"));
-
-
 
 
 
@@ -112,7 +115,7 @@ public class Search implements Initializable {
                         return true; // that means we found a match in name
                     } else if (searchList.getCom_No().toString().indexOf(searchKeyWord) > -1) {
                         return true; // that means we found a match in price
-                    } else if (searchList.getCom_No().toString().indexOf(searchKeyWord) > -1) {
+                    } else if (searchList.getPno().toString().indexOf(searchKeyWord) > -1) {
                         return true;
                     }  else {
                         return false; //no match found
@@ -130,29 +133,7 @@ public class Search implements Initializable {
         } catch (SQLException e) {
             Logger.getLogger(inward.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
-        }
+        } }
 
-
-
-
-        }
-
-
-//        tbl.setRowFactory( searchListTableView -> {
-//            TableRow<searchList> row = new TableRow<>();
-//            row.setOnMouseClicked(mouseEvent -> {
-//                if(mouseEvent.getClickCount() == 2){
-//                    int index = searchListTableView.getSelectionModel().getFocusedIndex();
-//                    System.out.println(tbl.getItems().get(index).getD_code());
-//                    sales_controller s = new sales_controller();
-//                    //search_txt.setText(tbl.getItems().get(index).getD_code());
-//                    //s.SettingValues(tbl.getItems().get(index).getD_code(),tbl.getItems().get(index).getD_name(),tbl.getItems().get(index).getDes());
-//
-//                    Stage stage = (Stage) tbl.getScene().getWindow();
-//                    //stage.close();
-//                }
-//            });
-//            return row;
-//        });
     }
 

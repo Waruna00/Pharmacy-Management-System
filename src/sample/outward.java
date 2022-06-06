@@ -92,6 +92,8 @@ public class outward implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
+        PNoText.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
 
         addButton.setOnAction(actionEvent -> {
             AddItems();
@@ -152,7 +154,6 @@ public class outward implements Initializable {
         });
 
 
-
     }
 
 
@@ -173,6 +174,7 @@ public class outward implements Initializable {
         public void getValues(){
         DBConnection connectNow = new DBConnection();
         Connection connectDB = connectNow.Connect();
+
         try{
             PreparedStatement ps = null;
             String query = "SELECT p_no,batch_no,barcode,c_no,qty,p_time,p_date,exp,mpd FROM purchase WHERE p_no=?";
@@ -272,7 +274,11 @@ public class outward implements Initializable {
                 ps.setInt(1, PNO);
 
                 ps.executeUpdate();
+
             }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("SUCCESSFULLY UPDATED");
+            alert.show();
 
         } catch (Exception e) {
             e.printStackTrace();

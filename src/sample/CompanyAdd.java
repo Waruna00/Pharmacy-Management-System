@@ -1,12 +1,12 @@
 package sample;
 
 public class CompanyAdd {
-    Integer com_no;
+    String com_no;
     String name;
     String address;
     Integer phone;
 
-    public CompanyAdd(Integer com_no, String name, String address, Integer phone){
+    public CompanyAdd(String com_no, String name, String address, Integer phone){
         this.com_no= com_no;
         this.name = name;
         this.address = address;
@@ -15,11 +15,11 @@ public class CompanyAdd {
 
 
 
-    public Integer getCom_no() {
+    public String getCom_no() {
         return com_no;
     }
 
-    public void setCom_no(Integer com_no) {
+    public void setCom_no(String com_no) {
         this.com_no = com_no;
     }
 

@@ -3,6 +3,7 @@ package sample;
 import java.sql.Date;
 
 public class searchList {
+    Integer pno;
     String itemcode;
     Date EXP;
     Date MPD;
@@ -12,8 +13,11 @@ public class searchList {
     String batch_no;
     Integer Com_No;
 
-    public searchList(String itemcode, Date EXP, Date MPD, Integer cost_per_unit, Integer sale_per_unit, Integer quantity, String batch_no, Integer com_No) {
+
+
+    public searchList(Integer pno, String itemcode, Date EXP, Date MPD, Integer cost_per_unit, Integer sale_per_unit, Integer quantity, String batch_no, Integer com_No) {
         this.itemcode = itemcode;
+        this.pno = pno;
         this.EXP = EXP;
         this.MPD = MPD;
         this.cost_per_unit = cost_per_unit;
@@ -85,6 +89,14 @@ public class searchList {
 
     public void setCom_No(Integer com_No) {
         Com_No = com_No;
+    }
+
+    public void setPno(Integer pno) {
+        this.pno = pno;
+    }
+
+    public Integer getPno() {
+        return pno;
     }
 
 

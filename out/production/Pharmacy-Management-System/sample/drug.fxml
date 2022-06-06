@@ -14,7 +14,7 @@
                 <Label layoutX="188.0" layoutY="15.0" text="Item code" textFill="#fcfafa" />
               <TextField fx:id="searchText" layoutX="97.0" layoutY="133.0" prefHeight="26.0" prefWidth="273.0" />
               <Label layoutX="29.0" layoutY="137.0" prefHeight="18.0" prefWidth="38.0" text="Search" textFill="#fcfafa" />
-              <Label fx:id="successLabelC" layoutX="551.0" layoutY="128.0" prefHeight="18.0" prefWidth="150.0" text="success" textFill="#f4f3f3" />
+              <Label fx:id="successLabelC" layoutX="548.0" layoutY="137.0" prefHeight="18.0" prefWidth="150.0" textFill="#f4f3f3" />
                 <Label layoutX="37.0" layoutY="15.0" text="Name" textFill="#fcfafa" />
                 <TextField fx:id="nameText" layoutX="29.0" layoutY="33.0" />
                 <TextField fx:id="itemcodeText" layoutX="188.0" layoutY="33.0" prefHeight="26.0" prefWidth="135.0" />

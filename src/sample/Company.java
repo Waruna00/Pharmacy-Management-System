@@ -8,6 +8,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -83,7 +84,7 @@ public class Company implements Initializable {
 
             while (QueryOutPut.next()) {
 
-                Integer queryCompanyNo = QueryOutPut.getInt("c_no");
+                String queryCompanyNo = QueryOutPut.getString("c_no");
                 String queryName = QueryOutPut.getString("c_name");
                 String queryAddress = QueryOutPut.getString("address");
                 Integer queryPhone = QueryOutPut.getInt("phone");
@@ -148,7 +149,7 @@ public class Company implements Initializable {
         String name = nameText.getText();
         String address = addressText.getText();
         Integer phone = Integer.parseInt(phoneNoText.getText());
-        Integer companyNo = Integer.parseInt(companyNoText.getText());
+        String companyNo = companyNoText.getText();
 
 
 
@@ -156,7 +157,7 @@ public class Company implements Initializable {
         PreparedStatement ps = null;
         String query = "INSERT INTO company (`c_no`, `c_name`, `address`, `phone`) VALUES (?,?,?,?);";
         ps = connectDB.prepareStatement(query);
-        ps.setInt(1, companyNo);
+        ps.setString(1, companyNo);
         ps.setString(2, name);
         ps.setString(3, address);
         ps.setInt(4, phone);
@@ -164,13 +165,18 @@ public class Company implements Initializable {
 
         try {
             ps.executeUpdate();
-//           successLabelC.setText("Successfully added");
             clearCompanyFields();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Successfully added");
+            alert.show();
 
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("NOT ADDED. TRY AGAIN");
+            alert.show();
 
         }
 
@@ -184,28 +190,33 @@ public class Company implements Initializable {
         String name = nameText.getText();
         String address = addressText.getText();
         Integer phone = Integer.parseInt(phoneNoText.getText());
-        Integer companyNo = Integer.parseInt(companyNoText.getText());
+        String companyNo = companyNoText.getText();
 
 
         PreparedStatement ps = null;
         String query = "UPDATE company SET `c_no` = ?, `c_name` = ?, `address` = ?, `phone` = ? WHERE (`c_no` = ?);";
         ps = connectDB.prepareStatement(query);
-        ps.setInt(1, companyNo);
+        ps.setString(1, companyNo);
         ps.setString(2, name);
         ps.setString(3, address);
         ps.setInt(4, phone);
-        ps.setInt(5, companyNo);
+        ps.setString(5, companyNo);
 
 
         try {
             ps.executeUpdate();
-//            successLabelC.setText("Successfully edited");
             clearCompanyFields();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Successfully edited");
+            alert.show();
 
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("NOT Edited.TRY AGAIN");
+            alert.show();
 
         }
 
@@ -215,23 +226,28 @@ public class Company implements Initializable {
         DBConnection connectNow = new DBConnection();
         Connection connectDB = connectNow.Connect();
 
-        Integer companyNo = Integer.parseInt(companyNoText.getText());
+        String companyNo = companyNoText.getText();
 
 
         PreparedStatement ps = null;
         String query = "DELETE FROM company WHERE (`c_no` = ?);";
         ps = connectDB.prepareStatement(query);
-        ps.setInt(1, companyNo);
+        ps.setString(1, companyNo);
 
         try {
 
             ps.executeUpdate();
-//          successLabelC.setText("Successfully Deleted");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Successfully Deleted");
+            alert.show();
             clearCompanyFields();
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("NOT DELETED.TRY AGAIN");
+            alert.show();
         }
     }
 

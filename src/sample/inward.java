@@ -101,6 +101,14 @@ public class inward implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resource) {
 
+        quantityText.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
+        salePriceText.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
+        costPriceText.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
+
+
         addButton.setOnAction(actionEvent -> {
             AddItems();
             clearFields();
@@ -199,7 +207,7 @@ public class inward implements Initializable {
                 String queryDescription = descriptionText.getText();
 
 
-                productAddObservableList.add(new ProductAdd(queryItemcode,queryItemname,queryDescription,queryEXPDate,queryMDPDate,Integer.parseInt(queryCostPrice),Integer.parseInt(querySalePrice),Integer.parseInt(queryQuantity),queryBatch_no,Integer.parseInt(queryCompanyNo)));
+                productAddObservableList.add(new ProductAdd(queryItemcode,queryItemname,queryDescription,queryEXPDate,queryMDPDate,Integer.parseInt(queryCostPrice),Integer.parseInt(querySalePrice),Integer.parseInt(queryQuantity),queryBatch_no,queryCompanyNo));
 
 
             itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
@@ -218,8 +226,12 @@ public class inward implements Initializable {
 
 
         } catch (Exception e) {
-            Logger.getLogger(inward.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(inward.class.getName()).log(Level.SEVERE, "enter correct data types", e);
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("enter correct data type");
+            alert.show();
+
         }
 
     }
@@ -267,10 +279,16 @@ public class inward implements Initializable {
             itemNameText.setText(d_name);
             descriptionText.setText(d_des);
 
+
+
         }
 
         catch (Exception e) {
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Invalid Itemcode");
+            alert.show();
+
         }
 
 
@@ -290,7 +308,7 @@ public class inward implements Initializable {
 
                 String batchNO = i.getBatch_no();
                 String barcode = i.getItemcode();
-                Integer Cno = i.getCom_No();
+                String Cno = i.getCom_No();
                 Integer empno = 1;
                 Integer qty = i.getQuantity();
                 LocalTime time = LocalTime.now();
@@ -319,6 +337,7 @@ public class inward implements Initializable {
 
         } catch (Exception e) {
             e.printStackTrace();
+
         }
 
 

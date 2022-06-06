@@ -7,10 +7,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -53,7 +50,7 @@ public class Drug implements Initializable {
 
     @FXML
     private TableColumn<DrugAdd,String> barcodeTable;
-    
+
     @FXML
     private TableColumn<DrugAdd,String> typeTable;
 
@@ -68,7 +65,10 @@ public class Drug implements Initializable {
     ObservableList<DrugAdd> drugAddObservableList = FXCollections.observableArrayList();
 
     public void initialize(URL url, ResourceBundle resource) {
+
         SearchTable();
+        quantityText.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
     }
 
 
@@ -181,13 +181,18 @@ public class Drug implements Initializable {
 
         try {
             ps1.executeUpdate();
-            successLabelC.setText("Successfully added");
             clearCompanyFields();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("SUCCESSFULLY ADDED");
+            alert.show();
 
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("NOT DELETED.TRY AGAIN");
+            alert.show();
 
         }
 
@@ -219,13 +224,18 @@ public class Drug implements Initializable {
 
         try {
             ps.executeUpdate();
-            successLabelC.setText("Successfully edited");
             clearCompanyFields();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("SUCCESSFULLY EDITED");
+            alert.show();
 
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("NOT EDITED.TRY AGAIN");
+            alert.show();
 
         }
 
@@ -245,12 +255,17 @@ public class Drug implements Initializable {
         try {
 
             ps.executeUpdate();
-          successLabelC.setText("Successfully Deleted");
             clearCompanyFields();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("SUCCESSFULLY DELETED");
+            alert.show();
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("NOT DELETED.TRY AGAIN");
+            alert.show();
         }
     }
 
