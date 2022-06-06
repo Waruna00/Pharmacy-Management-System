@@ -150,7 +150,7 @@ public class sales_controller implements Initializable {
         btn_pro.setOnAction(event -> {
             ButtonType yes = new ButtonType("Yes");
             ButtonType no = new ButtonType("No");
-            Alert a = new Alert(Alert.AlertType.NONE,"Are sure..?",yes,no);
+            Alert a = new Alert(Alert.AlertType.NONE,"Are you sure..?",yes,no);
             a.setAlertType(Alert.AlertType.CONFIRMATION);
             a.setResizable(false);
             a.showAndWait().ifPresent(response -> {

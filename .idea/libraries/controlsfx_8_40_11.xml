@@ -4,6 +4,16 @@
       <root url="jar://$PROJECT_DIR$/lib/controlsfx-11.1.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2" />
+      <root url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2/javafx.base" />
+      <root url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2/javafx.controls" />
+      <root url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2/javafx.fxml" />
+      <root url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2/javafx.graphics" />
+      <root url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2/javafx.media" />
+      <root url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2/javafx.swing" />
+      <root url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2/javafx.web" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../Application setups/javafx-sdk-17.0.2" recursive="false" type="SOURCES" />
   </library>
 </component>

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,125 +15,227 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Settings">
    <children>
-      <AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-border-radius: 0.5;">
-         <children>
-            <ImageView fitHeight="109.0" fitWidth="105.0" layoutX="298.0" layoutY="33.0">
-               <image>
-                  <Image url="@../img/user.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="93.0" layoutY="170.0" text="Full Name">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="93.0" layoutY="211.0" text="Posistion">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="94.0" layoutY="252.0" text="Mobile Number">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="93.0" layoutY="294.0" text="Address">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="233.0" layoutY="170.0" text=":">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="233.0" layoutY="333.0" text=":">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="233.0" layoutY="211.0" text=":">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="233.0" layoutY="252.0" text=":">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="233.0" layoutY="294.0" text=":">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="93.0" layoutY="333.0" text="Password">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="tf_name" editable="false" layoutX="300.0" layoutY="168.0" prefHeight="26.0" prefWidth="306.0" text="Waruna Sri Wickramasinghe">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="300.0" layoutY="209.0" prefHeight="26.0" prefWidth="306.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <PasswordField layoutX="300.0" layoutY="330.0" prefHeight="26.0" prefWidth="182.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </PasswordField>
-            <TextField layoutX="300.0" layoutY="249.0" prefHeight="26.0" prefWidth="306.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <TextField layoutX="300.0" layoutY="291.0" prefHeight="26.0" prefWidth="306.0">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <Button layoutX="555.0" layoutY="330.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="24.0" style="-fx-border-radius: 100px;" text="Edit">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/updated.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_edit" layoutX="615.0" layoutY="167.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="24.0" style="-fx-border-radius: 100px;" text="Edit">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/updated.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-      <Button layoutX="524.0" layoutY="388.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="91.0" style="-fx-border-radius: 100px;" text="Update">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/updated.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
+      <TabPane fx:id="tab" layoutY="-37.0" prefHeight="487.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tab_info" text="Untitled Tab 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="373.0">
+                     <children>
+                        <AnchorPane prefHeight="450.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="76.0" layoutY="184.0" text="Full Name">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="76.0" layoutY="140.0" text="Employee_No">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="76.0" layoutY="228.0" text="Mobile Number">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="75.0" layoutY="270.0" text="Address">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="216.0" layoutY="184.0" text=":">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="216.0" layoutY="140.0" text=":">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="215.0" layoutY="228.0" text=":">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="215.0" layoutY="270.0" text=":">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tf_name" editable="false" layoutX="283.0" layoutY="182.0" prefHeight="26.0" prefWidth="306.0" text="Waruna Sri Wickramasinghe">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="tf_mobile" editable="false" layoutX="282.0" layoutY="225.0" prefHeight="26.0" prefWidth="306.0" text="+94755258085">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="tf_address" editable="false" layoutX="282.0" layoutY="267.0" prefHeight="26.0" prefWidth="306.0" text="No: 5/10, Hendrik perice Rd, Pallimulla">
+                                 <font>
+                                    <Font name="System Italic" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Separator layoutX="39.0" layoutY="348.0" prefHeight="0.0" prefWidth="621.0" />
+                              <Label fx:id="lbl_code" layoutX="283.0" layoutY="138.0" prefHeight="27.0" prefWidth="306.0" style="-fx-background-color: white; -fx-border-color: c4c4c4; -fx-border-radius: 2px;" text="Label" />
+                              <Button fx:id="btn_change_password" layoutX="286.0" layoutY="376.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="150.0" style="-fx-border-radius: 100px;" text="Change Password">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btn_edit_name" alignment="CENTER" contentDisplay="CENTER" layoutX="599.0" layoutY="182.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="13.0">
+                                 <graphic>
+                                    <ImageView fitHeight="12.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/edit2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_edit_mobile" alignment="CENTER" contentDisplay="CENTER" layoutX="598.0" layoutY="225.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="13.0">
+                                 <graphic>
+                                    <ImageView fitHeight="12.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/edit2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_edit_address" alignment="CENTER" contentDisplay="CENTER" layoutX="598.0" layoutY="267.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="13.0">
+                                 <graphic>
+                                    <ImageView fitHeight="12.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/edit2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_update" layoutX="534.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="91.0" style="-fx-border-radius: 100px;" text="Update" visible="false">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/updated.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="109.0" fitWidth="105.0" layoutX="309.0" layoutY="21.0">
+                                 <image>
+                                    <Image url="@../img/user.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tab_reset_password" text="Untitled Tab 1">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <PasswordField fx:id="tf_old_p" layoutX="371.0" layoutY="129.0" prefHeight="26.0" prefWidth="214.0" />
+                        <TextField fx:id="tf_new_p" layoutX="371.0" layoutY="179.0" prefHeight="26.0" prefWidth="214.0" />
+                        <TextField fx:id="tf_com_p" layoutX="370.0" layoutY="228.0" prefWidth="215.0" />
+                        <Label layoutX="114.0" layoutY="132.0" text="Old Password">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="113.0" layoutY="182.0" text="New Password">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="113.0" layoutY="231.0" text="Confirm New Password">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="313.0" layoutY="132.0" prefHeight="20.0" prefWidth="0.0" text=":">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="312.0" layoutY="182.0" text=":">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="312.0" layoutY="231.0" text=":">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_one" alignment="CENTER_RIGHT" layoutX="499.0" layoutY="155.0" prefHeight="15.0" prefWidth="85.0" text="Incorect Password" textFill="#f40404" visible="false">
+                           <font>
+                              <Font name="System Italic" size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_two" alignment="CENTER_RIGHT" layoutX="479.0" layoutY="254.0" prefHeight="15.0" prefWidth="106.0" text="Password Missmatch" textFill="#f40404" visible="false">
+                           <font>
+                              <Font name="System Italic" size="10.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_reset_password" layoutX="457.0" layoutY="301.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="130.0" style="-fx-border-radius: 100px;" text="Reset Password">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/updated.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn_reset_password1" layoutX="370.0" layoutY="301.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="77.0" style="-fx-border-radius: 100px;" text="Back">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/left-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

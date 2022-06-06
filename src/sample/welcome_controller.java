@@ -4,12 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
@@ -45,17 +50,31 @@ public class welcome_controller implements Initializable {
     @FXML
     private MenuItem MenuAbout;
 
+    FXMLLoader loader=null;
+
     public void NewWindow(String fxmlFile,String title){
         Stage newWindow = new Stage();
         newWindow.setTitle(title);
         newWindow.setResizable(false);
 
-        //Create view from FXML
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
 
+        //Create view from FXML
+        loader = new FXMLLoader(getClass().getResource(fxmlFile));
+
+
+        try{
+            //Parent root = loader.load();
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
         //Set view in window
         try {
             newWindow.setScene(new Scene(loader.load()));
+
+
+            //
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,7 +124,43 @@ public class welcome_controller implements Initializable {
         });
 
         MenuSettings.setOnAction(event -> {
+
+            DBUtils connect = new DBUtils();
             NewWindow("settings.fxml","Settings");
+            Connection connection=null;
+            String name=null;
+            String mobile=null;
+            String address=null;
+            String pw=null;
+            try {
+                connection = connect.connection();
+                PreparedStatement statement=connection.prepareStatement("SELECT u_name,phone,address,emp_password FROM em_user WHERE emp_no=?;");
+                statement.setString(1,username);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()){
+                    name=resultSet.getNString("u_name");
+                    mobile=resultSet.getNString("phone");
+                    address=resultSet.getNString("address");
+                    pw=resultSet.getNString("emp_password");
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }finally {
+                if (connection!=null){
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            Settings s = loader.getController();
+            s.setUserInformation(username);
+            s.setName(name);
+            s.setAddress(address);
+            s.setMobile(mobile);
+            s.setPw(pw);
+
         });
 
         MenuQA.setOnAction(event -> {
