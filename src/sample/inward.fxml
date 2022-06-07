@@ -28,28 +28,28 @@
         </TableView>
         <AnchorPane layoutY="-1.0" prefHeight="197.0" prefWidth="1280.0" style="-fx-background-color: #28252e;">
             <children>
-                <TextField fx:id="itemcodeText" layoutX="27.0" layoutY="25.0" promptText="Item code" />
-                <Label layoutX="27.0" layoutY="8.0" text="Item code" textFill="#fcf9f9" />
+                <TextField fx:id="itemcodeText" layoutX="27.0" layoutY="25.0" promptText="Item code" AnchorPane.topAnchor="30.0" />
+                <Label layoutX="27.0" layoutY="8.0" text="Item code" textFill="#fcf9f9" AnchorPane.topAnchor="8.0" />
                 <Button fx:id="addButton" layoutX="1060.0" layoutY="104.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="137.0" text="Add" />
-                <TextField fx:id="batchNoText" layoutX="27.0" layoutY="85.0" promptText="Batch no" />
-                <Label layoutX="290.0" layoutY="68.0" text="Company NO" textFill="#faf6f6" />
-                <TextField fx:id="companyNoText" layoutX="290.0" layoutY="89.0" promptText="Name" />
-                <Label layoutX="1052.0" layoutY="7.0" prefHeight="18.0" prefWidth="82.0" text="Cost per unit" textFill="#f4f2f2" />
-                <TextField fx:id="costPriceText" layoutX="1052.0" layoutY="24.0" promptText="Price" />
-            <Label layoutX="27.0" layoutY="68.0" text="Batch no" textFill="#fcf9f9" />
-            <Label layoutX="290.0" layoutY="8.0" prefHeight="18.0" prefWidth="72.0" text="Description" textFill="WHITE" />
-                <TextField fx:id="descriptionText" layoutX="290.0" layoutY="26.0" prefHeight="18.0" prefWidth="150.0" promptText="description" />
-            <Button fx:id="fillButton" layoutX="191.0" layoutY="25.0" mnemonicParsing="false" text="fill" />
-                <Label layoutX="669.0" layoutY="67.0" text="EXP" textFill="WHITE" />
-                <Label layoutX="666.0" layoutY="8.0" text="MDP" textFill="WHITE" />
-                <Label layoutX="874.0" layoutY="10.0" text="sale price per unit" textFill="#f4f2f2" />
-                <TextField fx:id="salePriceText" layoutX="872.0" layoutY="26.0" promptText="Price" />
-            <DatePicker fx:id="mdpPicker" layoutX="666.0" layoutY="25.0" />
-            <DatePicker fx:id="expPicker" layoutX="666.0" layoutY="89.0" />
-            <Label layoutX="480.0" layoutY="10.0" prefHeight="18.0" prefWidth="72.0" text="Item name" textFill="WHITE" />
-            <TextField fx:id="itemNameText" layoutX="480.0" layoutY="28.0" prefHeight="18.0" prefWidth="150.0" promptText="item name" />
-                <Label layoutX="480.0" layoutY="67.0" text="Quantity" textFill="#f4f1f1" />
-                <TextField fx:id="quantityText" layoutX="480.0" layoutY="89.0" promptText="Quantity" />
+                <TextField fx:id="batchNoText" layoutX="27.0" layoutY="85.0" promptText="Batch no" AnchorPane.topAnchor="100.0" />
+                <Label layoutX="290.0" layoutY="68.0" text="Company NO" textFill="#faf6f6" AnchorPane.topAnchor="73.0" />
+                <TextField fx:id="companyNoText" layoutX="290.0" layoutY="89.0" promptText="Name" AnchorPane.topAnchor="100.0" />
+                <Label layoutX="1052.0" layoutY="7.0" prefHeight="18.0" prefWidth="82.0" text="Cost per unit" textFill="#f4f2f2" AnchorPane.topAnchor="8.0" />
+                <TextField fx:id="costPriceText" layoutX="1052.0" layoutY="24.0" promptText="Price" AnchorPane.topAnchor="30.0" />
+            <Label layoutX="27.0" layoutY="68.0" text="Batch no" textFill="#fcf9f9" AnchorPane.topAnchor="74.0" />
+            <Label layoutX="290.0" layoutY="8.0" prefHeight="18.0" prefWidth="72.0" text="Description" textFill="WHITE" AnchorPane.topAnchor="8.0" />
+                <TextField fx:id="descriptionText" layoutX="290.0" layoutY="26.0" prefHeight="18.0" prefWidth="150.0" promptText="description" AnchorPane.topAnchor="30.0" />
+            <Button fx:id="fillButton" layoutX="191.0" layoutY="25.0" mnemonicParsing="false" text="fill" AnchorPane.topAnchor="30.0" />
+                <Label layoutX="669.0" layoutY="67.0" text="EXP" textFill="WHITE" AnchorPane.topAnchor="73.0" />
+                <Label layoutX="666.0" layoutY="8.0" text="MDP" textFill="WHITE" AnchorPane.topAnchor="8.0" />
+                <Label layoutX="874.0" layoutY="10.0" text="sale price per unit" textFill="#f4f2f2" AnchorPane.topAnchor="8.0" />
+                <TextField fx:id="salePriceText" layoutX="872.0" layoutY="26.0" promptText="Price" AnchorPane.topAnchor="30.0" />
+            <DatePicker fx:id="mdpPicker" layoutX="666.0" layoutY="25.0" AnchorPane.topAnchor="30.0" />
+            <DatePicker fx:id="expPicker" layoutX="666.0" layoutY="89.0" AnchorPane.topAnchor="100.0" />
+            <Label layoutX="480.0" layoutY="10.0" prefHeight="18.0" prefWidth="72.0" text="Item name" textFill="WHITE" AnchorPane.topAnchor="8.0" />
+            <TextField fx:id="itemNameText" layoutX="480.0" layoutY="28.0" prefHeight="18.0" prefWidth="150.0" promptText="item name" AnchorPane.topAnchor="30.0" />
+                <Label layoutX="480.0" layoutY="67.0" text="Quantity" textFill="#f4f1f1" AnchorPane.topAnchor="73.0" />
+                <TextField fx:id="quantityText" layoutX="480.0" layoutY="89.0" promptText="Quantity" AnchorPane.topAnchor="100.0" />
             </children>
         </AnchorPane>
         <Label fx:id="successLabel" layoutX="262.0" layoutY="314.0" prefHeight="25.0" prefWidth="280.0" textFill="#262525">

@@ -236,10 +236,6 @@ public class inward implements Initializable {
 
     }
 
-
-
-
-
     public ArrayList<String> suggesting(String x){
         ArrayList<String> d_codeArray = new ArrayList<>();
         Connection connection;
@@ -291,9 +287,7 @@ public class inward implements Initializable {
 
         }
 
-
     }
-
 
     public void UpdateBD(){
 
