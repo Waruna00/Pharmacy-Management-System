@@ -5,13 +5,14 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.welcome_controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.welcome_controller">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="864.0" prefWidth="1536.0" VBox.vgrow="ALWAYS">
          <children>
@@ -20,24 +21,37 @@
                   <Image url="@../img/fgsfg.png" />
                </image>
             </ImageView>
-            <Label fx:id="label_welcome" layoutX="661.0" layoutY="104.0" text="Welcome MGR">
+            <Label fx:id="label_welcome" layoutX="1412.0" layoutY="44.0" text="MGR 01">
                <font>
-                  <Font name="Calibri" size="30.0" />
+                  <Font name="Calibri Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="1420.0" layoutY="774.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+            <Button layoutX="1378.0" layoutY="753.0" mnemonicParsing="false" onAction="#logout" text="Logout">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
             <MenuBar prefHeight="26.0" prefWidth="1536.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Sales">
                   <items>
                     <MenuItem fx:id="MenuRSale" mnemonicParsing="false" text="Retail Sales " />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="MenuWSale" mnemonicParsing="false" text="Whole Sales" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Inventory">
                   <items>
-                    <MenuItem fx:id="MenuIn" mnemonicParsing="false" text="Inward" />
-                        <MenuItem fx:id="MenuOut" mnemonicParsing="false" text="Outward" />
+                    <MenuItem fx:id="MenuIn" mnemonicParsing="false" text="Stock Inward" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="MenuOut" mnemonicParsing="false" text="Stock Outward" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="MenuTracker" mnemonicParsing="false" text="Tracker" />
                   </items>
                 </Menu>
@@ -49,24 +63,40 @@
                 <Menu mnemonicParsing="false" text="Reports">
                   <items>
                     <MenuItem fx:id="MenuRepSale" mnemonicParsing="false" text="Sales" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="MenuRepInventory" mnemonicParsing="false" text="Inventory" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="MenuRepFinance" mnemonicParsing="false" text="Finance" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" text="Settings">
                     <items>
                         <MenuItem fx:id="MenuSettings" mnemonicParsing="false" text="Change User Info" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="MenuReg" mnemonicParsing="false" text="User Registration" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Help">
                     <items>
                       <MenuItem fx:id="MenuQA" mnemonicParsing="false" text="Q&amp;A" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="MenuContact" mnemonicParsing="false" text="Contact Us" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem fx:id="MenuAbout" mnemonicParsing="false" text="About Us" />
                     </items>
                   </Menu>
               </menus>
             </MenuBar>
+            <ImageView fitHeight="55.0" fitWidth="48.0" layoutX="1354.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-radius: 500;">
+               <image>
+                  <Image url="@../img/pharmacist.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbl_time" layoutX="1411.0" layoutY="66.0" text="Login time">
+               <font>
+                  <Font name="Calibri Bold Italic" size="14.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </children>
 </VBox>

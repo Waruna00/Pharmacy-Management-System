@@ -15,7 +15,7 @@ public class DBUtils {
     public Connection connection() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "mamatharindu");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "Whoiam@123");
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(String.valueOf(e));
@@ -55,78 +55,17 @@ public class DBUtils {
         stage.centerOnScreen();
         stage.show();
     }
-
-    public static void signUpUser(ActionEvent event, String username,String password){
-        Connection connection;
-        PreparedStatement psInsert = null;
-        PreparedStatement psCheckUserExists = null;
-        ResultSet resultSet = null;
-
-        try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "mamatharindu");
-            psCheckUserExists = connection.prepareStatement("SELECT*FROM em_user WHERE = ? ?");
-            psCheckUserExists.setString(1,username);
-            resultSet = psCheckUserExists.executeQuery();
-
-            if (resultSet.isBeforeFirst()){
-                System.out.println("User already exists");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You can not use this user name");
-                alert.show();
-            }
-            else {
-                psInsert = connection.prepareStatement("INSERT INTO emp_user(emp_no,emp_password) VALUES(?, ?)");
-                psInsert.setString(1,username);
-                psInsert.setString(2,password);
-                psInsert.executeUpdate();
-
-                changeScene(event, "logged-in.fxml","Welcome",username,1280,800);
-            }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-        finally {
-            if (resultSet != null){
-                try{
-                    resultSet.close();
-                }
-                catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            if (psCheckUserExists != null){
-                try{
-                    psCheckUserExists.close();
-                }
-                catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-            if (psInsert != null){
-                try{
-                    psInsert.close();
-                }
-                catch (SQLException e){
-                    e.printStackTrace();
-                }
-            }
-
-        }
-    }
-
     public static void logInUser(ActionEvent event, String username, String password){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "mamatharindu");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "Whoiam@123");
             preparedStatement = connection.prepareStatement("SELECT emp_password FROM em_user WHERE emp_no = ?");
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
 
             if(!resultSet.isBeforeFirst()){
-                System.out.println("User not found in the database");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Provided credentials are incorrect");
                 alert.show();
@@ -141,7 +80,6 @@ public class DBUtils {
                         changeScene(event,"welcome.fxml","Welcome",username,1280,800);
                     }
                     else {
-                        System.out.println("Password did not match");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Provided credentials are incorrect");
                         alert.show();

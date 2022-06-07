@@ -219,7 +219,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_reset_password1" layoutX="370.0" layoutY="301.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="77.0" style="-fx-border-radius: 100px;" text="Back">
+                        <Button fx:id="btn_back" layoutX="370.0" layoutY="301.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="77.0" style="-fx-border-radius: 100px;" text="Back">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

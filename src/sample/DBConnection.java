@@ -9,8 +9,7 @@ public class DBConnection {
     public Connection Connect()
     {
         try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-            databaseLink = DriverManager.getConnection("jdbc:mysql://localhost/pmsdb","root","mamatharindu");
+            databaseLink = DriverManager.getConnection("jdbc:mysql://localhost/pmsdb","root","Whoiam@123");
             System.out.println("Success");
         }
         catch (SQLException ex)

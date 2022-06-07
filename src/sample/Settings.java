@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 public class Settings implements Initializable {
     @FXML
-    private Button btn_edit_name,btn_edit_address,btn_edit_mobile,btn_change_password,btn_update,btn_reset_password;
+    private Button btn_edit_name,btn_edit_address,btn_edit_mobile,btn_change_password,btn_update,btn_reset_password,btn_back;
     @FXML
     private Label lbl_code,lbl_one,lbl_two;
     @FXML
@@ -40,7 +40,6 @@ public class Settings implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_edit_name.setOnAction(actionEvent -> {
             tf_name.setEditable(true);
-//<<<<<<< Updated upstream
             tf_name.requestFocus();
             btn_update.setVisible(true);
         });
@@ -70,14 +69,22 @@ public class Settings implements Initializable {
 
         btn_change_password.setOnAction(actionEvent -> {
             tab.getSelectionModel().select(tab_reset_password);
-//=======
-//            tf_name.setCursor(Cursor.cursor(do));
-//>>>>>>> Stashed changes
         });
         btn_reset_password.setOnAction(actionEvent -> {
             resetPassword();
+            clear();
+        });
+        btn_back.setOnAction(actionEvent -> {
+            tab.getSelectionModel().select(tab_info);
+            clear();
         });
 
+    }
+
+    void clear(){
+        tf_new_p.clear();
+        tf_old_p.clear();
+        tf_com_p.clear();
     }
 
     public void resetPassword() {
@@ -119,6 +126,7 @@ public class Settings implements Initializable {
                         connection.close();
                         alert.setAlertType(Alert.AlertType.INFORMATION);
                         alert.setContentText("Successfully Updated..!");
+                        pw=tf_new_p.getText();
                         tab.getSelectionModel().select(tab_info);
                         alert.show();
                     }catch (SQLException e){

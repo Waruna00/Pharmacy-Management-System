@@ -90,9 +90,6 @@ public class inward implements Initializable {
     private DatePicker mdpPicker;
     @FXML
     private DatePicker expPicker;
-
-
-    //    button
     @FXML
     private Button btn_add,btn_com;
 
@@ -100,14 +97,12 @@ public class inward implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
-
         quantityText.setTextFormatter(new TextFormatter<>(change ->
                 (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
         salePriceText.setTextFormatter(new TextFormatter<>(change ->
                 (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
         costPriceText.setTextFormatter(new TextFormatter<>(change ->
                 (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
-
 
         addButton.setOnAction(actionEvent -> {
             AddItems();
@@ -126,7 +121,6 @@ public class inward implements Initializable {
             welcome_controller window = new welcome_controller();
             window.NewWindow("company.fxml","COMPANY" );
         });
-
 
         InventoryTableView.setRowFactory(InventoryTableView -> {
             TableRow<ProductAdd> row = new TableRow<>();
@@ -176,7 +170,7 @@ public class inward implements Initializable {
             productAddObservableList.clear();
         });
 
-//        TextFields.bindAutoCompletion(itemcodeText,suggesting("d_code"));
+        TextFields.bindAutoCompletion(itemcodeText,suggesting("d_code"));
 
     }
 
@@ -191,7 +185,6 @@ public class inward implements Initializable {
         descriptionText.clear();
 
     }
-
     public void AddItems() {
 
         try {
@@ -206,9 +199,7 @@ public class inward implements Initializable {
                 String queryItemname = itemNameText.getText();
                 String queryDescription = descriptionText.getText();
 
-
                 productAddObservableList.add(new ProductAdd(queryItemcode,queryItemname,queryDescription,queryEXPDate,queryMDPDate,Integer.parseInt(queryCostPrice),Integer.parseInt(querySalePrice),Integer.parseInt(queryQuantity),queryBatch_no,queryCompanyNo));
-
 
             itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
             itemname_Table.setCellValueFactory(new PropertyValueFactory<>("itemname"));
@@ -222,9 +213,6 @@ public class inward implements Initializable {
             companyNO_Table.setCellValueFactory(new PropertyValueFactory<>("Com_No"));
 
             InventoryTableView.setItems(productAddObservableList);
-
-
-
         } catch (Exception e) {
             Logger.getLogger(inward.class.getName()).log(Level.SEVERE, "enter correct data types", e);
             e.printStackTrace();
@@ -235,7 +223,6 @@ public class inward implements Initializable {
         }
 
     }
-
     public ArrayList<String> suggesting(String x){
         ArrayList<String> d_codeArray = new ArrayList<>();
         Connection connection;
@@ -274,17 +261,12 @@ public class inward implements Initializable {
             }
             itemNameText.setText(d_name);
             descriptionText.setText(d_des);
-
-
-
         }
-
         catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Invalid Itemcode");
             alert.show();
-
         }
 
     }
@@ -295,7 +277,7 @@ public class inward implements Initializable {
             Connection connectDB = connectNow.Connect();
         try {
             PreparedStatement ps = null;
-            String query = "INSERT INTO `pmsdb`.`purchase` (`batch_no`, `barcode`, `c_no`, `emp_no`, `qty`, `p_time`, `p_date`, `exp`, `mpd`, `selling_price`, `buying_price`, `availability`) VALUES (?,?, ?,?, ?,?,?, ?,?,?,?, 'y')";
+            String query = "INSERT INTO `pmsdb`.`purchase` (`batch_no`, `barcode`, `c_no`, `emp_no`, `qty`, `p_time`, `p_date`, `exp`, `mfd`, `sellig_price`, `buying_price`, `availability`) VALUES (?,?, ?,?, ?,?,?, ?,?,?,?, 'y')";
             ps = connectDB.prepareStatement(query);
 
             for (ProductAdd i : productAddObservableList) {
@@ -303,7 +285,7 @@ public class inward implements Initializable {
                 String batchNO = i.getBatch_no();
                 String barcode = i.getItemcode();
                 String Cno = i.getCom_No();
-                Integer empno = 1;
+                String empno = "MGR01";
                 Integer qty = i.getQuantity();
                 LocalTime time = LocalTime.now();
                 LocalDate date = LocalDate.now();
@@ -316,7 +298,7 @@ public class inward implements Initializable {
                 ps.setString(1, String.valueOf(batchNO));
                 ps.setString(2, String.valueOf(barcode));
                 ps.setString(3, String.valueOf(Cno));
-                ps.setInt(4, empno);
+                ps.setString(4, empno);
                 ps.setInt(5, qty);
                 ps.setTime(6, Time.valueOf(time));
                 ps.setDate(7, java.sql.Date.valueOf(date));
@@ -328,15 +310,9 @@ public class inward implements Initializable {
 
                 ps.executeUpdate();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
-
         }
-
-
     }
-
-
 }
 

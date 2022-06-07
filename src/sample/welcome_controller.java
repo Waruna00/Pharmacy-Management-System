@@ -8,12 +8,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
@@ -41,13 +44,13 @@ public class welcome_controller implements Initializable {
     @FXML
     private MenuItem MenuSettings;
     @FXML
-    private MenuItem MenuLogout;
-    @FXML
     private MenuItem MenuQA;
     @FXML
     private MenuItem MenuContact;
     @FXML
     private MenuItem MenuAbout;
+    @FXML
+    private MenuItem MenuReg;
 
     FXMLLoader loader=null;
 
@@ -56,10 +59,8 @@ public class welcome_controller implements Initializable {
         newWindow.setTitle(title);
         newWindow.setResizable(false);
 
-
         //Create view from FXML
         loader = new FXMLLoader(getClass().getResource(fxmlFile));
-
 
         try{
             //Parent root = loader.load();
@@ -71,9 +72,6 @@ public class welcome_controller implements Initializable {
         try {
             newWindow.setScene(new Scene(loader.load()));
 
-
-            //
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,12 +82,10 @@ public class welcome_controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
         MenuRSale.setOnAction(event -> {
-            //System.out.println("Menu Item 1 Selected");
             NewWindow("sales.fxml","Retail Sales");
         });
 
         MenuWSale.setOnAction(event -> {
-            //System.out.println("Menu Item 1 Selected");
             NewWindow("sales.fxml","Retail Sales");
         });
 
@@ -120,6 +116,9 @@ public class welcome_controller implements Initializable {
 
         MenuRepFinance.setOnAction(event -> {
             //NewWindow("");
+        });
+        MenuReg.setOnAction(event -> {
+            NewWindow("sign-up.fxml","Registration");
         });
 
         MenuSettings.setOnAction(event -> {
@@ -176,15 +175,19 @@ public class welcome_controller implements Initializable {
     }
 
     public void logout(ActionEvent event){
-        DBUtils.changeScene(event,"sample.fxml","Login",null,600,400);
+        //DBUtils.changeScene(event,"sample.fxml","Login",null,600,400);
+        System.exit(1);
     }
 
     @FXML
-    private Label label_welcome;
+    private Label label_welcome,lbl_time;
 
     public void setUserInformation(String username){
         this.username=username;
-        label_welcome.setText("Welcome "+username);
+        label_welcome.setText(username);
+        LocalTime time = java.time.LocalTime.now();
+        String FormattedTime = time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        lbl_time.setText("Login : "+FormattedTime);
     }
 
 }

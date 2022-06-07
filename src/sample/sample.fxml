@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="270.0" style="-fx-background-color: #e6f0ff;">
          <children>
@@ -46,15 +46,11 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Button id="login_btn" fx:id="button_login" layoutX="119.0" layoutY="288.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #4d94ff; -fx-cursor: hand;" text="Login">
+            <Button id="login_btn" fx:id="button_login" layoutX="119.0" layoutY="313.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #4d94ff; -fx-cursor: hand;" text="Login">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="button_sign_up" layoutX="119.0" layoutY="339.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #4d94ff;" text="Sign Up">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
          </children></AnchorPane>
    </children>
 </HBox>

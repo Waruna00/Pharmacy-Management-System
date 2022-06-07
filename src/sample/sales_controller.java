@@ -236,6 +236,7 @@ public class sales_controller implements Initializable {
         tf_name.clear();
         tf_price.clear();
         tf_qty.clear();
+        bill_item_no=0;
     }
 
     public ArrayList<String> suggesting(String x){
@@ -294,13 +295,9 @@ public class sales_controller implements Initializable {
                 list1.add(String.valueOf(resultSet2.getDouble("sellig_price")));
                 list1.add(String.valueOf(resultSet2.getInt("qty")));
             }
-
-            System.out.println(list1);
-            System.out.println(list1.size());
             int ii=list1.size()-1;
             price = Double.parseDouble(list1.get(ii-1));
             while(av_qty1>0 && ii>=3){
-                System.out.println("here"+ii);
                 if(av_qty1 > Integer.parseInt(list1.get(ii))){
                     av_qty1= av_qty1 - Integer.parseInt(list1.get(ii-2));
                 }
@@ -329,7 +326,6 @@ public class sales_controller implements Initializable {
         String d_price = tf_price.getText();
         String d_des = tf_des.getText();
         bill_item_no=bill_item_no+1;
-        System.out.println(bill_item_no);
 
         checkoutsListObservableList.add(new Checkout(bill_item_no, d_code, d_name, d_price, d_des,Integer.parseInt(qty),amount));
 
@@ -354,4 +350,5 @@ public class sales_controller implements Initializable {
     public String getQty(){
         return qty;
     }
+
 }

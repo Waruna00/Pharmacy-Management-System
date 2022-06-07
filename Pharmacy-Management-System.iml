@@ -104,8 +104,11 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="controlsfx-8.40.11" level="project" />
-    <orderEntry type="library" exported="" name="controlsfx-11.1.0" level="project" />
     <orderEntry type="library" name="controlsfx-11.1.01" level="project" />
+    <orderEntry type="library" name="javafx.controls" level="project" />
+    <orderEntry type="library" name="javafx.base" level="project" />
+    <orderEntry type="library" name="javafx.fxml" level="project" />
+    <orderEntry type="library" name="javafx.graphics" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.28" level="project" />
   </component>
 </module>

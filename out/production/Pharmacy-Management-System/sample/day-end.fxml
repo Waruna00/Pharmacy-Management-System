@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.day_end_controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.day_end_controller">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <TableView layoutX="61.0" layoutY="76.0" prefHeight="281.0" prefWidth="687.0">
+            <TableView fx:id="tbl" layoutX="61.0" layoutY="76.0" prefHeight="281.0" prefWidth="687.0">
               <columns>
-                <TableColumn prefWidth="126.40002059936523" text="Remittance No" />
-                <TableColumn prefWidth="263.199951171875" text="Description" />
-                  <TableColumn minWidth="0.0" prefWidth="158.66668701171875" text="Account No" />
-                  <TableColumn minWidth="0.0" prefWidth="138.66665649414062" text="Ammount" />
+                <TableColumn fx:id="tbl_no" prefWidth="126.40002059936523" text="Remittance No" />
+                <TableColumn fx:id="tbl_des" prefWidth="263.199951171875" text="Description" />
+                  <TableColumn fx:id="tbl_acc" minWidth="0.0" prefWidth="158.66668701171875" text="Account No" />
+                  <TableColumn fx:id="tbl_amount" minWidth="0.0" prefWidth="138.66665649414062" text="Amount" />
               </columns>
             </TableView>
             <Label layoutX="920.0" layoutY="76.0" text="Bank To Be     :">
@@ -82,7 +82,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="tf_add" layoutX="669.0" layoutY="367.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Add">
+            <Button fx:id="btn_add" layoutX="669.0" layoutY="367.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Add">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -116,7 +116,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="521.0" layoutY="496.0" prefHeight="26.0" prefWidth="150.0" style="-fx-border-color: black;" text="00.0">
+            <Label fx:id="lbl_rem" layoutX="521.0" layoutY="496.0" prefHeight="26.0" prefWidth="150.0" style="-fx-border-color: black;" text="00.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
