@@ -162,7 +162,7 @@ public class welcome_controller implements Initializable {
         });
 
         MenuQA.setOnAction(event -> {
-            //NewWindow("");
+            NewWindow("Search.fxml","Tracker");
         });
 
         MenuContact.setOnAction(event -> {
