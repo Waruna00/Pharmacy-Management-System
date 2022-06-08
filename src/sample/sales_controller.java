@@ -245,7 +245,8 @@ public class sales_controller implements Initializable {
         Connection connection;
         ResultSet resultSet;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb","root","Whoiam@123");
+            DBUtils con = new DBUtils();
+            connection = con.connection();
             PreparedStatement statement = connection.prepareStatement("SELECT d_code,d_name,d_type,description FROM drug");
             resultSet = statement.executeQuery();
             while (resultSet.next()){
