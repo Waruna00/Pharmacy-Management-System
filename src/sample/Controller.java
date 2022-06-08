@@ -10,14 +10,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-
     @FXML
     private Button button_login;
     @FXML
     private TextField tf_username;
     @FXML
     private TextField tf_password;
-
     @Override
     public void initialize(URL location, ResourceBundle resources){
         button_login.setOnAction(new EventHandler<ActionEvent>() {

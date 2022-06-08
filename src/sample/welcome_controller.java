@@ -97,7 +97,6 @@ public class welcome_controller implements Initializable {
             NewWindow("outward.fxml","Outward");
         });
 
-
         MenuTracker.setOnAction(event -> {
             NewWindow("search.fxml","Tracker");
         });

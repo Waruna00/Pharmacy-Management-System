@@ -6,10 +6,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Search">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Search">
     <children>
-        <TableView fx:id="SearchTableView" accessibleRole="COMBO_BOX" layoutX="31.0" layoutY="153.0" prefHeight="418.0" prefWidth="1219.0">
+        <TableView fx:id="SearchTableView" accessibleRole="COMBO_BOX" layoutX="31.0" layoutY="261.0" prefHeight="474.0" prefWidth="1219.0" style="-fx-background-color: #D2D2D2;">
             <columns>
             <TableColumn fx:id="NOTable" prefWidth="104.800048828125" text="NO" />
                 <TableColumn fx:id="batch_Table" prefWidth="81.60003662109375" text="Batch no" />
@@ -22,10 +23,13 @@
                 <TableColumn fx:id="quantity_Table" prefWidth="115.199951171875" text="Quantity" />
             </columns>
         </TableView>
-        <AnchorPane fx:id="SearchText" layoutY="-1.0" prefHeight="116.0" prefWidth="1280.0" style="-fx-background-color: #28252e;">
+        <AnchorPane fx:id="SearchText" layoutX="-13.0" prefHeight="197.0" prefWidth="1309.0" style="-fx-background-color: #D2D2D2; -fx-border-color: #1C376A;">
             <children>
-                <TextField fx:id="searchText" layoutX="25.0" layoutY="54.0" prefHeight="26.0" prefWidth="429.0" promptText="keyword" />
-                <Label layoutX="25.0" layoutY="37.0" text="Search" textFill="#fcf9f9" AnchorPane.topAnchor="34.0" />
+                <TextField fx:id="searchText" layoutX="163.0" layoutY="72.0" prefHeight="36.0" prefWidth="560.0" promptText="keyword" style="-fx-border-color: #E79631;" />
+                <Label layoutX="84.0" layoutY="77.0" text="Search" AnchorPane.topAnchor="77.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Label>
             </children>
         </AnchorPane>
     </children>

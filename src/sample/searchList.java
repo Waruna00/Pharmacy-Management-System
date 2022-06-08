@@ -11,11 +11,11 @@ public class searchList {
     Integer sale_per_unit;
     Integer quantity;
     String batch_no;
-    Integer Com_No;
+    String Com_No;
 
 
 
-    public searchList(Integer pno, String itemcode, Date EXP, Date MPD, Integer cost_per_unit, Integer sale_per_unit, Integer quantity, String batch_no, Integer com_No) {
+    public searchList(Integer pno, String itemcode, Date EXP, Date MPD, Integer cost_per_unit, Integer sale_per_unit, Integer quantity, String batch_no, String com_No) {
         this.itemcode = itemcode;
         this.pno = pno;
         this.EXP = EXP;
@@ -83,11 +83,11 @@ public class searchList {
         this.batch_no = batch_no;
     }
 
-    public Integer getCom_No() {
+    public String getCom_No() {
         return Com_No;
     }
 
-    public void setCom_No(Integer com_No) {
+    public void setCom_No(String com_No) {
         Com_No = com_No;
     }
 

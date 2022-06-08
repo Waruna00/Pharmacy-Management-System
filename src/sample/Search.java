@@ -63,7 +63,7 @@ public class Search implements Initializable {
         DBConnection connectNow = new DBConnection();
         Connection connectDB = connectNow.Connect();
 //        SQL Query to view
-        String InventoryViewQuery = "SELECT p_no,batch_no,exp,mpd,buying_price,selling_price,qty,c_no,barcode FROM purchase";
+        String InventoryViewQuery = "SELECT p_no,batch_no,exp,mfd,buying_price,sellig_price,qty,c_no,barcode FROM purchase";
 
         try {
             Statement statement = connectDB.createStatement();
@@ -73,11 +73,11 @@ public class Search implements Initializable {
                 Integer queryPno = QueryOutPut.getInt("p_no");
                 String queryBatch_no = QueryOutPut.getString("batch_no");
                 java.sql.Date queryEXPDate = QueryOutPut.getDate("exp");
-                Date queryMDPDate = QueryOutPut.getDate("mpd");
+                Date queryMDPDate = QueryOutPut.getDate("mfd");
                 Integer queryCostPrice = QueryOutPut.getInt("buying_price");
-                Integer querySalePrice = QueryOutPut.getInt("selling_price");
+                Integer querySalePrice = QueryOutPut.getInt("sellig_price");
                 Integer queryQuantity = QueryOutPut.getInt("qty");
-                Integer queryCompanyNo = QueryOutPut.getInt("c_no");
+                String queryCompanyNo = QueryOutPut.getNString("c_no");
                 String queryItemcode = QueryOutPut.getString("barcode");
 
 
