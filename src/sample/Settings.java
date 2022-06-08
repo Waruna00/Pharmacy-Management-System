@@ -51,7 +51,6 @@ public class Settings implements Initializable {
             tf_mobile.requestFocus();
             btn_update.setVisible(true);
         });
-
         btn_update.setOnAction(actionEvent -> {
             ButtonType yes = new ButtonType("Yes");
             ButtonType no = new ButtonType("No");
@@ -64,7 +63,6 @@ public class Settings implements Initializable {
                 }
             });
         });
-
         btn_change_password.setOnAction(actionEvent -> {
             tab.getSelectionModel().select(tab_reset_password);
         });
@@ -76,7 +74,6 @@ public class Settings implements Initializable {
             tab.getSelectionModel().select(tab_info);
             clear();
         });
-
     }
 
     void clear(){

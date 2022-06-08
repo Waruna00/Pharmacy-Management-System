@@ -60,7 +60,6 @@ public class day_end_controller implements Initializable {
                 //Create view from FXML
                 loader = new FXMLLoader(getClass().getResource("remittance.fxml"));
 
-
                 try{
                     //Parent root = loader.load();
 
@@ -103,7 +102,6 @@ public class day_end_controller implements Initializable {
         });
 
         button_pro.setOnAction(event -> {
-
             Connection connection;
             PreparedStatement preparedStatement1 = null,preparedStatement2,preparedStatement3,preparedStatement4;
             ResultSet resultSet1,resultSet3;

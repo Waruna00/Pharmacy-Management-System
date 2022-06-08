@@ -161,7 +161,6 @@ public class sales_controller implements Initializable {
                     checkoutsListObservableList.clear();
                     tbl.getItems().clear();
                     Total=0;
-
                 }
             });
 
@@ -169,7 +168,6 @@ public class sales_controller implements Initializable {
     }
 
     public void SentData(){
-
         try{
             PreparedStatement statement1 = connection.prepareStatement("INSERT INTO sale(qty,b_date,amount,b_time,barcode,cust_no,bill_no) VALUES(?,?,?,?,?,?,?);");
             PreparedStatement statement2 = connection.prepareStatement("SELECT barcode,qty FROM drug WHERE d_code=?;");
@@ -177,7 +175,6 @@ public class sales_controller implements Initializable {
             PreparedStatement statement4 = connection.prepareStatement("INSERT INTO bill(tot_ammount,cust_no,date) VALUES(?,?,?);");
             PreparedStatement statement6 = connection.prepareStatement("SELECT COUNT(*) AS count FROM dayend WHERE (date=?);");
             PreparedStatement statement7 = connection.prepareStatement("INSERT INTO dayend(date) VALUES(?)");
-
             statement6.setString(1,String.valueOf(java.time.LocalDate.now()));
             int c=0;
             ResultSet R_dayend = statement6.executeQuery();
@@ -204,13 +201,10 @@ public class sales_controller implements Initializable {
                 while (R_Barcode.next()){
                     barcode=R_Barcode.getNString("barcode");
                     available_qty=R_Barcode.getDouble("qty");
-
                 }
                 statement3.setString(1,String.valueOf(available_qty-(i.getQty())));
                 statement3.setString(2,i.getD_code());
                 statement3.executeUpdate();
-
-
                 statement1.setString(1,String.valueOf(qty));
                 statement1.setString(2,String.valueOf(java.time.LocalDate.now()));
                 statement1.setString(3,String.valueOf(amount));
@@ -219,11 +213,7 @@ public class sales_controller implements Initializable {
                 statement1.setString(6, Objects.requireNonNullElse(cust_no, "001")); //cust_no
                 statement1.setInt(7,bill_no); //bill_no
                 statement1.executeUpdate();
-
-
-
             }
-
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -267,7 +257,6 @@ public class sales_controller implements Initializable {
         }
 
     }
-
     public void SettingValues(String d_code){
         Connection connection;
         ResultSet resultSet1,resultSet2;
@@ -289,7 +278,6 @@ public class sales_controller implements Initializable {
                 d_des = resultSet1.getNString("description");
                 d_name = resultSet1.getNString("d_name");
             }
-
             statement2.setString(1,barcode);
             resultSet2 = statement2.executeQuery();
             while (resultSet2.next()){
@@ -307,16 +295,12 @@ public class sales_controller implements Initializable {
                     price = Double.parseDouble(list1.get(ii));
                 }
                 ii=ii-3;
-
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
         tf_price.setText(String.valueOf(price));
-
-
         tf_code.setText(d_code);
         tf_name.setText(d_name);
         tf_des.setText(d_des);

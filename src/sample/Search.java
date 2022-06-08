@@ -64,7 +64,6 @@ public class Search implements Initializable {
         Connection connectDB = connectNow.Connect();
 //        SQL Query to view
         String InventoryViewQuery = "SELECT p_no,batch_no,exp,mfd,buying_price,sellig_price,qty,c_no,barcode FROM purchase";
-
         try {
             Statement statement = connectDB.createStatement();
             ResultSet QueryOutPut = statement.executeQuery(InventoryViewQuery);
@@ -83,7 +82,6 @@ public class Search implements Initializable {
 
                 searchListObservableList.add(new searchList(queryPno,queryItemcode, queryEXPDate, queryMDPDate, queryCostPrice, querySalePrice,queryQuantity, queryBatch_no, queryCompanyNo));
             }
-
                 NOTable.setCellValueFactory(new PropertyValueFactory<>("pno"));
                 itemcode_Table.setCellValueFactory(new PropertyValueFactory<>("itemcode"));
                 expDate_Table.setCellValueFactory(new PropertyValueFactory<>("EXP"));
@@ -93,11 +91,7 @@ public class Search implements Initializable {
                 quantity_Table.setCellValueFactory(new PropertyValueFactory<>("quantity"));
                 batch_Table.setCellValueFactory(new PropertyValueFactory<>("batch_no"));
                 companyNO_Table.setCellValueFactory(new PropertyValueFactory<>("Com_No"));
-
-
-
             SearchTableView.setItems(searchListObservableList);
-
 //          Initial filtered list
             FilteredList<searchList> filteredData = new FilteredList<>(searchListObservableList, b -> true);
             searchText.textProperty().addListener((observable, newValue, oldValue) -> {
@@ -106,9 +100,7 @@ public class Search implements Initializable {
                     if (newValue.isBlank() || newValue.isEmpty() || newValue == null) {
                         return true;
                     }
-
                     String searchKeyWord = newValue.toLowerCase();
-
                     if (searchList.getItemcode().toString().indexOf(searchKeyWord) > -1) {
                         return true; // that means we found a match in itemcode
                     } else if (searchList.getBatch_no().toString().indexOf(searchKeyWord) > -1) {
@@ -122,18 +114,14 @@ public class Search implements Initializable {
                     }
                 });
             });
-
             SortedList<searchList> sortedData = new SortedList<>(filteredData);
 //          bind sorted result with table view
             sortedData.comparatorProperty().bind(SearchTableView.comparatorProperty());
 //          Apply sorted and filtered data with table
             SearchTableView.setItems(sortedData);
-
-
         } catch (SQLException e) {
             Logger.getLogger(inward.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
         } }
-
     }
 

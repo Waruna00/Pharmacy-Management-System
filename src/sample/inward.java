@@ -180,7 +180,6 @@ public class inward implements Initializable {
     }
 
     public void AddItems() {
-
         try {
             String queryBatch_no = batchNoText.getText();
             LocalDate queryEXPDate = expPicker.getValue();
@@ -267,14 +266,12 @@ public class inward implements Initializable {
     }
 
     public void UpdateBD() {
-
         DBConnection connectNow = new DBConnection();
         Connection connectDB = connectNow.Connect();
         try {
             PreparedStatement ps = null;
             PreparedStatement ps1 = null;
             PreparedStatement ps2 = null;
-
             String query = "INSERT INTO `pmsdb`.`purchase` (`batch_no`, `barcode`, `c_no`, `emp_no`, `qty`, `p_time`, `p_date`, `exp`, `mfd`, `sellig_price`, `buying_price`, `availability`) VALUES (?,?, ?,?, ?,?,?, ?,?,?,?, 'y')";
             String query1 = "UPDATE `pmsdb`.`drug` SET `qty` = ? WHERE (`d_code` = ?)";
             String query2 = "SELECT qty FROM drug WHERE d_code=?";
@@ -283,7 +280,6 @@ public class inward implements Initializable {
             ps1 = connectDB.prepareStatement(query2);
 
             for (ProductAdd i : productAddObservableList) {
-
                 String batchNO = i.getBatch_no();
                 String barcode = i.getItemcode();
                 String Cno = i.getCom_No();
@@ -299,20 +295,14 @@ public class inward implements Initializable {
                 String Itemcode = i.getItemcode();
                 ps1.setString(1, Itemcode);
                 ResultSet resultSet1 = ps1.executeQuery();
-
-
                 Integer quantity = null;
                 while (resultSet1.next()) {
                     quantity = resultSet1.getInt("qty");
                 }
-
                 Integer totalQuantity = (qty + quantity);
-
                 ps2.setInt(1, totalQuantity);
                 ps2.setString(2, barcode);
                 ps2.executeUpdate();
-
-
                 ps.setString(1, String.valueOf(batchNO));
                 ps.setString(2, String.valueOf(barcode));
                 ps.setString(3, String.valueOf(Cno));
