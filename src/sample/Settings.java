@@ -17,12 +17,10 @@ public class Settings implements Initializable {
     private Label lbl_code,lbl_one,lbl_two;
     @FXML
     private TextField tf_name,tf_address,tf_mobile,tf_old_p,tf_new_p,tf_com_p;
-
     @FXML
     private TabPane tab;
     @FXML
     private Tab tab_reset_password,tab_info;
-
     private String username;
     private String name;
     private String mobile;

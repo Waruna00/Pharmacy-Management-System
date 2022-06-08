@@ -275,7 +275,8 @@ public class sales_controller implements Initializable {
         String d_des = null;
         ArrayList<String> list1 = new ArrayList<>();
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "Whoiam@123");
+            DBUtils con = new DBUtils();
+            connection = con.connection();
             PreparedStatement statement1 = connection.prepareStatement("SELECT barcode,qty,d_name,description FROM drug WHERE d_code=?");
             PreparedStatement statement2 = connection.prepareStatement("SELECT p_no,sellig_price,qty FROM purchase WHERE (availability='y' and barcode=?)");
             statement1.setString(1,d_code);

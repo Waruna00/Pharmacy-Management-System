@@ -2,13 +2,21 @@
   <artifact type="jar" name="Pharmacy-Management-System:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Pharmacy_Management_System_jar</output-path>
     <root id="archive" name="Pharmacy-Management-System.jar">
-      <element id="library" level="project" name="controlsfx-11.1.01" />
-      <element id="file-copy" path="$PROJECT_DIR$/lib/mysql-connector-java-8.0.28.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/lib/javafx.graphics.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/lib/javafx.fxml.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/lib/javafx.controls.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/lib/javafx.base.jar" />
-      <element id="library" level="module" name="javafx-fxml" module-name="Pharmacy-Management-System" />
+      <element id="module-output" name="Pharmacy-Management-System" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17/javafx-fxml-17-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17/javafx-controls-17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17/javafx-controls-17-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17/javafx-graphics-17-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17/javafx-base-17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17/javafx-base-17-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/controlsfx-11.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-8.0.28.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

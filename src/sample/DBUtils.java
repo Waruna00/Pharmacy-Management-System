@@ -11,11 +11,14 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Objects;
 
+
+
 public class DBUtils {
+    private static String pword = "Whoiam@123";
     public Connection connection() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "Whoiam@123");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", pword);
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(String.valueOf(e));
@@ -60,7 +63,7 @@ public class DBUtils {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", "Whoiam@123");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pmsdb", "root", pword);
             preparedStatement = connection.prepareStatement("SELECT emp_password FROM em_user WHERE emp_no = ?");
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
