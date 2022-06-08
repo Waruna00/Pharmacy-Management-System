@@ -162,7 +162,7 @@ public class welcome_controller implements Initializable {
         });
 
         MenuQA.setOnAction(event -> {
-            NewWindow("Search.fxml","Tracker");
+            NewWindow("qa.fxml","Q&A");
         });
 
         MenuContact.setOnAction(event -> {
@@ -170,7 +170,7 @@ public class welcome_controller implements Initializable {
         });
 
         MenuAbout.setOnAction(event -> {
-            //NewWindow("");
+            NewWindow("about.fxml","About Us");
         });
     }
 

@@ -17,7 +17,7 @@
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-            <AnchorPane layoutX="-11.0" prefHeight="168.0" prefWidth="1296.0" style="-fx-background-color: #D2D2D2; -fx-border-color: #EE8D10; -fx-border-width: 2px;">
+            <AnchorPane layoutX="-11.0" prefHeight="168.0" prefWidth="1296.0" style="-fx-background-color: #D2D2D2; -fx-border-color: #1C376A;">
                <children>
                       <Label fx:id="quantitylbl" layoutX="1104.0" layoutY="56.0" prefHeight="20.0" prefWidth="74.0" text="Quantiity">
                           <font>
@@ -102,7 +102,7 @@
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></TextField>
-                <ScrollPane layoutX="44.0" layoutY="192.0" prefHeight="430.0" prefWidth="1190.0" style="-fx-background-color: #EE8D10; -fx-border-color: #EE8D10; -fx-border-width: 2px;">
+                <ScrollPane layoutX="44.0" layoutY="192.0" prefHeight="430.0" prefWidth="1190.0" style="-fx-border-width: 2px;">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="430.0" prefWidth="1180.0">
                             <children>
