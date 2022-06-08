@@ -100,8 +100,9 @@ public class Settings implements Initializable {
         }
         else if(!Objects.equals(newP, comP)){
             lbl_two.setVisible(true);
-        }
-        else {
+        } else if (newP.trim().isEmpty()) {
+            lbl_two.setVisible(true);
+        } else {
             Connection connection = null;
             PreparedStatement preparedStatement=null;
             Alert alert = new Alert(Alert.AlertType.NONE);

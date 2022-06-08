@@ -86,7 +86,7 @@ public class welcome_controller implements Initializable {
         });
 
         MenuWSale.setOnAction(event -> {
-            NewWindow("sales.fxml","Retail Sales");
+            //NewWindow("sales.fxml","Retail Sales");
         });
 
         MenuIn.setOnAction(event -> {

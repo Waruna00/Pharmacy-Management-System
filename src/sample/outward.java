@@ -18,52 +18,36 @@ import java.util.logging.Logger;
 public class outward implements Initializable {
     @FXML
     private Button ClearButton;
-
     @FXML
     private TableView<outwardList> InventoryTableView;
-
     @FXML
     private TextField PNoText;
-
     @FXML
     private Button ProcessButton;
-
     @FXML
     private Button addButton;
-
     @FXML
     private TextField batchNoText;
-
     @FXML
     private TableColumn<outward, String> batch_Table;
-
     @FXML
     private TableColumn<outward, String> NoTable;
-
     @FXML
     private TableColumn<outward, String> companyNO_Table;
-
     @FXML
     private TextField companyNoText;
-
     @FXML
     private TextField costPriceText;
-
     @FXML
     private TableColumn<outward, String> cost_Table;
-
     @FXML
     private TextField dateText;
-
     @FXML
     private TextField expDateText;
-
     @FXML
     private TableColumn<outward, String> expDate_Table;
-
     @FXML
     private Button fillButton;
-
     @FXML
     private TextField itemcodeText;
 
@@ -177,7 +161,7 @@ public class outward implements Initializable {
 
         try{
             PreparedStatement ps = null;
-            String query = "SELECT p_no,batch_no,barcode,c_no,qty,p_time,p_date,exp,mpd FROM purchase WHERE p_no=?";
+            String query = "SELECT p_no,batch_no,barcode,c_no,qty,p_time,p_date,exp,mfd FROM purchase WHERE p_no=?";
             ps = connectDB.prepareStatement(query);
             String P_No = PNoText.getText();
             ps.setString(1,P_No);
@@ -203,7 +187,7 @@ public class outward implements Initializable {
                 time = resultSet1.getTime("p_time");
                 date = resultSet1.getDate("p_date");
                 exp = resultSet1.getDate("exp");
-                mpd = resultSet1.getDate("mpd");
+                mpd = resultSet1.getDate("mfd");
 
             }
             itemcodeText.setText(barcode);
