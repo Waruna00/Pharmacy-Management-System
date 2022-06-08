@@ -40,7 +40,7 @@ public class Drug implements Initializable {
     private TableColumn<DrugAdd,Integer> quantityTable;
 
     @FXML
-    private TextField quantityText;
+    private TextField barcodeText;
 
     @FXML
     private TextField descriptionText;
@@ -67,8 +67,9 @@ public class Drug implements Initializable {
     public void initialize(URL url, ResourceBundle resource) {
 
         SearchTable();
-        quantityText.setTextFormatter(new TextFormatter<>(change ->
-                (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
+//        quantityText.setTextFormatter(new TextFormatter<>(change ->
+//                (change.getControlNewText().matches("([1-9][0-9]*)?")) ? change : null));
+
     }
 
 
@@ -76,7 +77,7 @@ public class Drug implements Initializable {
         itemcodeText.clear();
         nameText.clear();
         typeText.clear();
-        quantityText.clear();
+        barcodeText.clear();
         descriptionText.clear();
     }
 
@@ -161,8 +162,9 @@ public class Drug implements Initializable {
         String name = nameText.getText();
         String itemcode = itemcodeText.getText();
         String type = typeText.getText();
-        Integer quantity = Integer.parseInt(quantityText.getText());
+        Integer quantity = 0;
         String description = descriptionText.getText();
+        String barcode = barcodeText.getText();
 
 
 
@@ -174,7 +176,7 @@ public class Drug implements Initializable {
         ps1.setString(1, itemcode);
         ps1.setString(2, name);
         ps1.setString(3, type);
-        ps1.setString(4,itemcode);
+        ps1.setString(4,barcode);
         ps1.setInt(5, quantity);
         ps1.setString(6,description );
 
@@ -191,7 +193,7 @@ public class Drug implements Initializable {
             e.printStackTrace();
             e.getCause();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("NOT DELETED.TRY AGAIN");
+            alert.setContentText("NOT ADDED.TRY AGAIN");
             alert.show();
 
         }
@@ -206,8 +208,9 @@ public class Drug implements Initializable {
         String name = nameText.getText();
         String itemcode = itemcodeText.getText();
         String type = typeText.getText();
-        Integer quantity = Integer.parseInt(quantityText.getText());
+        Integer quantity = 0;
         String description = descriptionText.getText();
+        String barcode = barcodeText.getText();
 
 
         PreparedStatement ps = null;
@@ -216,7 +219,7 @@ public class Drug implements Initializable {
         ps.setString(1, itemcode);
         ps.setString(2, name);
         ps.setString(3, type);
-        ps.setString(4, itemcode);
+        ps.setString(4, barcode);
         ps.setInt(5, quantity);
         ps.setString(7, itemcode);
         ps.setString(6,description );
@@ -268,7 +271,4 @@ public class Drug implements Initializable {
             alert.show();
         }
     }
-
-
-
 }

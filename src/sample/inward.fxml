@@ -6,50 +6,118 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.inward">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.inward">
     <children>
-        <TableView fx:id="InventoryTableView" accessibleRole="COMBO_BOX" layoutX="31.0" layoutY="237.0" prefHeight="418.0" prefWidth="1219.0">
+        <TableView fx:id="InventoryTableView" accessibleRole="COMBO_BOX" layoutX="31.0" layoutY="237.0" prefHeight="418.0" prefWidth="1219.0" style="-fx-background-color: #D2D2D2;">
             <columns>
-                <TableColumn fx:id="batch_Table" prefWidth="81.60003662109375" text="Batch no" />
-                <TableColumn fx:id="itemcode_Table" prefWidth="107.20001220703125" text="Item code" />
-            <TableColumn fx:id="itemname_Table" prefWidth="104.0" text="Item name" />
-            <TableColumn fx:id="description_Table" prefWidth="104.0" text="Description" />
-                <TableColumn fx:id="companyNO_Table" prefWidth="113.06668090820312" text="Company NO" />
-                <TableColumn fx:id="expDate_Table" prefWidth="102.666748046875" text="EXP" />
-                <TableColumn fx:id="mpdDate_Table" prefWidth="98.93328857421875" text="MPD" />
-                <TableColumn fx:id="cost_Table" prefWidth="124.00006103515625" text="Cost per unit" />
-                <TableColumn fx:id="sale_Table" prefWidth="176.0" text="sale price per unit" />
-                <TableColumn fx:id="quantity_Table" prefWidth="141.86669921875" text="Quantity" />
+                <TableColumn fx:id="batch_Table" prefWidth="66.39999008178711" text="Batch no" />
+                <TableColumn fx:id="itemcode_Table" prefWidth="82.39996337890625" text="Item code" />
+            <TableColumn fx:id="itemname_Table" prefWidth="145.6000518798828" text="Item name" />
+            <TableColumn fx:id="description_Table" prefWidth="268.7999572753906" text="Description" />
+                <TableColumn fx:id="companyNO_Table" prefWidth="106.40005493164062" text="Company NO" />
+                <TableColumn fx:id="expDate_Table" prefWidth="135.99993896484375" text="EXP" />
+                <TableColumn fx:id="mpdDate_Table" prefWidth="124.800048828125" text="MFD" />
+                <TableColumn fx:id="cost_Table" prefWidth="108.79998779296875" text="Cost" />
+                <TableColumn fx:id="sale_Table" prefWidth="108.0" text="Selling price" />
+                <TableColumn fx:id="quantity_Table" prefWidth="78.39990234375" text="Quantity" />
             </columns>
         </TableView>
-        <AnchorPane layoutY="-1.0" prefHeight="197.0" prefWidth="1280.0" style="-fx-background-color: #28252e;">
+        <AnchorPane layoutX="-2.0" prefHeight="197.0" prefWidth="1289.0" style="-fx-border-color: #1C376A; -fx-background-color: #D2D2D2;">
             <children>
-                <TextField fx:id="itemcodeText" layoutX="27.0" layoutY="25.0" promptText="Item code" AnchorPane.topAnchor="30.0" />
-                <Label layoutX="27.0" layoutY="8.0" text="Item code" textFill="#fcf9f9" AnchorPane.topAnchor="8.0" />
-                <Button fx:id="addButton" layoutX="1060.0" layoutY="104.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="137.0" text="Add" />
-                <TextField fx:id="batchNoText" layoutX="27.0" layoutY="85.0" promptText="Batch no" AnchorPane.topAnchor="100.0" />
-                <Label layoutX="290.0" layoutY="68.0" text="Company NO" textFill="#faf6f6" AnchorPane.topAnchor="73.0" />
-                <TextField fx:id="companyNoText" layoutX="290.0" layoutY="89.0" promptText="Name" AnchorPane.topAnchor="100.0" />
-                <Label layoutX="1052.0" layoutY="7.0" prefHeight="18.0" prefWidth="82.0" text="Cost per unit" textFill="#f4f2f2" AnchorPane.topAnchor="8.0" />
-                <TextField fx:id="costPriceText" layoutX="1052.0" layoutY="24.0" promptText="Price" AnchorPane.topAnchor="30.0" />
-            <Label layoutX="27.0" layoutY="68.0" text="Batch no" textFill="#fcf9f9" AnchorPane.topAnchor="74.0" />
-            <Label layoutX="290.0" layoutY="8.0" prefHeight="18.0" prefWidth="72.0" text="Description" textFill="WHITE" AnchorPane.topAnchor="8.0" />
-                <TextField fx:id="descriptionText" layoutX="290.0" layoutY="26.0" prefHeight="18.0" prefWidth="150.0" promptText="description" AnchorPane.topAnchor="30.0" />
-            <Button fx:id="fillButton" layoutX="191.0" layoutY="25.0" mnemonicParsing="false" text="fill" AnchorPane.topAnchor="30.0" />
-                <Label layoutX="669.0" layoutY="67.0" text="EXP" textFill="WHITE" AnchorPane.topAnchor="73.0" />
-                <Label layoutX="666.0" layoutY="8.0" text="MDP" textFill="WHITE" AnchorPane.topAnchor="8.0" />
-                <Label layoutX="874.0" layoutY="10.0" text="sale price per unit" textFill="#f4f2f2" AnchorPane.topAnchor="8.0" />
-                <TextField fx:id="salePriceText" layoutX="872.0" layoutY="26.0" promptText="Price" AnchorPane.topAnchor="30.0" />
-            <DatePicker fx:id="mdpPicker" layoutX="666.0" layoutY="25.0" AnchorPane.topAnchor="30.0" />
-            <DatePicker fx:id="expPicker" layoutX="666.0" layoutY="89.0" AnchorPane.topAnchor="100.0" />
-            <Label layoutX="480.0" layoutY="10.0" prefHeight="18.0" prefWidth="72.0" text="Item name" textFill="WHITE" AnchorPane.topAnchor="8.0" />
-            <TextField fx:id="itemNameText" layoutX="480.0" layoutY="28.0" prefHeight="18.0" prefWidth="150.0" promptText="item name" AnchorPane.topAnchor="30.0" />
-                <Label layoutX="480.0" layoutY="67.0" text="Quantity" textFill="#f4f1f1" AnchorPane.topAnchor="73.0" />
-                <TextField fx:id="quantityText" layoutX="480.0" layoutY="89.0" promptText="Quantity" AnchorPane.topAnchor="100.0" />
+                <TextField fx:id="itemcodeText" layoutX="27.0" layoutY="50.0" prefHeight="30.0" prefWidth="150.0" promptText="Item code" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="50.0" />
+                <Label layoutX="27.0" layoutY="23.0" text="Item code" AnchorPane.topAnchor="23.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <Button fx:id="addButton" layoutX="1196.0" layoutY="114.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/down-arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+                <TextField fx:id="batchNoText" layoutX="27.0" layoutY="116.0" prefHeight="30.0" prefWidth="150.0" promptText="Batch no" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="116.0" />
+                <Label layoutX="313.0" layoutY="94.0" text="Company NO" AnchorPane.topAnchor="94.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+                <TextField fx:id="companyNoText" layoutX="313.0" layoutY="117.0" prefHeight="30.0" prefWidth="150.0" promptText="com Name" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="117.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+                <Label layoutX="1100.0" layoutY="20.0" prefHeight="20.0" prefWidth="102.0" text="Cost per unit" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <TextField fx:id="costPriceText" layoutX="1100.0" layoutY="45.0" prefHeight="30.0" prefWidth="136.0" promptText="Price" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="45.0" />
+            <Label layoutX="27.0" layoutY="93.0" text="Batch no" AnchorPane.topAnchor="93.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Label layoutX="507.0" layoutY="26.0" prefHeight="20.0" prefWidth="88.0" text="Description" AnchorPane.topAnchor="26.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <TextField fx:id="descriptionText" layoutX="507.0" layoutY="49.0" prefHeight="30.0" prefWidth="363.0" promptText="description" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="48.0" />
+            <Button fx:id="fillButton" layoutX="232.0" layoutY="50.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="38.0" AnchorPane.topAnchor="49.0">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/right-arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+                <Label layoutX="734.0" layoutY="94.0" text="EXP" AnchorPane.topAnchor="94.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <Label layoutX="551.0" layoutY="95.0" text="MFD" AnchorPane.topAnchor="95.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <Label layoutX="915.0" layoutY="20.0" prefHeight="20.0" prefWidth="130.0" text="Sale price per unit" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <TextField fx:id="salePriceText" layoutX="915.0" layoutY="44.0" prefHeight="30.0" prefWidth="136.0" promptText="Price" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="44.0" />
+            <DatePicker fx:id="mdpPicker" layoutX="551.0" layoutY="118.0" prefHeight="30.0" prefWidth="136.0" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="118.0" />
+            <DatePicker fx:id="expPicker" layoutX="734.0" layoutY="118.0" prefHeight="30.0" prefWidth="136.0" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="118.0" />
+            <Label layoutX="313.0" layoutY="25.0" prefHeight="18.0" prefWidth="72.0" text="Item name" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <TextField fx:id="itemNameText" layoutX="313.0" layoutY="49.0" prefHeight="30.0" prefWidth="150.0" promptText="item name" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="49.0" />
+                <Label layoutX="915.0" layoutY="95.0" text="Quantity" AnchorPane.topAnchor="95.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+                <TextField fx:id="quantityText" layoutX="915.0" layoutY="119.0" prefHeight="30.0" prefWidth="136.0" promptText="Quantity" style="-fx-border-color: #E79631;" AnchorPane.topAnchor="118.0" />
+              <Button fx:id="btn_com" layoutX="468.0" layoutY="118.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+              <Button fx:id="btn_add" layoutX="183.0" layoutY="49.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="38.0" AnchorPane.topAnchor="49.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             </children>
         </AnchorPane>
         <Label fx:id="successLabel" layoutX="262.0" layoutY="314.0" prefHeight="25.0" prefWidth="280.0" textFill="#262525">
@@ -57,9 +125,27 @@
                 <Font size="14.0" />
             </font>
         </Label>
-      <Button fx:id="btnProcess" layoutX="1059.0" layoutY="700.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="182.0" text="process" />
-        <Button fx:id="btn_add" layoutX="62.0" layoutY="707.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="102.0" text="Add New Drug" />
-        <Button fx:id="btn_com" layoutX="186.0" layoutY="707.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="123.0" text="Add Company New " />
-      <Button fx:id="btn_clear" layoutX="873.0" layoutY="700.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="159.0" text="Clear" />
+      <Button fx:id="btnProcess" layoutX="1126.0" layoutY="700.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="115.0" text="process">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="48.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Process.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btn_clear" layoutX="982.0" layoutY="700.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="115.0" text="Clear">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Clear.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
     </children>
 </Pane>
