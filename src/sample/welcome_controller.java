@@ -188,5 +188,4 @@ public class welcome_controller implements Initializable {
         String FormattedTime = time.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         lbl_time.setText("Login : "+FormattedTime);
     }
-
 }
