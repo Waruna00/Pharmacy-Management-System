@@ -145,6 +145,7 @@ public class sales_controller implements Initializable {
             tbl.getItems().clear();
             checkoutsListObservableList.clear();
             Total=0;
+            bill_item_no=0;
         });
 
         btn_pro.setOnAction(event -> {
@@ -161,6 +162,7 @@ public class sales_controller implements Initializable {
                     checkoutsListObservableList.clear();
                     tbl.getItems().clear();
                     Total=0;
+                    tf_tot.clear();
                 }
             });
 
@@ -226,7 +228,6 @@ public class sales_controller implements Initializable {
         tf_name.clear();
         tf_price.clear();
         tf_qty.clear();
-        bill_item_no=0;
     }
 
     public ArrayList<String> suggesting(String x){

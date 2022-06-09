@@ -165,7 +165,7 @@ public class welcome_controller implements Initializable {
         });
 
         MenuContact.setOnAction(event -> {
-            //NewWindow("");
+            NewWindow("contactus.fxml","Contact Us");
         });
 
         MenuAbout.setOnAction(event -> {
